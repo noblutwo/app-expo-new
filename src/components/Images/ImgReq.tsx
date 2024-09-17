@@ -53,6 +53,13 @@ export interface AppImageProps {
     | "header"
     | "bg_setting"
     | "icon_bg_setting"
+    | "tagetCccd"
+    | "giaypheplaixe"
+    | "ic_bhyt"
+    | "ic_thongtincutru"
+    | "ic_dangkyxe"
+    | "ic_nguoiphuthuoc"
+    | "fav_edit"
     | string;
   style?: StyleProp<ImageStyle>;
   resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -103,6 +110,13 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   imageTest: require("../../assets/images/src_assets_images_vnp_image_nfc_android.png"),
   bg_setting: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
   icon_bg_setting: require("../../assets/images/src_assets_images_vnp_image_canhan.png"),
+  tagetCccd: require("../../assets/images/src_assets_images_vnp_ico_ic_cccd.png"),
+  giaypheplaixe: require("../../assets/images/src_assets_images_vnp_ico_ic_giaypheplaixe.png"),
+  ic_bhyt: require("../../assets/images/src_assets_images_vnp_ico_ic_bhyt.png"),
+  ic_thongtincutru: require("../../assets/images/src_assets_images_ico_ic_thongtincutru.png"),
+  ic_dangkyxe: require("../../assets/images/src_assets_images_vnp_ico_ic_dangkyxe.png"),
+  ic_nguoiphuthuoc: require("../../assets/images/src_assets_images_vnp_ico_ic_nguoiphuthuoc.png"),
+  fav_edit: require("../../assets/images/src_assets_images_ico_ic_fav_edit.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({
@@ -135,8 +149,7 @@ const AppImage: React.FC<AppImageProps> = ({
 const styles = StyleSheet.create({
   image: {
     width: 100,
-    height: 100,
-    // borderRadius:100
+    height: 100
   },
 });
 
