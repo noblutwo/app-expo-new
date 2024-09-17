@@ -3,11 +3,11 @@ import { Slot, SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { StatusBar, View, StyleSheet } from "react-native";
+import { StatusBar, View} from "react-native";
 import * as Updates from "expo-updates";
 import { fontConfig } from "@/assets/fonts/font";
 import { useStyles } from "@/styles/styles";
-import AppImage, { imageSources } from "@/components/Images/ImgReq";
+import { imageSources } from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import { AuthProvider } from "@/context/AuthContext";
 

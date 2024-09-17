@@ -5,5 +5,5 @@ import { useStyles } from '@/styles/styles';
 
 export default function Logo() {
   const styles = useStyles();
-  return <Image source={imageSources["light"]} style={styles.imageLogo} />
+  return <Image source={imageSources["light"]} style={{width: 100, height: 100}} />
 }

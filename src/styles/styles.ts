@@ -2,6 +2,8 @@ import {StyleSheet } from 'react-native';
 
 import { useResponsiveDimensions } from '../hooks/useResponsiveDimensions';
 import { lightTheme } from './theme';
+import { blue100 } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import { Colors } from '@/constants/Colors';
 
 export const useStyles = () => {
   const dimensions = useResponsiveDimensions();
@@ -24,7 +26,6 @@ export const useStyles = () => {
       justifyContent: 'flex-end',
       alignItems: 'center',
       paddingHorizontal: 60,
-      backgroundColor:'red'
     },
     image: {
       width: dimensions.width * 0.8,
@@ -66,7 +67,6 @@ export const useStyles = () => {
     homeContainer: {
      flex: 1,
     },
-
 
     //RootLayout
     loadingContainer: {
@@ -152,6 +152,171 @@ export const useStyles = () => {
     },
     rowIconTitleLogin: {
       flexDirection: 'row'
-    }
+    },
+
+    //LayoutHome
+
+    containerSectionContainerHome: {
+      flex: 1,
+      backgroundColor: "#fff",
+    },
+    topSectionHome: {
+      flex:1,
+      height: '100%',
+      // alignItems: "center",
+      // justifyContent: "center",
+      // backgroundColor: 'blue'
+    },
+    bottomSectionHome: {
+      flex: 1
+    },
+    childBottomSectionHome:{
+      flex: 1,
+      borderTopRightRadius: 20,
+      borderTopLeftRadius: 20,
+      backgroundColor: 'black',
+      width: dimensions.width,
+      // height: dimensions.height,
+      position:'absolute',
+      top: 700,
+      left: 0
+    },
+    backgroundImageHome: {
+      width: dimensions.width,
+      height: 200,
+    },
+    headerImage: {
+      width: "100%",
+      height: "100%",
+      resizeMode: "cover",
+      paddingVertical: 40
+    },
+    headerContainer:{
+      height: 300,
+    },
+    headerContainerHome: {
+      // flex: 1,
+      flexDirection: 'row',
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingHorizontal: 10,
+    },
+    profileContainerHome: {
+      flexDirection: "row",
+      gap: 10,
+      alignItems: 'center',
+    },
+    profileImageHome: {
+      width: 60,
+      height: 60,
+      borderRadius: 100,
+    },
+    nameContainerHome: {
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 10,
+    },
+    nameTagHome: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      backgroundColor: "white",
+      borderRadius: 20,
+      paddingHorizontal: 10,
+      paddingVertical: 5,
+      gap: 10,
+    },
+    identityIconHome: {
+      width: 20,
+      height: 20,
+    },
+    searchButtonHome: {
+      width: 30,
+      height: 30,
+      paddingBottom:2,
+      borderRadius: 50,
+      backgroundColor: 'white',
+      flexDirection:'column',
+      alignItems:'center',
+      justifyContent:'center',
+    },
+    profileImageHomeBottom:{
+      width: '100%',
+      height: 60,
+      borderRadius: 10,
+    },
+    bottomSectionLayoutHome: {
+      flex: 1,
+      backgroundColor: "#fff",
+      borderTopRightRadius: 20,
+      borderTopLeftRadius: 20,
+      marginTop: -100,
+    },
+    contentSectionLayoutHome: {
+      padding: 20,
+      paddingTop: 30,
+      width: dimensions.width
+    },
+    textSectionLayoutHome: {
+      fontSize: 16,
+      fontWeight: "bold",
+      fontFamily: lightTheme.fontSizes.fontFamilyRegular,
+    },
+    serviceGroupContainerHome:{
+     width: dimensions.width * 0.9,
+     flexDirection: "row",
+     alignContent: "center",
+     justifyContent:"space-between",
+     marginVertical: 20
+    },
+    serviceItemHome:{
+      flex:1,
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+     
+    },
+    serviceItemTextHome:{
+     position: "absolute",
+     textAlign: "center",
+     top: -15,
+     width: 40,
+     paddingVertical:1,
+     borderRadius: 50,
+     backgroundColor:Colors.colorButtonLogin,
+     color: 'white',
+     left: 50
+    },
+    iconserviceItemHome:{
+      width: 40,
+      height: 40,
+    },
+    serviceItemTitleHome: {},
+    textContainer: {
+      flexDirection: "column",
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 5, // Thêm khoảng cách giữa icon và text
+    },
+    serviceText: {
+      textAlign: 'center',
+      fontSize: 13, 
+      fontFamily: lightTheme.fontSizes.fontFamilyRegular, // Điều chỉnh kích thước chữ nếu cần
+      // Thêm các thuộc tính style khác nếu cần
+    },
+    slideLayoutHome: {
+      width: dimensions.width,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    titleLayoutHome: {
+      fontSize: 15,
+      textAlign: "center",
+      marginTop: 40,
+      fontWeight: "700",
+      fontFamily: "sans-serif",
+      paddingHorizontal: 10,
+      width: 280,
+    },
   });
 };

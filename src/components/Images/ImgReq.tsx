@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 export interface AppImageProps {
-  source:"vnp_image_1" | "rofileLogout" | "bg_head" | "iconCamera" | "iconHomeActive" | "noti_unread_active" | "noti_unread_inactive" | "setting_active" | "setting_inactive" | "iconHomeInActive" | "iconWalletActive" | "iconWalletInActive" | "forgotPassword" | "numberRegister" | "numberLogout" |"profileLogin" | "lockLogin" | "vnp_image_2" | "iconQue" | "iconBook" | "iconPhone" | "iconQuestion" | "vnp_image_3" | "bg_pick" | "next_active" | "next_inactive" | "prev_active" | "prev_inactive" | " bglogin" | "headerBackground" | "header_back" | "header" | string;
+  source:"vnp_image_1" | "rofileLogout" | "imageTest" | "thutuchanhchinh" | "phongchongdichbenh" | "dichvukhac" | "ansinhxahoi" | "bg_head" | "iconProfile" | "qr_cccd" | "qr_dddt" | "og_dai_dien" | "dinh_danh" | "iconCamera" | "iconHomeActive" | "noti_unread_active" | "noti_unread_inactive" | "setting_active" | "setting_inactive" | "iconHomeInActive" | "iconWalletActive" | "iconWalletInActive" | "forgotPassword" | "numberRegister" | "numberLogout" |"profileLogin" | "lockLogin" | "vnp_image_2" | "iconQue" | "iconBook" | "iconPhone" | "iconQuestion" | "vnp_image_3" | "bg_pick" | "next_active" | "next_inactive" | "prev_active" | "prev_inactive" | " bglogin" | "headerBackground" | "header_back" | "header" | string;
 
   style?: StyleProp<ImageStyle>;
   resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -47,6 +47,16 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   setting_active: require("../../assets/images/src_assets_images_ico_ic_setting_active.png"),
   setting_inactive: require("../../assets/images/src_assets_images_ico_ic_setting_inactive.png"),
   bg_head: require("../../assets/images/src_assets_images_vnp_header_home_bg.png"),
+  iconProfile: require("../../assets/images/src_assets_images_chucongan.png"),
+  og_dai_dien: require("../../assets/images/src_assets_images_ico_ic_og_dai_dien.png"),
+  dinh_danh: require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png"),
+  qr_cccd: require("../../assets/images/src_assets_images_bg_btn_qr_cccd.png"),
+  qr_dddt: require("../../assets/images/src_assets_images_bg_btn_qr_dddt.png"),
+  thutuchanhchinh: require("../../assets/images/src_assets_images_vnp_ico_ic_thutuchanhchinh.png"),
+  phongchongdichbenh: require("../../assets/images/src_assets_images_vnp_ico_ic_phongchongdichbenh.png"),
+  dichvukhac: require("../../assets/images/src_assets_images_vnp_ico_ic_dichvukhac.png"),
+  ansinhxahoi: require("../../assets/images/src_assets_images_vnp_ico_ic_ansinhxahoi.png"),
+  imageTest: require("../../assets/images/src_assets_images_vnp_image_nfc_android.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({
