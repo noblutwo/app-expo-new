@@ -8,8 +8,52 @@ import {
 } from "react-native";
 
 export interface AppImageProps {
-  source:"vnp_image_1" | "rofileLogout" | "imageTest" | "thutuchanhchinh" | "phongchongdichbenh" | "dichvukhac" | "ansinhxahoi" | "bg_head" | "iconProfile" | "qr_cccd" | "qr_dddt" | "og_dai_dien" | "dinh_danh" | "iconCamera" | "iconHomeActive" | "noti_unread_active" | "noti_unread_inactive" | "setting_active" | "setting_inactive" | "iconHomeInActive" | "iconWalletActive" | "iconWalletInActive" | "forgotPassword" | "numberRegister" | "numberLogout" |"profileLogin" | "lockLogin" | "vnp_image_2" | "iconQue" | "iconBook" | "iconPhone" | "iconQuestion" | "vnp_image_3" | "bg_pick" | "next_active" | "next_inactive" | "prev_active" | "prev_inactive" | " bglogin" | "headerBackground" | "header_back" | "header" | string;
-
+  source:
+    | "vnp_image_1"
+    | "rofileLogout"
+    | "imageTest"
+    | "thutuchanhchinh"
+    | "phongchongdichbenh"
+    | "dichvukhac"
+    | "ansinhxahoi"
+    | "bg_head"
+    | "iconProfile"
+    | "qr_cccd"
+    | "qr_dddt"
+    | "og_dai_dien"
+    | "dinh_danh"
+    | "iconCamera"
+    | "iconHomeActive"
+    | "noti_unread_active"
+    | "noti_unread_inactive"
+    | "setting_active"
+    | "setting_inactive"
+    | "iconHomeInActive"
+    | "iconWalletActive"
+    | "iconWalletInActive"
+    | "forgotPassword"
+    | "numberRegister"
+    | "numberLogout"
+    | "profileLogin"
+    | "lockLogin"
+    | "vnp_image_2"
+    | "iconQue"
+    | "iconBook"
+    | "iconPhone"
+    | "iconQuestion"
+    | "vnp_image_3"
+    | "bg_pick"
+    | "next_active"
+    | "next_inactive"
+    | "prev_active"
+    | "prev_inactive"
+    | " bglogin"
+    | "headerBackground"
+    | "header_back"
+    | "header"
+    | "bg_setting"
+    | "icon_bg_setting"
+    | string;
   style?: StyleProp<ImageStyle>;
   resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
 }
@@ -57,6 +101,8 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   dichvukhac: require("../../assets/images/src_assets_images_vnp_ico_ic_dichvukhac.png"),
   ansinhxahoi: require("../../assets/images/src_assets_images_vnp_ico_ic_ansinhxahoi.png"),
   imageTest: require("../../assets/images/src_assets_images_vnp_image_nfc_android.png"),
+  bg_setting: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
+  icon_bg_setting: require("../../assets/images/src_assets_images_vnp_image_canhan.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({

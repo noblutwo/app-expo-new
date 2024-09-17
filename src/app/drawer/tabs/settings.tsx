@@ -1,18 +1,30 @@
-import {StyleSheet, ScrollView,Text, View} from "react-native";
+import {StyleSheet, ScrollView, Text, View} from "react-native";
 import React from "react";
-import { FontSize } from "@/constants/Colors";
-import { useStyles } from "@/styles/styles";
-import { imageSources } from "@/components/Images/ImgReq";
+import {FontSize} from "@/constants/Colors";
+import {useStyles} from "@/styles/styles";
+import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
+import {useResponsiveDimensions} from "@hooks/useResponsiveDimensions";
 
 export default function LayoutSettings() {
-    const golbalStyle = useStyles();
+    const globalStyles = useStyles();
+    const dimensions = useResponsiveDimensions();
     return (
-        <ScrollView style={golbalStyle.homeContainer}>
-            <BackgroundImage source={imageSources["bglogin"]}>
-               <View>
-            <Text>LayoutSettings</Text>
-            </View> 
+        <ScrollView style={globalStyles.homeContainer}>
+            <BackgroundImage source={imageSources["bg_setting"]} style={{height: dimensions.height * 0.25}}>
+                <View style={{flexDirection: 'row', flex: 1}}>
+                    <View style={globalStyles.wrapSetting}>
+                        <Text>Cài đặt</Text>
+                        <Text>Sử dụng vân tay / khuân mặt để mở khóa ứng dụng nhanh chóng và bảo mật hơn</Text>
+                    </View>
+                    <View style={globalStyles.wrapIconSetting}>
+                        <BackgroundImage
+                            source={imageSources["icon_bg_setting"]}
+                            style={{width:dimensions.width * 0.4,height:"100%"}}
+                        />
+
+                    </View>
+                </View>
             </BackgroundImage>
         </ScrollView>
     );
@@ -42,14 +54,14 @@ const styles = StyleSheet.create({
     },
     imageButton: {
         width: 40,
-        marginRight:10
+        marginRight: 10
     },
     titleText: {
         flex: 1,
-        fontSize:17,
-        fontWeight:'200',
+        fontSize: 17,
+        fontWeight: '200',
         fontFamily: FontSize.fontFamilyRegular,
-        color:'#4d4d4d'
+        color: '#4d4d4d'
     },
     imageContainer: {},
     name: {
