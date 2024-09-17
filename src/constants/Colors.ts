@@ -34,6 +34,7 @@ export const Colors = {
     colorTextLogin: '#CC122A',
     colorLogin: 'transparent',
     colorSilver: '#9BA1A6',
+    colorItemSetting: '#575757',
     light: {
         text: '#11181C',
         background: '#fff',
