@@ -51,10 +51,25 @@ export interface AppImageProps {
         | "headerBackground"
         | "header_back"
         | "header"
-
-        // cuong
         | "bg_setting"
         | "icon_bg_setting"
+        | "tagetCccd"
+        | "giaypheplaixe"
+        | "ic_bhyt"
+        | "ic_thongtincutru"
+        | "ic_dangkyxe"
+        | "ic_nguoiphuthuoc"
+        | "fav_edit"
+
+        // cuong
+        | "setting1"
+        | "setting2"
+        | "setting3"
+        | "setting4"
+        | "setting5"
+        | "setting6"
+        | "setting7"
+        | "setting8"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -103,19 +118,26 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     dichvukhac: require("../../assets/images/src_assets_images_vnp_ico_ic_dichvukhac.png"),
     ansinhxahoi: require("../../assets/images/src_assets_images_vnp_ico_ic_ansinhxahoi.png"),
     imageTest: require("../../assets/images/src_assets_images_vnp_image_nfc_android.png"),
+    bg_setting: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
+    icon_bg_setting: require("../../assets/images/src_assets_images_vnp_image_canhan.png"),
+    tagetCccd: require("../../assets/images/src_assets_images_vnp_ico_ic_cccd.png"),
+    giaypheplaixe: require("../../assets/images/src_assets_images_vnp_ico_ic_giaypheplaixe.png"),
+    ic_bhyt: require("../../assets/images/src_assets_images_vnp_ico_ic_bhyt.png"),
+    ic_thongtincutru: require("../../assets/images/src_assets_images_ico_ic_thongtincutru.png"),
+    ic_dangkyxe: require("../../assets/images/src_assets_images_vnp_ico_ic_dangkyxe.png"),
+    ic_nguoiphuthuoc: require("../../assets/images/src_assets_images_vnp_ico_ic_nguoiphuthuoc.png"),
+    fav_edit: require("../../assets/images/src_assets_images_ico_ic_fav_edit.png"),
 
 
     // cuong
-    bg_setting: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
-    icon_bg_setting: require("../../assets/images/src_assets_images_vnp_image_canhan.png"),
-    setting1:require("../../assets/images/src_assets_images_ico_ic_share_history.png"),
-    setting3:require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_doimatkhau.png"),
-    setting2:require("../../assets/images/src_assets_images_vnp_ico_fn_caidatdangnhap.png"),
-    setting5:require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_quanlythietbi.png"),
-    setting6:require("../../assets/images/src_assets_images_vnp_ico_fn_caidatthongbao.png"),
-    setting7:require("../../assets/images/src_assets_images_ico_ic_cai_dat_ptxt.png"),
-    setting4:require("../../assets/images/src_assets_images_ico_ic_doi_passcode.png"),
-    setting8:require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png")
+    setting1: require("../../assets/images/src_assets_images_ico_ic_share_history.png"),
+    setting3: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_doimatkhau.png"),
+    setting2: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatdangnhap.png"),
+    setting5: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_quanlythietbi.png"),
+    setting6: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatthongbao.png"),
+    setting7: require("../../assets/images/src_assets_images_ico_ic_cai_dat_ptxt.png"),
+    setting4: require("../../assets/images/src_assets_images_ico_ic_doi_passcode.png"),
+    setting8: require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({
@@ -148,8 +170,7 @@ const AppImage: React.FC<AppImageProps> = ({
 const styles = StyleSheet.create({
     image: {
         width: 100,
-        height: 100,
-        // borderRadius:100
+        height: 100
     },
 });
 

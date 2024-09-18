@@ -77,24 +77,24 @@ const titleItem3 = [
     },
 ]
 
+const dimensions = useResponsiveDimensions();
 export default function LayoutSettings() {
-    const globalStyles = useStyles();
-    const dimensions = useResponsiveDimensions();
 
     return (
         <View style={{flex: 1}}>
             <BackgroundImage source={imageSources["bg_setting"]}
                              style={{height: dimensions.height * 0.25, position: 'relative'}}>
-                <View style={[globalStyles.containerLayout, {flexDirection: 'row', flex: 1}]}>
-                    <View style={globalStyles.wrapSetting}>
-                        <Text style={{fontSize: FontSize.textLowercase, fontWeight: 600, paddingVertical: 20}}>Cài
-                            đặt</Text>
+                <View style={[styles.containerLayout, {flexDirection: 'row', flex: 1}]}>
+                    <View style={styles.wrapSetting}>
+                        <Text style={{fontSize: FontSize.textLowercase, fontWeight: 600, paddingVertical: 20}}>
+                            Cài đặt
+                        </Text>
                         <Text>Sử dụng vân tay / khuân mặt để mở khóa ứng dụng nhanh chóng và bảo mật hơn</Text>
                     </View>
-                    <View style={globalStyles.wrapIconSetting}>
+                    <View style={styles.wrapIconSetting}>
                         <BackgroundImage
                             source={imageSources["icon_bg_setting"]}
-                            style={globalStyles.appImage} // Thay đổi kích thước ở đây
+                            style={styles.appImage} // Thay đổi kích thước ở đây
                         />
 
                     </View>
@@ -102,13 +102,54 @@ export default function LayoutSettings() {
             </BackgroundImage>
             <ScrollView style={{paddingTop: 20}}>
                 <ItemSelectSetting data={titleItem} title={"Tài khoản"}/>
-                <View style={globalStyles.appLineBig}/>
+                <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem2} title={"Ứng dụng"}/>
-                <View style={globalStyles.appLineBig}/>
+                <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem3} title={"Hỗ trợ"}/>
             </ScrollView>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    //     cuong
+    // setting
+    containerLayout: {
+        flex: 1,
+        paddingHorizontal: '5%'
+    },
+    wrapSetting: {
+        width: "55%",
+        justifyContent: 'center',
+
+    },
+    wrapIconSetting: {
+        width: "45%",
+        justifyContent: 'center',
+    },
+    appImage: {
+        width: dimensions.width * 0.35,
+        height: dimensions.height * 0.20,
+    },
+    appLine: {
+        height: 1, // Chiều cao của gạch ngang
+        backgroundColor: '#e3e3e3', // Màu gạch ngang
+        marginVertical: 15,
+    },
+    appLineBig: {
+        height: 3, // Chiều cao của gạch ngang
+        backgroundColor: '#e3e3e3', // Màu gạch ngang
+        marginVertical: 15,
+    },
+    appIcon: {
+        width: dimensions.width * 0.06,
+        height: dimensions.height * 0.06,
+    },
+    appTextPhone: {
+        color: '#ba4747',
+        fontWeight: '700',
+        fontSize: FontSize.textLowercase
+    }
+})
 
 

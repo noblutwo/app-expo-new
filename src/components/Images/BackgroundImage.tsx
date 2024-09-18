@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, ViewStyle, ImageSourcePropType, StyleSheet } from 'react-native';
+import { ImageBackground, ViewStyle, ImageSourcePropType} from 'react-native';
 import { useStyles } from '@/styles/styles';
 import { useResponsiveDimensions } from '@/hooks/useResponsiveDimensions';
 
