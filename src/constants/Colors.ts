@@ -51,12 +51,12 @@ export const Colors = {
     },
 };
 
-export const rS = (size: number) => {
+export const wResponsive = (size: number) => {
     return scale(size)
 }
-export const rV = (size: number) => {
+export const hResponsive = (size: number) => {
     return verticalScale(size)
 }
-export const rMS = (size: number) => {
-    return moderateScale(size)
+export const pResponsive = (size: number,factor? : number) => {
+    return moderateScale(size,factor)
 }
