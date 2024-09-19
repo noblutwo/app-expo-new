@@ -6,6 +6,7 @@ import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useStyles} from "@/styles/styles";
 import SliderLayOutHome from "@/components/ScreenWithOverlap/ScreenWithOverlap";
 import ModalResidence from "@components/Modal/ModalResidence";
+import {router} from "expo-router";
 
 const serviceItems = [
     {icon: "thutuchanhchinh", title: "Thủ tục, hành chính"},
@@ -111,7 +112,7 @@ const ScreenWithOverlap = () => {
         return (
             <View style={styles.favoriteUtilitiesContainer}>
                 <View style={styles.favoriteUtilitiesHeader}>
-                    <Text style={[globalStyle.textLogin, {fontWeight: "bold"}]}>
+                    <Text style={[globalStyle.textLogin, {fontWeight: "bold"}]} onPress={() => router.push("../favorites/ResidenceInformation")}>
                         Tiện ích yêu thích
                     </Text>
                     <View style={styles.editContainer}>
@@ -153,7 +154,7 @@ const ScreenWithOverlap = () => {
                         Thông tin
                     </Text>
                     <View style={{flexDirection: 'column'}}>
-                        <Text style={[globalStyle.textLogin, {fontWeight: "bold",}]}>
+                        <Text style={[globalStyle.textLogin, {fontWeight: "bold",}]} >
                             Thông tin
                         </Text>
                         <Text style={[globalStyle.textLogin, {fontWeight: "bold",}]}>

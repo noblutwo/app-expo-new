@@ -32,7 +32,7 @@ const SliderLayOutHome: React.FC = () => {
 
   const renderItem = ({ item }: { item: SlideItem }) => (
     <View style={styles.slide}>
-      <AppImage source={item.source} style={styles.image} resizeMode="cover" />
+      <AppImage source={item?.source} style={styles.image} resizeMode="cover" />
     </View>
   );
 

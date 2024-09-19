@@ -90,11 +90,11 @@ const LoginScreen = () => {
             </Text>
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("/drawer/activateAccount")}>
+        <TouchableOpacity onPress={() => router.push("/drawer/favorites/residenceInformation")}>
           <Text style={globalStyles.textLogin}>
             Tài khoản đã được định danh điện tử ?{" "}
             <Text style={{ color: Colors.colorTextLogin, fontWeight: "bold" }}>
-              Kích hoạt
+              Kích hoạtttt
             </Text>
           </Text>
         </TouchableOpacity>

@@ -70,6 +70,10 @@ export interface AppImageProps {
         | "setting6"
         | "setting7"
         | "setting8"
+        | "bgHeader"
+        | "qrCodeHeader"
+        | "dropRight"
+        | "dropDown"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -137,7 +141,11 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     setting6: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatthongbao.png"),
     setting7: require("../../assets/images/src_assets_images_ico_ic_cai_dat_ptxt.png"),
     setting4: require("../../assets/images/src_assets_images_ico_ic_doi_passcode.png"),
-    setting8: require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png")
+    setting8: require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png"),
+    bgHeader: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc_copy.png"),
+    qrCodeHeader: require("../../assets/images/src_assets_images_vnp_ico_header_qrcode.png"),
+    dropDown: require("../../assets/images/src_assets_images_vnp_ico_ic_18_px_down.png"),
+    dropRight: require("../../assets/images/src_assets_images_vnp_ico_ic_right_grey.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({

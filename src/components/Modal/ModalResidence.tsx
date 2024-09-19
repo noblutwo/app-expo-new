@@ -11,7 +11,7 @@ export default function ModalResidence({modalVisible, setModalVisible}: any) {
     useEffect(() => {
         if (code.length === 6) {
             console.log("code", code.length)
-            router.push("/favorites/residenceInformation")
+            router.push("/(informations)/residence")
         }
     }, [code]);
 
