@@ -74,6 +74,8 @@ export interface AppImageProps {
         | "qrCodeHeader"
         | "dropRight"
         | "dropDown"
+        | "bgScan"
+        | "qrScan"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -146,6 +148,8 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     qrCodeHeader: require("../../assets/images/src_assets_images_vnp_ico_header_qrcode.png"),
     dropDown: require("../../assets/images/src_assets_images_vnp_ico_ic_18_px_down.png"),
     dropRight: require("../../assets/images/src_assets_images_vnp_ico_ic_right_grey.png"),
+    bgScan: require("../../assets/images/src_assets_images_vnp_bg_scan.png"),
+    qrScan: require("../../assets/images/photo_2024-09-20_15-17-qr.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({

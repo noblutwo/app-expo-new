@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import {router, Stack} from "expo-router";
-import {StyleSheet, TouchableOpacity, ImageBackground} from "react-native";
+import {StyleSheet, TouchableOpacity, ImageBackground, View} from "react-native";
 import {Ionicons} from '@expo/vector-icons';
 import {HeaderTitle} from "@/components/HeaderTitle/HeaderTitle";
 import {useAuth} from "@/context/AuthContext";
 import AppImage, {imageSources} from "@components/Images/ImgReq";
-import BackgroundImage from "@components/Images/BackgroundImage";
 import {hResponsive, wResponsive} from "@/constants/Colors";
+import {ModalQrCode} from "@components/Modal/ModalQrCode";
 
 export default function AuthLayout() {
     const {isLoggedIn} = useAuth();
+    const [openModal, setOpenModal] = useState(false)
     const handler = () => {
         if (isLoggedIn != null) {
             router.back()
@@ -32,8 +33,30 @@ export default function AuthLayout() {
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
-                        <TouchableOpacity>
-                            <AppImage source="qrCodeHeader" style={styles.item}/>
+                        <View>
+                            <TouchableOpacity onPress={() => setOpenModal(true)}>
+                                <AppImage source="qrCodeHeader" style={styles.item}/>
+                            </TouchableOpacity>
+                            <ModalQrCode open={openModal} setOpen={setOpenModal}/>
+                        </View>
+
+                    ),
+                    headerBackground: () => (
+                        <ImageBackground
+                            source={imageSources["bgHeader"]}
+                            style={styles.headerBackground}
+                        />
+                    ),
+                }}
+            />
+            <Stack.Screen
+                name="family"
+                options={{
+                    headerBackVisible: false,
+                    headerTitle: () => <HeaderTitle title="Thành viên khác trong hộ gia đình"/>,
+                    headerLeft: () => (
+                        <TouchableOpacity onPress={() => handler()}>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
                     headerBackground: () => (
@@ -45,7 +68,6 @@ export default function AuthLayout() {
                     ),
                 }}
             />
-
         </Stack>
     );
 }
@@ -54,7 +76,6 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     item: {
-
         marginTop: 5,
         width: wResponsive(20),
         height: hResponsive(20),
