@@ -1,8 +1,7 @@
-import {StyleSheet, ScrollView, Text, View} from "react-native";
+import {StyleSheet, ScrollView, Text, View, Dimensions} from "react-native";
 import React from "react";
-import {Colors, FontSize} from "@/constants/Colors";
-import {useStyles} from "@/styles/styles";
-import AppImage, {imageSources} from "@/components/Images/ImgReq";
+import {FontSize} from "@/constants/Colors";
+import {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import {useResponsiveDimensions} from "@hooks/useResponsiveDimensions";
 import {ItemSelectSetting} from "@components/Item/ItemSelectSetting";
@@ -77,9 +76,9 @@ const titleItem3 = [
     },
 ]
 
-const dimensions = useResponsiveDimensions();
+const {width, height} = Dimensions.get('window')
 export default function LayoutSettings() {
-
+const dimensions = useResponsiveDimensions();
     return (
         <View style={{flex: 1}}>
             <BackgroundImage source={imageSources["bg_setting"]}
@@ -128,8 +127,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     appImage: {
-        width: dimensions.width * 0.35,
-        height: dimensions.height * 0.20,
+        width: width * 0.35,
+        height: height * 0.20,
     },
     appLine: {
         height: 1, // Chiều cao của gạch ngang
@@ -142,8 +141,8 @@ const styles = StyleSheet.create({
         marginVertical: 15,
     },
     appIcon: {
-        width: dimensions.width * 0.06,
-        height: dimensions.height * 0.06,
+        width: width * 0.06,
+        height: height * 0.06,
     },
     appTextPhone: {
         color: '#ba4747',

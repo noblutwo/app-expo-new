@@ -9,12 +9,11 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
 } from "react-native";
-import { useFonts } from "expo-font";
+
 import AppImage from "@/components/Images/ImgReq";
-import { useStyles } from "@/styles/styles";
+
 import Checkbox from "expo-checkbox";
 import { router } from "expo-router";
-import { MaterialIcons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get("window");
 
@@ -37,7 +36,6 @@ const slides: SlideItem[] = [
 ];
 
 export default function LoginScreen() {
-  // const styles = useStyles();
   const [isChecked, setChecked] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollViewRef = useRef<ScrollView>(null);
@@ -167,7 +165,6 @@ export default function LoginScreen() {
         </View>
           </>
         }
-       
       </View>
     </View>
   );
