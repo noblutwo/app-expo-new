@@ -324,7 +324,7 @@ export const useStyles = () => {
     rowOverlap: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 20,
+      // marginBottom: 20,
     },
     itemOverlap: {
       width: itemWidth,

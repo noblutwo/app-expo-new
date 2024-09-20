@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   Animated,
+  TouchableOpacity,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import BackgroundImage from "@/components/Images/BackgroundImage";
@@ -14,7 +15,8 @@ import { useStyles } from "@/styles/styles";
 import SliderLayOutHome from "@/components/ScreenWithOverlap/ScreenWithOverlap";
 import { lightTheme } from "@/styles/theme";
 import { Colors } from "@/constants/Colors";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import Ionicons from "@expo/vector-icons/Ionicons"
+import ModalResidence from "@/components/Modal/ModalResidence";
 
 const { width, height } = Dimensions.get("window");
 
@@ -146,17 +148,17 @@ const ScreenWithOverlap = () => {
             <AppImage source="fav_edit" style={styles.editIcon} />
           </View>
         </View>
-        <View style={globalStyle.containerOverlap}>
+        <View style={styles.containerOverlap}>
           {[0, 1].map((rowIndex) => (
             <View key={rowIndex} style={globalStyle.rowOverlap}>
               {data.slice(rowIndex * 3, (rowIndex + 1) * 3).map((item) => (
-                <View key={item.id} style={globalStyle.itemOverlap}>
+                <TouchableOpacity key={item.id} style={globalStyle.itemOverlap} onPress={() => handlerModal(item?.id)}>
                   <AppImage
                     source={item.picture}
                     style={globalStyle.imageOverlap}
                   />
                   <Text style={globalStyle.titleOverlap}>{item.title}</Text>
-                </View>
+                </TouchableOpacity>
               ))}
             </View>
           ))}
@@ -169,6 +171,7 @@ const ScreenWithOverlap = () => {
     titleInfor: string;
     icon1: string;
     icon2: string;
+    text:string
     isFinite?: boolean;
   }
 
@@ -176,10 +179,11 @@ const ScreenWithOverlap = () => {
     titleInfor,
     icon1,
     icon2,
+    text,
     isFinite,
   }: ColumnProps) => (
     <View style={styles.column}>
-      <View style={styles.titleContainer}>
+      <View style={[styles.titleContainer, {gap: 5}]}>
         {isFinite ? (
           <AppImage source={icon1} style={styles.icon} />
         ) : (
@@ -192,7 +196,8 @@ const ScreenWithOverlap = () => {
 
         <Text style={styles.titleText}>{titleInfor}</Text>
       </View>
-      <View style={styles.editContainer}>
+   <Text adjustsFontSizeToFit={true} minimumFontScale={2} style={{fontFamily:lightTheme.fontSizes.fontFamilyRegular}}>{text}</Text>
+     <View style={[styles.editContainer, {flex:1}]}>
         <AppImage source={icon2} style={styles.icImage} />
       </View>
     </View>
@@ -207,6 +212,7 @@ const ScreenWithOverlap = () => {
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
+      {modalVisible && <ModalResidence modalVisible={modalVisible} setModalVisible={setModalVisible} />}
       <Animated.View
         style={[
           styles.bottomSectionLayoutHome,
@@ -233,55 +239,26 @@ const ScreenWithOverlap = () => {
           <View style={styles.container}>
             <Text style={[styles.textLogin, styles.title]}>Thông tin</Text>
             <View style={styles.rowContainer}>
-              {/* {renderColumn({
-                  titleInfor: "Cảnh báo thủ đoạn lừa đạo",
+              {renderColumn({
+                  titleInfor: "Cảnh báo thủ đoạn tội phạm",
                   icon1: "warning",
-                  icon2: "home_banner1",
+                  icon2: "home_banner2",
+                  text: "Thủ đoạn lừa đảo chiếm đoạt tài sản lợi dụng tình ...",
                   isFinite: true
                 })}
-                {renderColumn({
+              <View style={{width: 2, height:'100%', backgroundColor: '#a8a8a8', marginHorizontal:5}}/>
+              {renderColumn({
                   titleInfor: "Tin tức",
-                  icon1: "fav_edit",
-                  icon2: "home_banner2",
+                  icon1: "newspaper-outline",
+                  icon2: "home_banner3",
+                  text: "Chuyển cảm động nơi cơn bảo quét qua",
                   isFinite: false
-                })} */}
-              {/**/}
-              <View style={[styles.column, {backgroundColor:'blue', paddingLeft:10}]}>
-                <View style={[styles.titleContainer, {backgroundColor:'black'}]}>
-                  <AppImage source="warning" style={[styles.icon, {gap:4}]} />
-                  <Text style={[styles.titleText,{paddingRight:20}]}>
-                    Cảnh báo thủ đoạn tội phạm
-                  </Text>
-                </View>
-                <Text maxFontSizeMultiplier={2}>Thủ đoạn lừa đảo chiếm đoạt tài sản lợi dụng tình ...</Text>
-                <View style={[styles.editContainer, {flex:1, marginVertical:10}]}>
-                  <AppImage source="home_banner3" style={styles.icImage} />
-                </View>
-              </View>
-              {/**/}
-              <View style={{width: 2, height:'100%', backgroundColor: 'red', marginHorizontal:5}}/>
-              <View style={[styles.column, {backgroundColor:'blue'}]}>
-                <View style={[styles.titleContainer, {gap: 5}]}>
-                  <Ionicons
-                    name="newspaper-outline"
-                    size={20}
-                    color={Colors.colorButtonLogin}
-                  />
-                  <Text style={styles.titleText}>Tin tức</Text>
-                </View>
-                <Text maxFontSizeMultiplier={2} style={{fontFamily:lightTheme.fontSizes.fontFamilyRegular}}>Chuyển cảm động nơi cơn bảo quét qua</Text>
-                <View style={[styles.editContainer, {flex:1}]}>
-                  <AppImage source="home_banner2" style={styles.icImage} />
-                </View>
-              </View>
+                })}
             </View>
           </View>
-          <View style={{ marginBottom: 50 }}>
-            <Text>kakakakak</Text>
-          </View>
+          <View style={{ marginBottom: 50 }}/>
         </Animated.ScrollView>
       </Animated.View>
-      {/* <ModalResidence modalVisible={modalVisible} setModalVisible={setModalVisible} /> */}
     </SafeAreaView>
   );
 };
@@ -408,11 +385,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     width: 280,
   },
-  containerOverlap: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 20,
-  },
+ 
   rowOverlap: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -520,7 +493,7 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     flexDirection: "column",
-    borderBottomColor: "red",
+    borderBottomColor: "#a8a8a8",
     borderBottomWidth: 1,
   },
   titleContainer: {
@@ -541,6 +514,11 @@ const styles = StyleSheet.create({
     width: width * 0.45,
     height: 100,
     borderRadius: 20,
+  },
+  containerOverlap: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
   },
 });
 

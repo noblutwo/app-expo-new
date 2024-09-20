@@ -65,18 +65,24 @@ export interface AppImageProps {
     | "home_banner3"
     | "warning"
 
-    // cuong
-    | "setting1"
-    | "setting2"
-    | "setting3"
-    | "setting4"
-    | "setting5"
-    | "setting6"
-    | "setting7"
-    | "setting8"
-    | string;
-  style?: StyleProp<ImageStyle>;
-  resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
+        // cuong
+        | "setting1"
+        | "setting2"
+        | "setting3"
+        | "setting4"
+        | "setting5"
+        | "setting6"
+        | "setting7"
+        | "setting8"
+        | "bgHeader"
+        | "qrCodeHeader"
+        | "dropRight"
+        | "dropDown"
+        | "bgScan"
+        | "qrScan"
+        | string;
+    style?: StyleProp<ImageStyle>;
+    resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
 }
 
 export const imageSources: { [key: string]: ImageSourcePropType } = {
@@ -136,15 +142,22 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   home_banner3: require("../../assets/images/src_assets_images_home_banner3.jpg"),
   warning: require("../../assets/images/icon-warning.png"),
 
-  // cuong
-  setting1: require("../../assets/images/src_assets_images_ico_ic_share_history.png"),
-  setting3: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_doimatkhau.png"),
-  setting2: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatdangnhap.png"),
-  setting5: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_quanlythietbi.png"),
-  setting6: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatthongbao.png"),
-  setting7: require("../../assets/images/src_assets_images_ico_ic_cai_dat_ptxt.png"),
-  setting4: require("../../assets/images/src_assets_images_ico_ic_doi_passcode.png"),
-  setting8: require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png"),
+
+    // cuong
+    setting1: require("../../assets/images/src_assets_images_ico_ic_share_history.png"),
+    setting3: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_doimatkhau.png"),
+    setting2: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatdangnhap.png"),
+    setting5: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_quanlythietbi.png"),
+    setting6: require("../../assets/images/src_assets_images_vnp_ico_fn_caidatthongbao.png"),
+    setting7: require("../../assets/images/src_assets_images_ico_ic_cai_dat_ptxt.png"),
+    setting4: require("../../assets/images/src_assets_images_ico_ic_doi_passcode.png"),
+    setting8: require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png"),
+    bgHeader: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc_copy.png"),
+    qrCodeHeader: require("../../assets/images/src_assets_images_vnp_ico_header_qrcode.png"),
+    dropDown: require("../../assets/images/src_assets_images_vnp_ico_ic_18_px_down.png"),
+    dropRight: require("../../assets/images/src_assets_images_vnp_ico_ic_right_grey.png"),
+    bgScan: require("../../assets/images/src_assets_images_vnp_bg_scan.png"),
+    qrScan: require("../../assets/images/photo_2024-09-20_15-17-qr.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({

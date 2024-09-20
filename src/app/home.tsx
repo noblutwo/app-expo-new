@@ -88,7 +88,7 @@ export default function homeScreen() {
           >
             <View style={styles.footerHome}>
               <TouchableOpacity
-                onPress={() => router.push("/drawer/policy")}
+                onPress={() => router.push("/drawer/informations/residence")}
               >
                 <Text
                   style={{

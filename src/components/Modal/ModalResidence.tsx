@@ -2,14 +2,21 @@ import React, {useState, useEffect} from 'react';
 import {Modal, StyleSheet, Text, View, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
 import {FontAwesome6} from '@expo/vector-icons';
 import {Colors, FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {router} from "expo-router";
 
-export default function ModalResidence({modalVisible, setModalVisible}: any) {
+interface ModelProps {
+    modalVisible: boolean,
+    setModalVisible:(modalVisible: boolean) => void
+}
+
+export default function ModalResidence({modalVisible, setModalVisible}:ModelProps) {
     const [code, setCode] = useState<any>([]);
     const codeLength = Array(6).fill(0);
     const [indexNumber, setIndexNumber] = useState(0)
     useEffect(() => {
         if (code.length === 6) {
-            // Handle code completion
+            console.log("code", code.length)
+            router.push("/(informations)/residence")
         }
     }, [code]);
 
@@ -32,7 +39,8 @@ export default function ModalResidence({modalVisible, setModalVisible}: any) {
         <View style={styles.codeView}>
             {codeLength.map((_, index) => (
                 <View key={index} style={styles.codeContainer}>
-                    <View style={[styles.codeEmpty, {backgroundColor: code[index] !== undefined ? '#d8b113' : '#cfcfcf'}]} />
+                    <View
+                        style={[styles.codeEmpty, {backgroundColor: code[index] !== undefined ? '#d8b113' : '#cfcfcf'}]}/>
                 </View>
             ))}
         </View>
