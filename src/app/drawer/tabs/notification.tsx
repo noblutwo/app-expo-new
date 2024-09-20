@@ -1,113 +1,139 @@
-import {StyleSheet,Text, ScrollView, View} from "react-native";
-import React from "react";
-import { FontSize } from "@/constants/Colors";
-import { useStyles } from "@/styles/styles";
+import React, { useState } from "react";
+import { StyleSheet, Text, ScrollView, View, ImageBackground, TouchableOpacity, useWindowDimensions } from "react-native";
+import { FontSize, hResponsive, pResponsive, wResponsive } from "@/constants/Colors";
 import { imageSources } from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
+import { SceneMap, TabView } from "react-native-tab-view";
 
-export default function LayoutSearch() {
-    const golbalStyle = useStyles();
+const TaiKhoanRoute = () => (
+    <View style={{ flex: 1, backgroundColor: '#ff4081' }}>
+        <Text>Nội dung Tài khoản</Text>
+    </View>
+);
+
+const HeThongRoute = () => (
+    <View style={{ flex: 1, backgroundColor: '#673ab7' }}>
+        <Text>Nội dung Hệ thống</Text>
+    </View>
+);
+
+const TinTucRoute = () => (
+    <View style={{ flex: 1, backgroundColor: '#4caf50' }}>
+        <Text>Nội dung Tin tức</Text>
+    </View>
+);
+
+const renderScene = SceneMap({
+    taiKhoan: TaiKhoanRoute,
+    heThong: HeThongRoute,
+    tinTuc: TinTucRoute,
+});
+
+export default function Notification() {
+    const layout = useWindowDimensions();
+
+    const [index, setIndex] = useState(0);
+    const [routes] = useState([
+        { key: 'taiKhoan', title: 'Tài khoản' },
+        { key: 'heThong', title: 'Hệ thống' },
+        { key: 'tinTuc', title: 'Tin tức' },
+    ]);
+
+    const handleTabPress = (tabIndex : number) => {
+        setIndex(tabIndex);
+    };
+
     return (
-        <ScrollView style={golbalStyle.homeContainer}>
-            <BackgroundImage source={imageSources["bglogin"]}>
-            <View>
-            <Text>search</Text>
-            </View>   
+        <View style={styles.container}>
+            <BackgroundImage source={imageSources["bgHeader"]} style={{height: hResponsive(150)}}>
+                <View style={styles.headerContainer}>
+                    <View style={styles.containerLayout}>
+                        <Text style={styles.headerText}>Thông báo</Text>
+                        <View style={styles.tabContainer}>
+                            {routes.map((route, idx) => (
+                                <TouchableOpacity
+                                    key={route.key}
+                                    onPress={() => handleTabPress(idx)}
+                                    style={[styles.tab, index === idx && styles.activeTab]}
+                                >
+                                    <Text
+                                        style={[styles.tabText, index === idx ? styles.activeTabText : styles.inactiveTabText]}>
+                                        {route.title}
+                                    </Text>
+                                    {route.key === 'taiKhoan' && <Text style={styles.badge}>1</Text>}
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+                    <View>
+                        <ImageBackground
+                            source={imageSources["logoVienThong"]}
+                            style={styles.logo}
+                        />
+                    </View>
+                </View>
             </BackgroundImage>
-        </ScrollView>
+            <TabView
+                navigationState={{ index, routes }}
+                renderScene={renderScene}
+                onIndexChange={setIndex}
+                initialLayout={{ width: layout.width }}
+                renderTabBar={() => null}
+            />
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
-        padding: 20
-    },
-    headerImage: {
-        color: "#ffffff",
-        bottom: -90,
-        left: -35,
-        position: "absolute",
-    },
-    information: {
         flex: 1,
     },
-    image: {},
-    titleInformation: {
-        gap: 4,
+    headerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: "flex-end",
+        height: '100%',
     },
-    titleContainer: {
-        flexDirection: "row",
-        gap: 8,
+    containerLayout: {
+        paddingHorizontal: '3%',
     },
-    imageButton: {
-        width: 40,
-        marginRight:10
+    headerText: {
+        fontSize: FontSize.textBigLetters,
+        fontWeight: '700',
+        paddingBottom: pResponsive(20),
     },
-    titleText: {
-        flex: 1,
-        fontSize:17,
-        fontWeight:'200',
-        fontFamily: FontSize.fontFamilyRegular,
-        color:'#4d4d4d'
+    tabContainer: {
+        flexDirection: 'row',
     },
-    imageContainer: {},
-    name: {
-        fontWeight: "bold",
+    tab: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
     },
-    inforUser: {
-        flexDirection: "row",
-        gap: 6,
-        alignItems: "center",
-        marginBottom: 20,
+    tabText: {
+        fontWeight: '600',
     },
-    lined: {
-        borderBottomWidth: 1,
-        borderBottomColor: FontSize.lineOne,
-        marginTop: 0,
-        flex: 1,
-        marginRight: 20,
-        marginLeft: 60,
+    activeTab: {
+        borderBottomWidth: 2,
+        borderBottomColor: '#a10000',
     },
-    linedUser: {
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        marginTop: -10,
-        marginBottom: 10,
-        flex: 1,
+    activeTabText: {
+        color: 'black',
     },
-    imageBackground: {
-        flexDirection: "column",
-        paddingHorizontal: 10,
-        paddingVertical: 20,
-        marginBottom: 20,
-        borderRadius: 10,
-        gap: 4,
-        flex: 1,
-        resizeMode: "cover",
+    inactiveTabText: {
+        color: 'gray',
     },
-    inf: {
-        flex: 1,
-        justifyContent: "space-between",
-        padding: 20,
+    badge: {
+        backgroundColor: '#bd2828',
+        width: wResponsive(15),
+        height: hResponsive(15),
+        textAlign: 'center',
+        color: 'white',
+        marginLeft: 5,
+        borderRadius: 10
     },
-    forgotPassword: {
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "center",
-        marginBottom: 20,
+    logo: {
+        width: wResponsive(100),
+        height: hResponsive(110),
     },
-    jSpaceBetween: {
-        justifyContent: "space-between",
-    },
-
-    cardButton: {
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 8,
-        height: 70,
-    },
-    imageIcon: {},
-    heading: {},
-    headScreen: {},
 });
