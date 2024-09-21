@@ -81,6 +81,9 @@ export interface AppImageProps {
         | "bgScan"
         | "qrScan"
         | "logoVienThong"
+        | "notFound"
+        | "bgHeaderWallet"
+        | "iconVn"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -160,6 +163,9 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     bgScan: require("../../assets/images/src_assets_images_vnp_bg_scan.png"),
     qrScan: require("../../assets/images/photo_2024-09-20_15-17-qr.png"),
     logoVienThong: require("../../assets/images/src_assets_images_dich_vu_vien_thong_logo.png"),
+    notFound: require("../../assets/images/src_assets_images_vnp_image_notfound.png"),
+    bgHeaderWallet: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
+    iconVn : require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({

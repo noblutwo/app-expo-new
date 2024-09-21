@@ -1,25 +1,50 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, ScrollView, View, ImageBackground, TouchableOpacity, useWindowDimensions } from "react-native";
-import { FontSize, hResponsive, pResponsive, wResponsive } from "@/constants/Colors";
-import { imageSources } from "@/components/Images/ImgReq";
+import React, {useState} from "react";
+import {StyleSheet, Text, ScrollView, View, ImageBackground, TouchableOpacity, useWindowDimensions} from "react-native";
+import {FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
-import { SceneMap, TabView } from "react-native-tab-view";
+import {SceneMap, TabView} from "react-native-tab-view";
+import {Entypo, AntDesign} from '@expo/vector-icons/';
+import {LayoutNotFound} from "@components/NotFound/LayoutNotFound";
 
 const TaiKhoanRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#ff4081' }}>
-        <Text>Nội dung Tài khoản</Text>
-    </View>
+    <ScrollView style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
+        <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#c52222'}}>Đánh dấu tất cả đã
+            đọc</Text>
+        <View>
+            <Text style={{fontWeight: '700', color: '#777777', paddingVertical: 10}}>12-02-2024</Text>
+            <View style={{backgroundColor: '#f3ece6', padding: 10, borderRadius: 10}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text style={{fontSize: FontSize.textBigLetters, fontWeight: '600', color: '#494949'}}>Mừng ngày đặc
+                        biệt của bạn</Text>
+                    <Entypo name="dot-single" size={24} color="red"/>
+                </View>
+                <Text style={{paddingVertical: 10}}>Chức bạn có một ngày sinh nhật thật vui vẻ và có những phút giây
+                    đáng nhớ khi chào đón ngày đặc
+                    biệt này cùng bạn bè và người thân</Text>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <AntDesign name="clockcircleo" size={18} color="#989898"/>
+                    <Text style={{color: "#989898", paddingHorizontal: 5, fontSize: FontSize.textSmall}}>07:01</Text>
+                </View>
+
+            </View>
+        </View>
+    </ScrollView>
 );
 
 const HeThongRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#673ab7' }}>
-        <Text>Nội dung Hệ thống</Text>
+    <View style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
+        <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#777777'}}>Đánh dấu tất cả đã
+            đọc</Text>
+        <LayoutNotFound/>
     </View>
 );
 
 const TinTucRoute = () => (
-    <View style={{ flex: 1, backgroundColor: '#4caf50' }}>
-        <Text>Nội dung Tin tức</Text>
+    <View style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
+        <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#777777'}}>Đánh dấu tất cả đã
+            đọc</Text>
+        <LayoutNotFound/>
     </View>
 );
 
@@ -34,12 +59,12 @@ export default function Notification() {
 
     const [index, setIndex] = useState(0);
     const [routes] = useState([
-        { key: 'taiKhoan', title: 'Tài khoản' },
-        { key: 'heThong', title: 'Hệ thống' },
-        { key: 'tinTuc', title: 'Tin tức' },
+        {key: 'taiKhoan', title: 'Tài khoản'},
+        {key: 'heThong', title: 'Hệ thống'},
+        {key: 'tinTuc', title: 'Tin tức'},
     ]);
 
-    const handleTabPress = (tabIndex : number) => {
+    const handleTabPress = (tabIndex: number) => {
         setIndex(tabIndex);
     };
 
@@ -74,10 +99,10 @@ export default function Notification() {
                 </View>
             </BackgroundImage>
             <TabView
-                navigationState={{ index, routes }}
+                navigationState={{index, routes}}
                 renderScene={renderScene}
                 onIndexChange={setIndex}
-                initialLayout={{ width: layout.width }}
+                initialLayout={{width: layout.width}}
                 renderTabBar={() => null}
             />
         </View>
@@ -136,4 +161,8 @@ const styles = StyleSheet.create({
         width: wResponsive(100),
         height: hResponsive(110),
     },
+    bgNotFound: {
+        width: wResponsive(100),
+        height: hResponsive(100)
+    }
 });
