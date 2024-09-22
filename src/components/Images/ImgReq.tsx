@@ -84,6 +84,9 @@ export interface AppImageProps {
         | "notFound"
         | "bgHeaderWallet"
         | "iconVn"
+        | "bgXaHoi"
+        | "tichHoptt"
+        | "xuatTrinh"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -165,7 +168,10 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     logoVienThong: require("../../assets/images/src_assets_images_dich_vu_vien_thong_logo.png"),
     notFound: require("../../assets/images/src_assets_images_vnp_image_notfound.png"),
     bgHeaderWallet: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
-    iconVn : require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png")
+    iconVn : require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png"),
+    bgXaHoi : require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
+    tichHoptt : require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
+    xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({
