@@ -74,6 +74,10 @@ export interface AppImageProps {
         | "setting6"
         | "setting7"
         | "setting8"
+        | "setting9"
+        | "setting10"
+        | "setting11"
+        | "setting12"
         | "bgHeader"
         | "qrCodeHeader"
         | "dropRight"
@@ -159,6 +163,10 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     setting7: require("../../assets/images/src_assets_images_ico_ic_cai_dat_ptxt.png"),
     setting4: require("../../assets/images/src_assets_images_ico_ic_doi_passcode.png"),
     setting8: require("../../assets/images/src_assets_images_ico_ic_doi_sdt.png"),
+    setting9: require("../../assets/images/src_assets_images_ico_ic_setting_faq.png"),
+    setting10: require("../../assets/images/src_assets_images_ico_ic_setting_user_guide.png"),
+    setting11: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_chinhsachbaomat.png"),
+    setting12: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_quyenriengtuvadichvu.png"),
     bgHeader: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc_copy.png"),
     qrCodeHeader: require("../../assets/images/src_assets_images_vnp_ico_header_qrcode.png"),
     dropDown: require("../../assets/images/src_assets_images_vnp_ico_ic_18_px_down.png"),
@@ -168,9 +176,9 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     logoVienThong: require("../../assets/images/src_assets_images_dich_vu_vien_thong_logo.png"),
     notFound: require("../../assets/images/src_assets_images_vnp_image_notfound.png"),
     bgHeaderWallet: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),
-    iconVn : require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png"),
-    bgXaHoi : require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
-    tichHoptt : require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
+    iconVn: require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png"),
+    bgXaHoi: require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
+    tichHoptt: require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
     xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png")
 };
 

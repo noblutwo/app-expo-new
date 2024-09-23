@@ -2,79 +2,71 @@ import {StyleSheet, Text, View} from "react-native";
 import AppImage from "@components/Images/ImgReq";
 import React from "react";
 import {useStyles} from "@/styles/styles";
-import {Colors, FontSize} from "@/constants/Colors";
+import {Colors, FontSize, hResponsive, wResponsive} from "@/constants/Colors";
 import {useResponsiveDimensions} from "@hooks/useResponsiveDimensions";
 
-const dimensions = useResponsiveDimensions();
+
 export function ItemSelectSetting({data, title}: any) {
     const globalStyles = useStyles();
+
     return (
         <View style={styles.containerLayout}>
-            <Text style={{
-                fontSize: FontSize.textLowercase,
-                paddingVertical: 15,
-                fontWeight: 600,
-                color: Colors.colorItemSetting
-            }}>{title}</Text>
+            <Text style={styles.titleText}>{title}</Text>
             {data?.map((item: any, index: number) => (
                 <View key={index}>
-                    <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <View style={styles.row}>
                         <Text>{item?.title}</Text>
-                        {!item?.icon
-                            ?
-                            <Text
-                                style={!!item?.phone && styles.appTextPhone}>{!item?.phone ? item?.version : item?.phone}</Text>
-                            :
+                        {item?.phone && (
+                            <Text style={styles.appTextPhone}>
+                                {item?.phone || item?.version}
+                            </Text>
+                        )}
+                        {item?.icon && (
                             <AppImage
                                 source={item?.icon}
                                 style={[globalStyles.imageSliderLogin, styles.appIcon]}
                                 resizeMode="contain"
-                            />}
-
+                            />
+                        )}
+                        {item?.open && item?.open}
                     </View>
-                    {index !== 8 && <View style={styles.appLine}/>}
+                    {/* Ẩn dòng kẻ nếu là phần tử cuối cùng */}
+                    {index !== data.length - 1 && <View style={styles.appLine}/>}
+                    {item?.icon === "setting9" && <View style={styles.appLine}/>}
                 </View>
             ))}
-
-
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
-    //     cuong
-    // setting
     containerLayout: {
         flex: 1,
-        paddingHorizontal: '5%'
+        paddingHorizontal: '5%',
     },
-    wrapSetting: {
-        width: "55%",
-        justifyContent: 'center',
-
+    titleText: {
+        fontSize: FontSize.textLowercase,
+        paddingVertical: 10,
+        fontWeight: '600',
+        color: Colors.colorItemSetting,
     },
-    wrapIconSetting: {
-        width: "45%",
-        justifyContent: 'center',
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
-
     appLine: {
         height: 1, // Chiều cao của gạch ngang
         backgroundColor: '#e3e3e3', // Màu gạch ngang
-        marginVertical: 15,
-    },
-    appLineBig: {
-        height: 3, // Chiều cao của gạch ngang
-        backgroundColor: '#e3e3e3', // Màu gạch ngang
-        marginVertical: 15,
+        marginVertical: 12, // Thay vì paddingVertical
     },
     appIcon: {
-        width: dimensions.width * 0.06,
-        height: dimensions.height * 0.06,
+        width: wResponsive(25),
+        height: hResponsive(25),
     },
     appTextPhone: {
         color: '#ba4747',
         fontWeight: '700',
-        fontSize: FontSize.textLowercase
-    }
-})
+        fontSize: FontSize.textLowercase,
+    },
+});
