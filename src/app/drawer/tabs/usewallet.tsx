@@ -1,113 +1,110 @@
-import {StyleSheet, ScrollView, View,Text} from "react-native";
+import { StyleSheet, ScrollView, View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import React from "react";
 import { FontSize } from "@/constants/Colors";
 import { useStyles } from "@/styles/styles";
-import { imageSources } from "@/components/Images/ImgReq";
+import AppImage, { imageSources } from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 
+// Định nghĩa kiểu dữ liệu cho data
+interface DataItem {
+    id: number;
+    picture: string;
+    title: string;
+}
+
+const data: DataItem[] = [
+    { id: 1, picture: "tagetCccd", title: "Thẻ Căn cước/ CCCD" },
+    { id: 2, picture: "giaypheplaixe", title: "Giấy phép lái xe" },
+    { id: 3, picture: "ic_bhyt", title: "Thẻ BHYT" },
+    { id: 4, picture: "ic_thongtincutru", title: "Thông tin cư trú" },
+    { id: 5, picture: "ic_dangkyxe", title: "Đăng ký xe" },
+    { id: 6, picture: "ic_nguoiphuthuoc", title: "Người phụ thuộc" },
+    { id: 7, picture: "bgXaHoi", title: "Bảo hiểm xã hội" },
+];
+
 export default function LayoutService() {
-    const golbalStyle = useStyles();
+    const global = useStyles();
+
     return (
-        <ScrollView style={golbalStyle.homeContainer}>
-            <BackgroundImage source={imageSources["bglogin"]}>
-            <View>
-            <Text>service</Text>
-            </View> 
+        <View style={styles.container}>
+            <BackgroundImage source={imageSources["bgHeaderWallet"]} style={{ height: 380 }}>
+                <View style={[styles.containerLayout, { paddingVertical: 10, marginTop: 20 }]}>
+                    <Text style={{ fontSize: 20, fontWeight: "600" }}>Ví giấy tờ</Text>
+                </View>
             </BackgroundImage>
-        </ScrollView>
+            <View style={styles.containerLayout}>
+                <View style={{ flexDirection: "row", paddingVertical: 20 }}>
+                    <Text style={{ color: "#a62c2c" }}>Tài khoản mức 2 </Text>
+                    <ImageBackground source={imageSources["iconVn"]} style={[styles.icon, { marginLeft: 5 }]} />
+                </View>
+                <Text>Tài khoản của bạn đã được định danh ở mức 3</Text>
+            </View>
+            <View style={styles.appLineBig} />
+            <ScrollView style={global.homeContainer} contentContainerStyle={{ paddingBottom: 80 }}>
+                <View style={styles.containerLayout}>
+                    <Text style={{ fontWeight: "600" }}>Tích hợp và xuất trình</Text>
+                    <View style={[{ flexDirection: "row", paddingVertical: 20 }, styles.containerLayout]}>
+                        <View style={styles.wrapItem}>
+                            <AppImage source={"tichHoptt"} style={global.imageOverlap} />
+                            <Text>Tích hợp giấy tờ</Text>
+                        </View>
+                        <View style={styles.wrapItem}>
+                            <AppImage source={"xuatTrinh"} style={global.imageOverlap} />
+                            <Text>Xuất trình giấy tờ</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.containerLayout}>
+                    <Text style={{ fontWeight: "600" }}>Giấy tờ</Text>
+                    <View style={styles.containerOverlap}>
+                        {/* Sử dụng reduce và chỉ định kiểu rõ ràng */}
+                        {data.reduce<DataItem[][]>((rows, key, index) => {
+                            if (index % 3 === 0) rows.push([]); // Tạo một hàng mới sau mỗi 3 phần tử
+                            rows[rows.length - 1].push(key);    // Thêm phần tử vào hàng hiện tại
+                            return rows;
+                        }, []).map((row, rowIndex) => (
+                            <View key={rowIndex} style={global.rowOverlap}>
+                                {row.map((item) => (
+                                    <TouchableOpacity key={item.id} style={global.itemOverlap}>
+                                        <AppImage source={item.picture} style={global.imageOverlap} />
+                                        <Text style={global.titleOverlap}>{item.title}</Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </View>
+                        ))}
+                    </View>
+                </View>
+            </ScrollView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
-        padding: 20
-    },
-    headerImage: {
-        color: "#ffffff",
-        bottom: -90,
-        left: -35,
-        position: "absolute",
-    },
-    information: {
+        backgroundColor: "white",
         flex: 1,
     },
-    image: {},
-    titleInformation: {
-        gap: 4,
+    containerLayout: {
+        paddingHorizontal: "3%",
     },
-    titleContainer: {
-        flexDirection: "row",
-        gap: 8,
+    icon: {
+        width: 20,
+        height: 20,
     },
-    imageButton: {
-        width: 40,
-        marginRight:10
+    appLineBig: {
+        height: 3, // Chiều cao của gạch ngang
+        backgroundColor: "#f1f1f1", // Màu gạch ngang
+        marginVertical: 15,
     },
-    titleText: {
-        flex: 1,
-        fontSize:17,
-        fontWeight:'200',
-        fontFamily: FontSize.fontFamilyRegular,
-        color:'#4d4d4d'
+    containerOverlap: {
+        justifyContent: "center",
     },
-    imageContainer: {},
-    name: {
-        fontWeight: "bold",
-    },
-    inforUser: {
-        flexDirection: "row",
-        gap: 6,
-        alignItems: "center",
-        marginBottom: 20,
-    },
-    lined: {
-        borderBottomWidth: 1,
-        borderBottomColor: FontSize.lineOne,
-        marginTop: 0,
-        flex: 1,
-        marginRight: 20,
-        marginLeft: 60,
-    },
-    linedUser: {
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        marginTop: -10,
-        marginBottom: 10,
-        flex: 1,
-    },
-    imageBackground: {
-        flexDirection: "column",
-        paddingHorizontal: 10,
+    wrapItem: {
+        backgroundColor: "#e6e6e6",
+        width: "48%",
         paddingVertical: 20,
-        marginBottom: 20,
+        alignItems: "center",
         borderRadius: 10,
-        gap: 4,
-        flex: 1,
-        resizeMode: "cover",
+        marginHorizontal: 5,
     },
-    inf: {
-        flex: 1,
-        justifyContent: "space-between",
-        padding: 20,
-    },
-    forgotPassword: {
-        flexDirection: "row",
-        width: "100%",
-        alignItems: "center",
-        marginBottom: 20,
-    },
-    jSpaceBetween: {
-        justifyContent: "space-between",
-    },
-
-    cardButton: {
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 8,
-        height: 70,
-    },
-    imageIcon: {},
-    heading: {},
-    headScreen: {},
 });

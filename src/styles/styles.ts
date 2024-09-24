@@ -329,6 +329,7 @@ export const useStyles = () => {
     itemOverlap: {
       width: itemWidth,
       alignItems: 'center',
+      padding:10
     },
     imageOverlap: {
       width: 50,
