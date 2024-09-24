@@ -27,7 +27,7 @@ export function ItemSelectSetting({data, title}: any) {
                                 source={item?.icon}
                                 style={[globalStyles.imageSliderLogin, styles.appIcon]}
                                 resizeMode="contain"
-                            />}
+                            />)}
 
                     </View>
                     {/* Ẩn dòng kẻ nếu là phần tử cuối cùng */}
