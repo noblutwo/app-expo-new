@@ -182,24 +182,26 @@ const ScreenWithOverlap = () => {
     text,
     isFinite,
   }: ColumnProps) => (
-    <View style={styles.column}>
-      <View style={[styles.titleContainer, {gap: 5}]}>
+    <View style={[styles.column, isFinite ? {marginLeft: 20} : {
+      marginLeft: 0,
+    }]}>
+      <View style={[styles.titleContainer,{marginBottom:5}]}>
         {isFinite ? (
-          <AppImage source={icon1} style={styles.icon} />
+          <AppImage source={icon1} style={[styles.icon, {marginBottom:20}]} />
         ) : (
           <Ionicons
             name="newspaper-outline"
             size={24}
             color={Colors.colorButtonLogin}
+            style={{marginBottom:20}}
           />
         )}
-
         <Text style={styles.titleText}>{titleInfor}</Text>
       </View>
-   <Text adjustsFontSizeToFit={true} minimumFontScale={2} style={{fontFamily:lightTheme.fontSizes.fontFamilyRegular}}>{text}</Text>
-     <View style={[styles.editContainer, {flex:1}]}>
+      <Text adjustsFontSizeToFit={true} minimumFontScale={2} style={{fontFamily:lightTheme.fontSizes.fontFamilyRegular, fontWeight:'600', fontSize:14}}>{text}</Text>
+        <View style={[styles.editContainer, {flex:1, marginBottom: 10, backgroundColor:'white'}]}>
         <AppImage source={icon2} style={styles.icImage} />
-      </View>
+        </View>
     </View>
   );
 
@@ -256,7 +258,7 @@ const ScreenWithOverlap = () => {
                 })}
             </View>
           </View>
-          <View style={{ marginBottom: 50 }}/>
+          <View style={{ marginBottom: 60 }}/>
         </Animated.ScrollView>
       </Animated.View>
     </SafeAreaView>
@@ -275,7 +277,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    height: height + 300,
+    height: height,
   },
   favoriteUtilitiesContainer: {
     flexDirection: "column",
@@ -292,7 +294,7 @@ const styles = StyleSheet.create({
   },
   editContainer: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center"
   },
   editIcon: {
     width: 20,
@@ -430,6 +432,7 @@ const styles = StyleSheet.create({
     height: "100%",
     resizeMode: "cover",
     paddingVertical: 40,
+    marginTop:5
   },
   headerContainer: {
     height: 300,
@@ -502,16 +505,18 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
+    width: 24,
+    height: 24,
+    marginRight: 5
   },
   titleText: {
     color: Colors.colorTextLogin,
     fontWeight: "bold",
+    height: 40,
+    width: 150,
   },
   icImage: {
-    width: width * 0.45,
+    width: width*0.455,
     height: 100,
     borderRadius: 20,
   },

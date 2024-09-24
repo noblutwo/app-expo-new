@@ -1,13 +1,11 @@
-import { router, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 import React from "react";
 import {
-  ImageBackground,
   StyleSheet,
   Text,
-  TouchableOpacity,
 } from "react-native";
 import { Colors, FontSize } from "@/constants/Colors";
-import AppImage, { imageSources } from "@/components/Images/ImgReq";
+import AppImage from "@/components/Images/ImgReq";
 
 type TabName = "index" | "usewallet" | "camera" | "notification" | "settings";
 
@@ -52,7 +50,7 @@ export default function TabPage() {
           return (
             <AppImage
               source={tabConfig[tabName]?.icon[focused ? "active" : "inactive"]}
-              style={styles.image}
+              style={[ tabConfig[tabName].label === "" ? { width: 40, padding:4, height: 40, marginTop:20,backgroundColor:'#D81C24', borderRadius: 10 } : styles.image]}
               resizeMode="contain"
             />
           );
@@ -85,27 +83,6 @@ export default function TabPage() {
           }}
         />
       ))}
-      {/*<Tabs.Screen*/}
-      {/*    name="information/residence"*/}
-      {/*    options={{*/}
-      {/*        href: null,*/}
-      {/*        headerTitle: () => <HeaderTitle title="CÂU HỎI THƯỜNG GẶP"/>,*/}
-
-      {/*        // headerTitleAlign: "center",*/}
-      {/*        headerTintColor: "#fff",*/}
-      {/*        headerLeft: () => (*/}
-      {/*            <TouchableOpacity onPress={() => router.push("/drawer/(tabs)/tabHelp/question")}>*/}
-      {/*                <AppImage source="setting1" style={styles.item}/>*/}
-      {/*            </TouchableOpacity>*/}
-      {/*        ),*/}
-      {/*        headerBackground: () => (*/}
-      {/*            <ImageBackground*/}
-      {/*                source={imageSources["setting1"]}*/}
-      {/*                style={styles.headerBackground}*/}
-      {/*            />*/}
-      {/*        ),*/}
-      {/*    }}*/}
-      {/*/>*/}
     </Tabs>
   );
 }
