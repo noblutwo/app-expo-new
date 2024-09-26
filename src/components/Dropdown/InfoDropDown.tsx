@@ -30,7 +30,7 @@ export function InfoDropDown({data, title, open, setOpen}: Dropdown) {
             </View>
             <View>
                 {open && data?.map((item: any, index: number) => (
-                    <View>
+                    <View key={index}>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
                             <Text style={{color: "#8e8e8e"}}>{item?.info}</Text>
 

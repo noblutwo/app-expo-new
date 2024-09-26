@@ -42,7 +42,7 @@ export function ItemSelectSetting({data, title}: any) {
 const styles = StyleSheet.create({
     containerLayout: {
         flex: 1,
-        paddingHorizontal: '5%',
+        paddingHorizontal: '3%',
     },
     titleText: {
         fontSize: FontSize.textLowercase,

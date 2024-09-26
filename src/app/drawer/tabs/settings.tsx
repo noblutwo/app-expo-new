@@ -108,7 +108,7 @@ export default function LayoutSettings() {
                     </View>
                 </View>
             </BackgroundImage>
-            <ScrollView style={{paddingTop: 20}} contentContainerStyle={{paddingBottom: 80}}>
+            <ScrollView style={{paddingTop: 20,backgroundColor:'white'}} contentContainerStyle={{paddingBottom: 80}}>
                 <ItemSelectSetting data={titleItem} title={"Tài khoản"}/>
                 <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem2} title={"Ứng dụng"}/>
@@ -135,7 +135,8 @@ const styles = StyleSheet.create({
     // setting
     containerLayout: {
         flex: 1,
-        paddingHorizontal: '5%'
+        paddingHorizontal: '5%',
+
     },
     wrapSetting: {
         width: "55%",

@@ -91,6 +91,7 @@ export interface AppImageProps {
         | "bgXaHoi"
         | "tichHoptt"
         | "xuatTrinh"
+        | "cccd"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -179,7 +180,8 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     iconVn: require("../../assets/images/src_assets_images_vnp_ico_ic_16_px_dinh_danh_m_2.png"),
     bgXaHoi: require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
     tichHoptt: require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
-    xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png")
+    xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png"),
+    cccd: require("../../assets/images/cccd.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({
