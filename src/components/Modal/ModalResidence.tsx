@@ -1,37 +1,48 @@
-import React, {useState, useEffect} from 'react';
-import {Modal, StyleSheet, Text, View, TouchableWithoutFeedback, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Modal, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import {FontAwesome6} from '@expo/vector-icons';
-import {Colors, FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
 import {router} from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ModelProps {
     modalVisible: boolean,
-    setModalVisible:(modalVisible: boolean) => void
+    setModalVisible: (modalVisible: boolean) => void
 }
 
-export default function ModalResidence({modalVisible, setModalVisible}:ModelProps) {
+export default function ModalResidence({modalVisible, setModalVisible}: ModelProps) {
     const [code, setCode] = useState<any>([]);
     const codeLength = Array(6).fill(0);
-    const [indexNumber, setIndexNumber] = useState(0)
-    useEffect(() => {
-        if (code.length === 6) {
-            console.log("code", code.length)
-            router.push("/(informations)/residence")
+    const [open, setOpen] = useState(false)
+    console.log("open", code)
+    const selectPasscode = async () => {
+        const userString = await AsyncStorage.getItem('user') as string;
+        const user = JSON.parse(userString);
+        if (user?.passcode) {
+            const passcodeArray = user.passcode.split('').map(Number);
+            const isEqual = passcodeArray.length === code.length &&
+                passcodeArray.every((value: any, index: number) => value === code[index]);
+            console.log(isEqual);
+            if (isEqual) {
+                router.push("/(informations)/residence")
+                return
+            }
+            if (code.length === 6) {
+                setOpen(true)
+            }
         }
+    }
+    useEffect(() => {
+        selectPasscode()
     }, [code]);
-
     const onPress = (prop: any) => {
         if (prop === "delete") {
             setCode((prevArray: any) => {
-                const newArray = prevArray.slice(0, -1);
-                console.log("After delete:", newArray);
-                return newArray;
+                return prevArray.slice(0, -1);
             });
         } else {
             setCode((prevArray: any) => {
-                const newArray = [...prevArray, prop];
-                console.log("Updated code:", newArray);
-                return newArray;
+                return [...prevArray, prop];
             });
         }
     };
@@ -92,7 +103,18 @@ export default function ModalResidence({modalVisible, setModalVisible}:ModelProp
                                 </View>
                                 <View style={styles.appLineBig}/>
                                 {renderCodeDots()}
-                                <View style={{backgroundColor: "#f6f6f6", paddingVertical: 20}}>
+                                {open &&
+                                    <View style={{
+                                        backgroundColor: "#ffdcdc",
+                                        paddingVertical: 15,
+                                        paddingHorizontal: 20
+                                    }}>
+                                        <Text style={{color: '#ff4141'}}>Passcode không chính xác, Nhập sai quá 5 lần sẽ
+                                            bị khóa passcode sang ngày hôm sau. Còn 4 lần thử</Text>
+                                    </View>
+                                }
+
+                                <View style={{backgroundColor: "#f6f6f6", paddingVertical: 15}}>
                                     <Text style={{textAlign: 'center'}}>Quên passcode</Text>
                                 </View>
                                 {renderNumberPad()}
