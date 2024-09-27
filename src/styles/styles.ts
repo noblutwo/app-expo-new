@@ -190,7 +190,7 @@ export const useStyles = () => {
             paddingVertical: 40
         },
         headerContainer: {
-            height: 300,
+            height: dimensions.height*0.42,
         },
         headerContainerHome: {
             // flex: 1,
@@ -240,7 +240,7 @@ export const useStyles = () => {
         },
         profileImageHomeBottom: {
             width: '100%',
-            height: 60,
+            height: 55,
             borderRadius: 10,
         },
         bottomSectionLayoutHome: {
@@ -251,8 +251,8 @@ export const useStyles = () => {
             marginTop: -100,
         },
         contentSectionLayoutHome: {
-            padding: 20,
-            paddingTop: 30,
+            // padding: 20,
+            // paddingTop: 30,
             width: dimensions.width
         },
         textSectionLayoutHome: {
@@ -278,29 +278,31 @@ export const useStyles = () => {
             position: "absolute",
             textAlign: "center",
             top: -15,
-            width: 40,
-            paddingVertical: 1,
+            width: 45,
+            fontSize: 13,
+            paddingVertical: 1.5,
             borderRadius: 50,
             backgroundColor: Colors.colorButtonLogin,
             color: 'white',
             left: 50
         },
         iconserviceItemHome: {
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
         },
         serviceItemTitleHome: {},
         textContainer: {
             flexDirection: "column",
             alignItems: 'center',
             justifyContent: 'center',
-            marginTop: 5,
+            // marginTop: 5,
         },
         serviceText: {
             textAlign: 'center',
-            fontSize: 13,
+            fontSize: 14,
             fontFamily: lightTheme.fontSizes.fontFamilyRegular,
-
+            color:'#4E4B4C',
+            fontWeight:"semibold"
         },
         slideLayoutHome: {
             width: dimensions.width,
@@ -333,7 +335,7 @@ export const useStyles = () => {
         imageOverlap: {
             width: wResponsive(45),
             height: hResponsive(45),
-            marginBottom: 10,
+            marginBottom: 5,
             resizeMode: 'cover',
         },
         titleOverlap: {

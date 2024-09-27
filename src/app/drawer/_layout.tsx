@@ -1,5 +1,5 @@
 import React from "react";
-import {router, Stack, usePathname} from "expo-router";
+import {router, Stack} from "expo-router";
 import {StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useAuth} from "@/context/AuthContext";
@@ -16,7 +16,6 @@ export default function AuthLayout() {
             </TouchableOpacity>
         ),
         headerBackground: () => (
-
             <ImageBackground
                 source={imageSources["headerBackground"]}
                 style={styles.headerBackground}

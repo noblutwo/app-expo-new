@@ -1,5 +1,5 @@
-import {Text, TouchableOpacity, View} from "react-native";
-import React, {useState} from "react";
+import {Keyboard, SafeAreaView, Text,StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View, ScrollView, Dimensions} from "react-native";
+import React, {useCallback, useRef, useState} from "react";
 import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveTextInput";
 import {Button} from "react-native-paper";
 import {Colors} from "@/constants/Colors";
@@ -7,22 +7,91 @@ import AppImage from "@/components/Images/ImgReq";
 import {useStyles} from "@/styles/styles";
 import {router} from "expo-router";
 import {useAuth} from "@/context/AuthContext";
+import { useFetchData } from "@/api/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const RegisterScreen = () => {
-    const globalStyles = useStyles();
-    const [username, setUsername] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [isRegister, setIsRegister] = useState<boolean>(true)
+  const { login } = useAuth();
+  const globalStyles = useStyles();
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isRegister, setIsRegister] = useState<boolean>(true)
 
-    const {setIsLoggedIn} = useAuth();
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
 
-    const handleLogin = async () => {
-        setIsLoggedIn(true);
-        router.replace('./tabs');
-    };
+// keyboar
+const scrollViewRef: any = useRef(null);
+const [scrollEnabled, setScrollEnabled] = useState(false);
+const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
+    const { target, text } = event.nativeEvent;
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        y: 0,
+        animated: true,
+      });
+    }
+    setScrollEnabled(true);
+  };
+
+  const handleBlur = () => {
+    setScrollEnabled(false);
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({
+        y: 0,
+        animated: true,
+      });
+    }
+  };
 
 
+  const validateUsername = useCallback((text: string) => {
+    setUsername(text);
+    setUsernameError(text.length < 3);
+  }, []);
+
+  const validatePassword = useCallback((text: React.SetStateAction<string>) => {
+    setPassword(text);
+  }, []);
+
+  const { isUserFound } = useFetchData(username);
+  const handleLogin = useCallback(async () => {
+    Keyboard.dismiss();
+    validateUsername(username);
+    validatePassword(password);
+    if (username && password) {
+      try {
+        setLoading(true);
+        await login(username, password);
+        const userJson = await AsyncStorage.getItem("user");
+        if (userJson) {
+          router.push("./tabs");
+        } else {
+          setIsError(true);
+          setLoading(false);
+        }
+      } catch (error) {
+        setIsError(true);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setIsError(true);
+    }
+  }, [username, password]);
     return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+             <SafeAreaView style={styles.content}>
+             <ScrollView
+            ref={scrollViewRef}
+            contentContainerStyle={styles.scrollView}
+            keyboardShouldPersistTaps="handled"
+            scrollEnabled={scrollEnabled}
+          >
         <View style={globalStyles.containerLogin}>
             <Text style={globalStyles.titleLogin}>
                 {`Vui lòng nhập thông tin ${isRegister ? 'đăng nhập' : 'đăng ký'} để tiếp tục`}
@@ -115,7 +184,7 @@ const RegisterScreen = () => {
             <View
                 style={[globalStyles.contentLayout, {justifyContent: "flex-end"}]}
             >
-                <View style={{flexDirection: "column", alignContent: 'center', justifyContent: 'center'}}>
+                <View style={{flex:1, flexDirection: "column", alignContent: 'center', justifyContent: 'flex-end', paddingBottom:60}}>
                     <View
                         style={[
                             globalStyles.rowIconTitleLogin,
@@ -169,7 +238,18 @@ const RegisterScreen = () => {
                 </View>
             </View>
         </View>
+        </ScrollView>
+        </SafeAreaView>
+        </TouchableWithoutFeedback>
     );
 };
-
+const styles = StyleSheet.create({
+    content: {
+        flex: 1,
+      },
+      scrollView: {
+        flexGrow: 1,
+        height: SCREEN_HEIGHT,
+      },
+})
 export default RegisterScreen;

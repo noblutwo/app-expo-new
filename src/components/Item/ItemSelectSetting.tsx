@@ -2,12 +2,10 @@ import {Dimensions, StyleSheet, Text, View} from "react-native";
 import AppImage from "@components/Images/ImgReq";
 import React from "react";
 import {useStyles} from "@/styles/styles";
-import {Colors, FontSize, hResponsive, wResponsive} from "@/constants/Colors";
-import {useResponsiveDimensions} from "@hooks/useResponsiveDimensions";
+import {Colors, FontSize} from "@/constants/Colors";
 
-const dimensions = useResponsiveDimensions();
+const {width, height} = Dimensions.get('window')
 export function ItemSelectSetting({data, title}: any) {
-    const dimensions = useResponsiveDimensions();
     const globalStyles = useStyles();
 
     return (
@@ -61,8 +59,8 @@ const styles = StyleSheet.create({
         marginVertical: 12, // Thay vì paddingVertical
     },
     appIcon: {
-        width: dimensions.width * 0.06,
-        height: dimensions.height * 0.06,
+        width: width * 0.06,
+        height: height * 0.06,
     },
     appTextPhone: {
         color: '#ba4747',

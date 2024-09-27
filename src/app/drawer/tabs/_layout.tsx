@@ -44,13 +44,13 @@ export default function TabPage() {
     <Tabs
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarStyle: { position: "absolute" },
+        tabBarStyle: {  height: 70, position: "absolute" },
         tabBarIcon: ({ focused }) => {
           const tabName = route.name as TabName;
           return (
             <AppImage
               source={tabConfig[tabName]?.icon[focused ? "active" : "inactive"]}
-              style={[ tabConfig[tabName].label === "" ? { width: 40, padding:4, height: 40, marginTop:20,backgroundColor:'#D81C24', borderRadius: 10 } : styles.image]}
+              style={[ tabConfig[tabName].label === "" ? { width: 50, padding:4, height: 50, marginTop:20,backgroundColor:'#D81C24', borderRadius: 20 } : styles.image]}
               resizeMode="contain"
             />
           );
@@ -90,19 +90,17 @@ export default function TabPage() {
 const styles = StyleSheet.create({
   image: {
     marginTop: 10,
-    width: "100%",
-    height: "100%",
+    width: 25,
+    height: 25,
   },
   tabLabel: {
-    // color: "#8c8c8c",
-    fontSize: 10,
-    marginTop: 5,
+    fontSize: 14,
+    // marginTop: 5,
     fontFamily: FontSize.fontFamilyRegular,
   },
   tabLabelTitle: {
     color: "#8c8c8c",
     fontSize: 12,
-    // marginTop: 5,
     fontFamily: FontSize.fontFamilyRegular,
   },
   item: {

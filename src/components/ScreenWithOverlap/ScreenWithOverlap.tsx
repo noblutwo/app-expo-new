@@ -74,7 +74,7 @@ const SliderLayOutHome: React.FC = () => {
 
 const styles = StyleSheet.create({
   sliderContainer: {
-    height: 200, // Fixed height
+    height: 160, // Fixed height
     width: '100%',
     backgroundColor: 'black',
     borderRadius: 20,

@@ -18,13 +18,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/src_assets_images_bg_logo_square.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.noblutwo.expoapp"
     },
     "web": {
       "favicon": "./src/assets/images/src_assets_images_bg_logo_square.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cd8b3ba0-c36a-4e16-946d-d215a17c3240"
+      }
+    }
   }
 }
