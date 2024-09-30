@@ -23,12 +23,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const RegisterScreen = () => {
+
   const { login } = useAuth();
   const globalStyles = useStyles();
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isRegister, setIsRegister] = useState<boolean>(true);
-
     const [loading, setLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
@@ -104,7 +104,7 @@ const RegisterScreen = () => {
                 >
                     <View style={globalStyles.containerLogin}>
                         <Text style={globalStyles.titleLogin}>
-                            Vui lòng nhập thông tin đăng ký để tiếp tục
+                            {`Vui lòng nhập thông tin ${!isRegister ? 'đăng nhập' : 'đăng ký'} để tiếp tục`}
                         </Text>
                         <View style={[globalStyles.contentLogin, {marginTop: 20}]}>
                             <View
@@ -139,10 +139,10 @@ const RegisterScreen = () => {
                                     onBlur={handleBlur}
                                 />
                                 <Text
-                                    style={[globalStyles.textLogin, {marginBottom: 20}]}>{`${isRegister ? 'Mật khẩu' : 'Số điện thoại'}`} </Text>
+                                    style={[globalStyles.textLogin, {marginBottom: 20}]}>{`${!isRegister ? 'Mật khẩu' : 'Số điện thoại'}`} </Text>
                                 <ResponsiveTextInput
-                                    placeholder="Nhập số điện thoại"
-                                    icon="numberRegister"
+                                    placeholder={!isRegister ? "Nhập mật khẩu" : "Nhập số điện thoại"}
+                                    icon={!isRegister ? "lockLogin" : "numberRegister"}
                                     value={password}
                                     onChangeText={setPassword}
                                     isPassword={false}
@@ -151,7 +151,7 @@ const RegisterScreen = () => {
                                 />
                             </View>
                             <Button
-                                onPress={() => handleLogin()}
+                                onPress={() => !isRegister ? handleLogin() : ''}
                                 mode="outlined"
                                 style={[
                                     globalStyles.buttonLogin,
@@ -163,16 +163,37 @@ const RegisterScreen = () => {
                                 ]}
                                 labelStyle={globalStyles.buttonLabelLogin}
                             >
-                                Đăng ký
+                                {!isRegister ? 'Đăng nhập' : 'Đăng ký'}
                             </Button>
                         </View>
                         <View style={{marginTop: 10}}>
-
-                            <TouchableOpacity onPress={() => router.push("/drawer/login")}>
+                            {!isRegister ? (<TouchableOpacity onPress={() => router.push("/drawer/forgotPassword")}>
+                                <Text
+                                    style={[
+                                        globalStyles.textLogin,
+                                        {fontWeight: "bold", color: Colors.colorTextLogin},
+                                    ]}
+                                >
+                                    Quên mật khẩu
+                                </Text>
+                            </TouchableOpacity>) : ''}
+                            <TouchableOpacity onPress={() => isRegister ? setIsRegister(false) : (
+                                router.push("/drawer/login")
+                                // router.push("/drawer/register")
+                            )
+                            }>
                                 <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>
-                                    Bạn đã có tài khoản?
+                                    Bạn đã có tài khoản?{" "}
                                     <Text style={{color: Colors.colorTextLogin, fontWeight: "bold"}}>
-                                        Đăng nhập
+                                        {!isRegister ? 'Đăng ký' : 'Đăng nhập'}
+                                    </Text>
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => router.push("/drawer/activateAccount")}>
+                                <Text style={globalStyles.textLogin}>
+                                    Tài khoản đã được định danh điện tử ?{" "}
+                                    <Text style={{color: Colors.colorTextLogin, fontWeight: "bold"}}>
+                                        Kích hoạt
                                     </Text>
                                 </Text>
                             </TouchableOpacity>
