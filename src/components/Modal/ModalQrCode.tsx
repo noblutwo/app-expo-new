@@ -5,7 +5,6 @@ import BackgroundImage from "@components/Images/BackgroundImage";
 import {Feather} from '@expo/vector-icons';
 import {hResponsive, wResponsive} from "@/constants/Colors";
 
-
 interface QrCodeProps {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -60,17 +59,10 @@ export function ModalQrCode({open, setOpen,title}: QrCodeProps) {
                                     <Text style={{color: 'white', fontWeight: '700'}}>Hiệu lực của QR code còn </Text>
                                     <Text style={{color: '#dcc913', fontWeight: '700'}}>00:{seconds}</Text>
                                 </View>
-
                             </View>
-
-
                         </View>
-
-
                     </View>
-
                 </BackgroundImage>
-
             </Modal>
         </View>
     );
@@ -87,13 +79,10 @@ const styles = StyleSheet.create({
     },
     background: {
         width: '100%',
-        height:
-            '100%'
+        height: '100%'
     },
     fullQr: {
-        width: wResponsive(290),
-        height: hResponsive(320)
+        width: wResponsive(220),
+        height: hResponsive(250)
     }
-
-
-});
+})
