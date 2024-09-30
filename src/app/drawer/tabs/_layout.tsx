@@ -40,6 +40,7 @@ const tabConfig: TabConfig = {
 };
 
 export default function TabPage() {
+ 
   return (
     <Tabs
       screenOptions={({ route }) => ({
@@ -57,6 +58,7 @@ export default function TabPage() {
         },
         tabBarLabel: ({ focused }) => {
           const tabName = route.name as TabName;
+          const isScanner = tabConfig[tabName].label === "";
           return (
             <Text
               style={[
@@ -95,7 +97,6 @@ const styles = StyleSheet.create({
   },
   tabLabel: {
     fontSize: 14,
-    // marginTop: 5,
     fontFamily: FontSize.fontFamilyRegular,
   },
   tabLabelTitle: {

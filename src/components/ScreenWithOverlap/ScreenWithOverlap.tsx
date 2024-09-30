@@ -12,15 +12,15 @@ interface SlideItem {
 
 const slides: SlideItem[] = [
   {
-    source: "home_cthtdbll",
+    source: "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg",
     title: "Định danh công dân trên môi trường kỹ thuật số",
   },
   { 
-    source: "home_vneid_add", 
+    source: "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg", 
     title: "Thay thế các giấy tờ truyền thống" 
   },
   {
-    source: "home_vneid_add", 
+    source: "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg", 
     title: "Cung cấp các tiện ích phát triển công dân số, chính phủ số, xã hội số",
   },
 ];
@@ -87,10 +87,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
+    // width: '100%',
     height: '100%',
     width: screenWidth,
     aspectRatio: 16 / 6, 
-    borderRadius: 20,
+    // borderRadius: 20,
   },
 });
 

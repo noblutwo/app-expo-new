@@ -17,7 +17,7 @@ export default function AuthLayout() {
     };
 
     const screens = [
-        {name: "login", options: {}},
+        // {name: "login", options: {}},
         {name: "logout", options: {}},
         {name: "policy", options: {headerTitle: 'Chính sách quyền riêng tư'}},
         {name: "activateAccount", options: {}},

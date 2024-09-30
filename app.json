@@ -25,7 +25,15 @@
       "favicon": "./src/assets/images/src_assets_images_bg_logo_square.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+         "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }
+     
+      ]
+    
     ],
     "extra": {
       "eas": {

@@ -49,7 +49,7 @@ const ActivateScreen = () => {
         </Button>
         <View>
         <TouchableOpacity
-              onPress={() => router.push("/loginLogout/login")}
+              onPress={() => router.push("/drawer/register")}
             >
 
          <Text style={[globalStyles.textLogin, { marginVertical: 10 }]}>
