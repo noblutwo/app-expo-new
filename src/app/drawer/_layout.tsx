@@ -1,17 +1,21 @@
 import React from "react";
-import {router, Stack} from "expo-router";
+import {router, Stack, usePathname} from "expo-router";
 import {StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useAuth} from "@/context/AuthContext";
 import {Ionicons} from "@expo/vector-icons";
 
+
 export default function AuthLayout() {
+    const pathname = usePathname();
+    console.log("pathname", pathname)
     const {isLoggedIn} = useAuth();
     const commonHeaderOptions = isLoggedIn ? {headerShown: false} : {
         headerTitleAlign: "center" as const,
         headerTitle: () => null,
         headerLeft: () => (
-            <TouchableOpacity onPress={() => router.back()}>
+            <TouchableOpacity
+                onPress={() => pathname === "/drawer/login" || "/drawer/register" ? router.push("/home") : router.back()}>
                 <AppImage source="header_back" style={styles.item} resizeMode="cover"/>
             </TouchableOpacity>
         ),
