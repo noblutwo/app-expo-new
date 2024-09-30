@@ -10,28 +10,60 @@ interface ModelProps {
     setModalVisible: (modalVisible: boolean) => void
 }
 
+
 export default function ModalResidence({modalVisible, setModalVisible}: ModelProps) {
     const [code, setCode] = useState<any>([]);
     const codeLength = Array(6).fill(0);
     const [open, setOpen] = useState(false)
-    console.log("open", code)
+    const [wrongPass, setWrongPass] = useState(5)
+    const textErr = [
+        {textWrong: `Passcode không chính xác, Nhập sai quá 5 lần sẽ bị khóa passcode sang ngày hôm sau. Còn ${wrongPass} lần thử`},
+        {textWrong: 'Vui lòng thử lại vào ngày mai'}
+    ]
+    const resetPassErrorAt00 = async () => {
+        const now = new Date();
+        const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        const timeUntilMidnight = nextMidnight.getTime() - now.getTime();
+
+        setTimeout(async () => {
+            await AsyncStorage.setItem('passErr', '5');
+            setWrongPass(0);
+            resetPassErrorAt00(); // Set up the next day's reset
+        }, timeUntilMidnight);
+    };
+
     const selectPasscode = async () => {
+        // await AsyncStorage.setItem('passErr', '5');
         const userString = await AsyncStorage.getItem('user') as string;
         const user = JSON.parse(userString);
+        const numberErr = await AsyncStorage.getItem('passErr');
+        if (Number(numberErr) <= 0) {
+            setWrongPass(0);
+            setOpen(true)
+            return;
+        }
+
         if (user?.passcode) {
             const passcodeArray = user.passcode.split('').map(Number);
             const isEqual = passcodeArray.length === code.length &&
                 passcodeArray.every((value: any, index: number) => value === code[index]);
-            console.log(isEqual);
+
             if (isEqual) {
-                router.push("/(informations)/residence")
-                return
+                await AsyncStorage.setItem('passErr', '5');
+                router.push("/(informations)/residence");
+                return;
             }
+
             if (code.length === 6) {
-                setOpen(true)
+                setOpen(true);
+                const newNumberErr = Math.max(0, Number(numberErr) - 1);
+                await AsyncStorage.setItem('passErr', newNumberErr.toString());
+                setWrongPass(newNumberErr);
+                setCode([]);
             }
         }
-    }
+    };
+
     useEffect(() => {
         selectPasscode()
     }, [code]);
@@ -109,8 +141,8 @@ export default function ModalResidence({modalVisible, setModalVisible}: ModelPro
                                         paddingVertical: 15,
                                         paddingHorizontal: 20
                                     }}>
-                                        <Text style={{color: '#ff4141'}}>Passcode không chính xác, Nhập sai quá 5 lần sẽ
-                                            bị khóa passcode sang ngày hôm sau. Còn 4 lần thử</Text>
+                                        <Text
+                                            style={{color: '#ff4141'}}>{wrongPass === 0 ? textErr[1]?.textWrong : textErr[0]?.textWrong}</Text>
                                     </View>
                                 }
 
