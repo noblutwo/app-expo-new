@@ -240,7 +240,12 @@ const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
                         alignItems: 'center',
                         marginTop: 10
                     }}>
-                        <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>Chính sách quyền riêng tư</Text>
+                         <TouchableOpacity
+              onPress={() => router.push("/drawer/policy")}
+            >
+                <Text style={[globalStyles.textLogin, {marginVertical: 10,textDecorationLine: "underline"}]}>Chính sách quyền riêng tư</Text>
+            </TouchableOpacity>
+                        
                         <Text style={[globalStyles.textLogin, {color: Colors.colorSilver}]}>Phiên bản 2.1.9</Text>
                     </View>
                 </View>
