@@ -91,7 +91,8 @@ export interface AppImageProps {
         | "bgXaHoi"
         | "tichHoptt"
         | "xuatTrinh"
-        | "cccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add"
+        | "cccd"
+        | "qrCccd"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -152,10 +153,6 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     home_banner1: require("../../assets/images/src_assets_images_home_banner1.jpg"),
     home_banner2: require("../../assets/images/src_assets_images_home_banner2.jpg"),
     home_banner3: require("../../assets/images/src_assets_images_home_banner3.jpg"),
-    home_cbld: require("../../assets/images/cbld.jpg"),
-    home_cthtdbll: require("../../assets/images/cthtdbll.jpg"),
-    home_vneid_add: require("../../assets/images/vneid_add.jpg"),
-    home_tbt_cuba: require("../../assets/images/tbt-cuba.jpg"),
     warning: require("../../assets/images/icon-warning.png"),
 
 
@@ -178,6 +175,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     dropRight: require("../../assets/images/src_assets_images_vnp_ico_ic_right_grey.png"),
     bgScan: require("../../assets/images/src_assets_images_vnp_bg_scan.png"),
     qrScan: require("../../assets/images/photo_2024-09-20_15-17-qr.png"),
+    qrCccd: require("../../assets/images/qr_cccd.png"),
     logoVienThong: require("../../assets/images/src_assets_images_dich_vu_vien_thong_logo.png"),
     notFound: require("../../assets/images/src_assets_images_vnp_image_notfound.png"),
     bgHeaderWallet: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc.png"),

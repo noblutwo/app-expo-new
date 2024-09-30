@@ -37,7 +37,7 @@ export default function AuthLayout() {
                             <TouchableOpacity onPress={() => setOpenModal(true)}>
                                 <AppImage source="qrCodeHeader" style={styles.item}/>
                             </TouchableOpacity>
-                            <ModalQrCode open={openModal} setOpen={setOpenModal}/>
+                            <ModalQrCode open={openModal} setOpen={setOpenModal} image={"qrScan"}/>
                         </View>
 
                     ),
