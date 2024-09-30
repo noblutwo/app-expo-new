@@ -18,6 +18,8 @@ import { Colors, hResponsive, pResponsive } from "@/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ModalResidence from "@/components/Modal/ModalResidence";
 import { Feather } from "@expo/vector-icons";
+import { useAuth } from "@/context/AuthContext";
+import { ModalQrCode } from "@/components/Modal/ModalQrCode";
 
 const { width, height } = Dimensions.get("window");
 
@@ -39,6 +41,7 @@ const data = [
 
 const ServiceItem = ({ icon, title, showNew }: any) => {
   const globalStyle = useStyles();
+ 
   return (
     <View style={globalStyle.serviceItemHome}>
       {showNew && <Text style={globalStyle.serviceItemTextHome}>Mới</Text>}
@@ -55,14 +58,23 @@ const ServiceItem = ({ icon, title, showNew }: any) => {
 };
 
 const ScreenWithOverlap = () => {
-  const globalStyle = useStyles();
   const [modalVisible, setModalVisible] = useState(false);
+  const [openModal, setOpenModal] = useState(false)
+  const [modalType, setModalType] = useState<string>('');
+  const { authUser } = useAuth();
+  const globalStyle = useStyles();
   const scrollY = useRef(new Animated.Value(0)).current;
 
+  const showQrCode = (title: string) => {
+    setModalType(title);
+    setOpenModal(true);
+  };
+
   const renderProfileImage = (source: string) => (
-    <View style={{ flex: 1 }}>
+    <TouchableOpacity style={{ flex: 1 }} onPress={()=> showQrCode(source)}>
       <AppImage source={source} style={globalStyle.profileImageHomeBottom} />
-    </View>
+      <ModalQrCode open={openModal} setOpen={setOpenModal} title={modalType}/>
+    </TouchableOpacity>
   );
 
   const renderHeader = () => (
@@ -79,14 +91,14 @@ const ScreenWithOverlap = () => {
             ]}
           >
             <AppImage
-              source="https://randomuser.me/api/portraits/women/26.jpg"
+              source={authUser?.Image!}
               style={styles.profileImageHome}
             />
           </View>
           <View style={styles.nameContainerHome}>
             <View style={styles.nameTagHome}>
               <Text style={[styles.textLogin, { fontWeight: "bold", paddingHorizontal:2 }]}>
-                Định danh mức 2
+              {authUser?.designationLevel!}
               </Text>
               <AppImage source="dinh_danh" style={styles.identityIconHome} />
             </View>
@@ -96,7 +108,7 @@ const ScreenWithOverlap = () => {
                 { fontWeight: "bold", color: "white", fontSize: 22 },
               ]}
             >
-              NGUYỄN VĂN MỜ
+              {authUser?.Name!}
             </Text>
           </View>
           <View style={styles.searchButtonHome}>
@@ -234,7 +246,8 @@ const ScreenWithOverlap = () => {
       >
         <Feather name="calendar" size={24} color="#9c9c9c" />
         <Text style={{ color: "#9c9c9c", paddingHorizontal: 5 }}>
-          12-09-2024
+          {isFinite ? "12-09-2024" : "27-09-2024"}
+          
         </Text>
       </View>
     </View>
@@ -284,8 +297,8 @@ const ScreenWithOverlap = () => {
               {renderColumn({
                 titleInfor: "Cảnh báo thủ đoạn tội phạm",
                 icon1: "warning",
-                icon2: "home_banner2",
-                text: "Thủ đoạn lừa đảo chiếm đoạt tài sản lợi dụng tình camhihi",
+                icon2: "home_cbld",
+                text: "Thủ đoạn lừa đảo chiếm đoạt tài sản lợi dụng tình...",
                 isFinite: true,
               })}
               <View
@@ -299,8 +312,8 @@ const ScreenWithOverlap = () => {
               {renderColumn({
                 titleInfor: "Tin tức",
                 icon1: "newspaper-outline",
-                icon2: "home_banner3",
-                text: "Chuyển cảm động nơi cơn bảo quét qua",
+                icon2: "home_tbt_cuba",
+                text: "Bí thư thứ nhất, Chủ tịch nước Cuba chủ trì Lễ đón...",
                 isFinite: false,
               })}
             </View>
@@ -349,6 +362,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 100,
+    borderWidth: 2,
+    borderColor: "#EEDC76"
   },
   nameContainerHome: {
     flexDirection: "column",

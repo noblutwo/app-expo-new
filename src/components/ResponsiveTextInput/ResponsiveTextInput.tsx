@@ -39,6 +39,7 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
       paddingHorizontal: dimensions.width * 0.03,
       marginVertical: dimensions.height * 0.01,
       height: dimensions.height * 0.06,
+      // backgroundColor: 'red'
     },
     icon: {
       marginRight: dimensions.width * 0.02,

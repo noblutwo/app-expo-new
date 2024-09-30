@@ -47,7 +47,9 @@ export default function homeScreen() {
             </Button>
             <View style={styles.footerHomeLogin}>
               <TouchableOpacity
-                onPress={() => router.push("/drawer/register")}
+                onPress={() => {
+                  router.push("/drawer/register")
+                } }
               >
                 <Text
                   style={{
