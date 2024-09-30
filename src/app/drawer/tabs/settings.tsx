@@ -124,7 +124,6 @@ export default function LayoutSettings() {
                         }}>Đăng xuất</Text>
                     </TouchableOpacity>
                 </View>
-
             </ScrollView>
         </View>
     );
