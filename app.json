@@ -19,21 +19,26 @@
         "foregroundImage": "./src/assets/images/src_assets_images_bg_logo_square.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.noblutwo.expoapp"
+      "package": "com.noblutwo.expoapp",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
+    
     "web": {
       "favicon": "./src/assets/images/src_assets_images_bg_logo_square.png"
     },
     "plugins": [
       "expo-router",
       [
-         "expo-barcode-scanner",
+        "expo-camera",
         {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
         }
-     
       ]
-    
     ],
     "extra": {
       "eas": {

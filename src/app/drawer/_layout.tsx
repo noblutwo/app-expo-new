@@ -3,21 +3,33 @@ import {router, Stack} from "expo-router";
 import {StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useAuth} from "@/context/AuthContext";
+import {Ionicons} from "@expo/vector-icons";
 
 export default function AuthLayout() {
     const {isLoggedIn} = useAuth();
-    const commonHeaderOptions = isLoggedIn ? { headerShown: false } : {
+    const commonHeaderOptions = isLoggedIn ? {headerShown: false} : {
         headerTitleAlign: "center" as const,
         headerTitle: () => null,
         headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
-                <AppImage source="header_back" style={styles.item} resizeMode="cover" />
+                <AppImage source="header_back" style={styles.item} resizeMode="cover"/>
             </TouchableOpacity>
         ),
     };
 
     const screens = [
-        // {name: "login", options: {}},
+        {
+            name: "login", options: {
+                headerRight: () => {
+                    console.log("Rendering headerRight");
+                    return (
+                        <TouchableOpacity>
+                            <Ionicons name="notifications" size={24} color="black"/>
+                        </TouchableOpacity>
+                    );
+                },
+            }
+        },
         {name: "logout", options: {}},
         {name: "policy", options: {headerTitle: 'Chính sách quyền riêng tư'}},
         {name: "activateAccount", options: {}},
@@ -35,10 +47,10 @@ export default function AuthLayout() {
                     options={{
                         ...options,
                         headerBackground: () => (
-                                <ImageBackground
-                                    source={imageSources["headerBackground"]}
-                                    style={name === "policy" ? styles.headerBackgroundPolicy : styles.headerBackground}
-                                />
+                            <ImageBackground
+                                source={imageSources["headerBackground"]}
+                                style={name === "policy" ? styles.headerBackgroundPolicy : styles.headerBackground}
+                            />
                         ),
                     }}
                 />

@@ -1,49 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
-import { BarCodeScanner, BarCodeScannerResult } from 'expo-barcode-scanner';
+import { Camera, CameraView } from "expo-camera";
+import { Stack } from "expo-router";
+import {
+  AppState,
+  Linking,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+} from "react-native";
+import { useEffect, useRef } from "react";
+import { Overlay } from "@/components/ScreenWithOverlap/Overlay";
 
 export default function Scanner() {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [scanned, setScanned] = useState(false);
+  const qrLock = useRef(false);
+  const appState = useRef(AppState.currentState);
 
   useEffect(() => {
-    const getBarCodeScannerPermissions = async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-    };
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === "active"
+      ) {
+        qrLock.current = false;
+      }
+      appState.current = nextAppState;
+    });
 
-    getBarCodeScannerPermissions();
+    return () => {
+      subscription.remove();
+    };
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }: BarCodeScannerResult) => {
-    setScanned(true);
-    alert(`Mã vạch loại ${type} và dữ liệu ${data} đã được quét!`);
-  };
-
-  if (hasPermission === null) {
-    return <Text>Đang yêu cầu quyền truy cập camera</Text>;
-  }
-  if (hasPermission === false) {
-    return <Text>Không có quyền truy cập camera</Text>;
-  }
-
   return (
-    <View style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
+    <SafeAreaView style={StyleSheet.absoluteFillObject}>
+      <Stack.Screen
+        options={{
+          title: "Overview",
+          headerShown: false,
+        }}
       />
-      {scanned && (
-        <Button title={'Nhấn để quét lại'} onPress={() => setScanned(false)} />
-      )}
-    </View>
+      {Platform.OS === "android" ? <StatusBar hidden /> : null}
+      <CameraView
+        style={StyleSheet.absoluteFillObject}
+        facing="back"
+        onBarcodeScanned={({ data }) => {
+          if (data && !qrLock.current) {
+            qrLock.current = true;
+            setTimeout(async () => {
+              await Linking.openURL(data);
+            }, 500);
+          }
+        }}
+      />
+      <Overlay />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-});
