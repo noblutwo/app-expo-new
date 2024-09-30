@@ -38,6 +38,7 @@ const styles = useStyles();
   if (!loaded) {
     return (
       <View style={styles.loadingContainer}>
+        <StatusBar translucent backgroundColor="#79797e" barStyle="light-content" />
         <BackgroundImage source={imageSources["bg_pick"]}/>
       </View>
     );

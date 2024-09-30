@@ -5,9 +5,14 @@ import BackgroundImage from "@components/Images/BackgroundImage";
 import {Feather} from '@expo/vector-icons';
 import {hResponsive, wResponsive} from "@/constants/Colors";
 
-export function ModalQrCode({open, setOpen}: any) {
-    const [seconds, setSeconds] = useState(49);
-
+interface QrCodeProps {
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    title?: string;
+  }
+export function ModalQrCode({open, setOpen,title}: QrCodeProps) {
+    const [seconds, setSeconds] = useState(30);
+    
     useEffect(() => {
         if (seconds > 0) {
             const timer = setTimeout(() => {
@@ -33,8 +38,8 @@ export function ModalQrCode({open, setOpen}: any) {
                     <View style={[{paddingVertical: 20}, styles.containerLayout]}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Feather onPress={() => setOpen(false)} name="x" size={24} color="white"/>
-                            <Text style={{color: 'white', fontWeight: '700', paddingHorizontal: 15}}>QR code định danh
-                                điện tử</Text>
+                                {title == 'qr_cccd' ? <Text style={{color: 'white', fontWeight: '700', paddingHorizontal: 15}}>QR code thẻ căn cước công dân</Text> : <Text style={{color: 'white', fontWeight: '700', paddingHorizontal: 15}}>QR code định danh
+                                điện tử</Text> }
                         </View>
                         <View style={{
                             flexDirection: 'row',
@@ -50,6 +55,7 @@ export function ModalQrCode({open, setOpen}: any) {
                                     style={styles.fullQr}
                                 />
                                 <View style={{flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
+                                    
                                     <Text style={{color: 'white', fontWeight: '700'}}>Hiệu lực của QR code còn </Text>
                                     <Text style={{color: '#dcc913', fontWeight: '700'}}>00:{seconds}</Text>
                                 </View>
@@ -79,6 +85,4 @@ const styles = StyleSheet.create({
         width: wResponsive(220),
         height: hResponsive(250)
     }
-
-
-});
+})

@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (userString) {
           const user = JSON.parse(userString);
           setAuthUser(user);
-          setIsLoggedIn(true);
+          // setIsLoggedIn(true);
         }
       } catch (error) {
         console.error('Error checking login status:', error);
@@ -57,10 +57,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   
     const login = async (username: string, password: string) => {
       try {
-        const {data,success} = await postData(username, password);
+        const {data} = await postData(username, password);
         if (data.user) {
           setAuthUser(data.user);
-          setIsLoggedIn(success);
+          setIsLoggedIn(true);
           await AsyncStorage.setItem('user', JSON.stringify(data.user));
           updateActivity();
         }

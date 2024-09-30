@@ -6,24 +6,15 @@ import {useAuth} from "@/context/AuthContext";
 
 export default function AuthLayout() {
     const {isLoggedIn} = useAuth();
-
-    const commonHeaderOptions = {
+    const commonHeaderOptions = isLoggedIn ? { headerShown: false } : {
         headerTitleAlign: "center" as const,
         headerTitle: () => null,
         headerLeft: () => (
             <TouchableOpacity onPress={() => router.back()}>
-                <AppImage source="header_back" style={styles.item} resizeMode="cover"/>
+                <AppImage source="header_back" style={styles.item} resizeMode="cover" />
             </TouchableOpacity>
         ),
-        headerBackground: () => (
-            <ImageBackground
-                source={imageSources["headerBackground"]}
-                style={styles.headerBackground}
-            />
-        ),
     };
-
-    const headerOptions = isLoggedIn ? {} : commonHeaderOptions
 
     const screens = [
         {name: "login", options: {}},
@@ -36,7 +27,7 @@ export default function AuthLayout() {
     ];
 
     return (
-        <Stack screenOptions={{headerShown: !isLoggedIn, ...headerOptions}}>
+        <Stack screenOptions={commonHeaderOptions}>
             {screens.map(({name, options}) => (
                 <Stack.Screen
                     key={name}
@@ -44,13 +35,10 @@ export default function AuthLayout() {
                     options={{
                         ...options,
                         headerBackground: () => (
-                            !isLoggedIn && (
                                 <ImageBackground
                                     source={imageSources["headerBackground"]}
                                     style={name === "policy" ? styles.headerBackgroundPolicy : styles.headerBackground}
                                 />
-                            )
-
                         ),
                     }}
                 />

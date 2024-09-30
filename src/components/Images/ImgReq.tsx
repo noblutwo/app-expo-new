@@ -91,8 +91,7 @@ export interface AppImageProps {
         | "bgXaHoi"
         | "tichHoptt"
         | "xuatTrinh"
-        | "cccd"
-        | "bgSlider"
+        | "cccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -153,6 +152,10 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     home_banner1: require("../../assets/images/src_assets_images_home_banner1.jpg"),
     home_banner2: require("../../assets/images/src_assets_images_home_banner2.jpg"),
     home_banner3: require("../../assets/images/src_assets_images_home_banner3.jpg"),
+    home_cbld: require("../../assets/images/cbld.jpg"),
+    home_cthtdbll: require("../../assets/images/cthtdbll.jpg"),
+    home_vneid_add: require("../../assets/images/vneid_add.jpg"),
+    home_tbt_cuba: require("../../assets/images/tbt-cuba.jpg"),
     warning: require("../../assets/images/icon-warning.png"),
 
 
@@ -182,8 +185,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     bgXaHoi: require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
     tichHoptt: require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
     xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png"),
-    cccd: require("../../assets/images/cccd.png"),
-    bgSlider: require("../../assets/images/photo_2024-09-30_10-59-45.png")
+    cccd: require("../../assets/images/cccd.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({

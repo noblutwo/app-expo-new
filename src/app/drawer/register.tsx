@@ -125,6 +125,8 @@ const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
                         value={username}
                         onChangeText={setUsername}
                         isPassword={false}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
                     />
                     <Text
                         style={[globalStyles.textLogin, {marginBottom: 20}]}>{`${isRegister ? 'Mật khẩu' : 'Số điện thoại'}`} </Text>
@@ -134,10 +136,12 @@ const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
                         value={password}
                         onChangeText={setPassword}
                         isPassword={false}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
                     />
                 </View>
                 <Button
-                    onPress={() => handleLogin()}
+                    onPress={() => isRegister ? handleLogin() : ''}
                     mode="outlined"
                     style={[
                         globalStyles.buttonLogin,
@@ -163,7 +167,11 @@ const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
                         Quên mật khẩu
                     </Text>
                 </TouchableOpacity>) : ''}
-                <TouchableOpacity onPress={() => isRegister ? setIsRegister(false) : router.push("/drawer/login")}>
+                <TouchableOpacity onPress={() => isRegister ? setIsRegister(false) : (
+                       setIsRegister(true)
+                    // router.push("/drawer/register")
+                )
+                }>
                     <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>
                         Bạn đã có tài khoản?{" "}
                         <Text style={{color: Colors.colorTextLogin, fontWeight: "bold"}}>
@@ -171,14 +179,14 @@ const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
                         </Text>
                     </Text>
                 </TouchableOpacity>
-                {isRegister ? (<TouchableOpacity onPress={() => router.push("/drawer/activateAccount")}>
+                <TouchableOpacity onPress={() => router.push("/drawer/activateAccount")}>
                     <Text style={globalStyles.textLogin}>
                         Tài khoản đã được định danh điện tử ?{" "}
                         <Text style={{color: Colors.colorTextLogin, fontWeight: "bold"}}>
                             Kích hoạt
                         </Text>
                     </Text>
-                </TouchableOpacity>) : ''}
+                </TouchableOpacity>
             </View>
 
             <View
