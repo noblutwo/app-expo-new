@@ -92,6 +92,7 @@ export interface AppImageProps {
         | "tichHoptt"
         | "xuatTrinh"
         | "cccd"
+        | "bgSlider"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -181,7 +182,8 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     bgXaHoi: require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
     tichHoptt: require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
     xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png"),
-    cccd: require("../../assets/images/cccd.png")
+    cccd: require("../../assets/images/cccd.png"),
+    bgSlider: require("../../assets/images/photo_2024-09-30_10-59-45.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({
