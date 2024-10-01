@@ -20,7 +20,7 @@ const slides: SlideItem[] = [
     title: "Thay thế các giấy tờ truyền thống" 
   },
   {
-    source: "home_vneid_add", 
+    source: "home_ctdbll", 
     title: "Cung cấp các tiện ích phát triển công dân số, chính phủ số, xã hội số",
   },
 ];

@@ -92,7 +92,12 @@ export interface AppImageProps {
         | "tichHoptt"
         | "xuatTrinh"
         | "cccd"
-        | "qrCccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add"
+        | "qrCccd" 
+        | "home_cbld" 
+        | "home_tbt_cuba" 
+        | "home_cthtdbll" 
+        | "home_vneid_add" 
+        | "home_ctdbll"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -156,6 +161,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     home_cbld: require("../../assets/images/cbld.jpg"),
     home_header: require("../../assets/images/src_assets_images_vnp_header_vector_wave.png"),
     home_cthtdbll: require("../../assets/images/cthtdbll.png"),
+    home_ctdbll: require("../../assets/images/ctdbll.png"),
     home_vneid_add: require("../../assets/images/ctkc.png"),
     home_tbt_cuba: require("../../assets/images/tbt-cuba.jpg"),
     warning: require("../../assets/images/icon-warning.png"),
