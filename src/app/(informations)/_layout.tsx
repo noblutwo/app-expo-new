@@ -10,9 +10,10 @@ import {ModalQrCode} from "@components/Modal/ModalQrCode";
 
 export default function AuthLayout() {
     const {isLoggedIn} = useAuth();
+    console.log("isLoggedIn", isLoggedIn)
     const [openModal, setOpenModal] = useState(false)
     const handler = () => {
-        if (isLoggedIn != null) {
+        if (isLoggedIn) {
             router.back()
         } else {
             router.push('/')
@@ -28,7 +29,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Thông tin cư trú"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => handler()}>
+                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),

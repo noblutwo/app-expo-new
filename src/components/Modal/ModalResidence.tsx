@@ -36,11 +36,7 @@ export default function ModalResidence({modalVisible, setModalVisible}: ModelPro
         const userString = await AsyncStorage.getItem('user') as string;
         const user = JSON.parse(userString);
         const numberErr = await AsyncStorage.getItem('passErr');
-        if (Number(numberErr) <= 0) {
-            setWrongPass(0);
-            setOpen(true)
-            return;
-        }
+
 
         if (user?.passcode) {
             const passcodeArray = user.passcode.split('').map(Number);

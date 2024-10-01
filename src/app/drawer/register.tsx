@@ -1,35 +1,35 @@
 import {
-  Keyboard,
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-  ScrollView,
-  Dimensions,
-  ActivityIndicator,
+    Keyboard,
+    SafeAreaView,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    View,
+    ScrollView,
+    Dimensions,
+    ActivityIndicator,
 } from "react-native";
-import React, { useCallback, useRef, useState } from "react";
+import React, {useCallback, useRef, useState} from "react";
 import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveTextInput";
-import { Button } from "react-native-paper";
-import { Colors } from "@/constants/Colors";
+import {Button} from "react-native-paper";
+import {Colors} from "@/constants/Colors";
 import AppImage from "@/components/Images/ImgReq";
-import { useStyles } from "@/styles/styles";
-import { router } from "expo-router";
-import { useAuth } from "@/context/AuthContext";
-import { useFetchData } from "@/api/api";
+import {useStyles} from "@/styles/styles";
+import {router} from "expo-router";
+import {useAuth} from "@/context/AuthContext";
+import {useFetchData} from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { isLoaded } from "expo-font";
+import {isLoaded} from "expo-font";
 
-const { height: SCREEN_HEIGHT } = Dimensions.get("window");
+const {height: SCREEN_HEIGHT} = Dimensions.get("window");
 const RegisterScreen = () => {
 
-  const { login } = useAuth();
-  const globalStyles = useStyles();
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [isRegister, setIsRegister] = useState<boolean>(true);
+    const {login} = useAuth();
+    const globalStyles = useStyles();
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [isRegister, setIsRegister] = useState<boolean>(true);
     const [loading, setLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
@@ -181,7 +181,7 @@ const RegisterScreen = () => {
                                     Quên mật khẩu
                                 </Text>
                             </TouchableOpacity>) : ''}
-                            <TouchableOpacity onPress={() => isRegister ? setIsRegister(false) : (
+                            <TouchableOpacity onPress={() => isRegister ? router.push("/drawer/login") : (
                                 // router.push("/drawer/login")
                                 router.push("/drawer/register")
                             )

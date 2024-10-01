@@ -8,7 +8,7 @@ import {Ionicons} from "@expo/vector-icons";
 
 export default function AuthLayout() {
     const pathname = usePathname();
-    console.log("pathname", pathname)
+
     const {isLoggedIn} = useAuth();
     const commonHeaderOptions = isLoggedIn ? {headerShown: false} : {
         headerTitleAlign: "center" as const,
@@ -25,13 +25,14 @@ export default function AuthLayout() {
         {
             name: "login", options: {
                 headerRight: () => {
-                    console.log("Rendering headerRight");
+
                     return (
                         <TouchableOpacity>
                             <Ionicons name="notifications" size={24} color="black"/>
                         </TouchableOpacity>
                     );
                 },
+                animationEnabled: pathname === "/drawer/register" && false,
             }
         },
         {name: "logout", options: {}},
@@ -56,6 +57,7 @@ export default function AuthLayout() {
                                 style={name === "policy" ? styles.headerBackgroundPolicy : styles.headerBackground}
                             />
                         ),
+
                     }}
                 />
             ))}

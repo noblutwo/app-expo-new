@@ -1,7 +1,7 @@
 import { useResponsiveDimensions } from '@/hooks/useResponsiveDimensions';
 import React, { useState } from 'react';
-import { View, TextInput as RNTextInput, StyleSheet, Text, TextInputProps, ViewStyle, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; 
+import { View, TextInput as RNTextInput, StyleSheet, Text, TextInputProps, ViewStyle, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppImage from '../Images/ImgReq';
 
 interface ResponsiveDimensions {
@@ -16,16 +16,16 @@ interface ResponsiveTextInputProps extends TextInputProps {
   isPassword?: boolean;
 }
 
-const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({ 
-  placeholder, 
-  icon, 
-  value, 
-  onChangeText, 
-  secureTextEntry,
-  containerStyle,
-  isPassword = false,
-  ...props 
-}) => {
+const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
+                                                                   placeholder,
+                                                                   icon,
+                                                                   value,
+                                                                   onChangeText,
+                                                                   secureTextEntry,
+                                                                   containerStyle,
+                                                                   isPassword = false,
+                                                                   ...props
+                                                                 }) => {
   const dimensions: ResponsiveDimensions = useResponsiveDimensions();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -39,7 +39,6 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
       paddingHorizontal: dimensions.width * 0.03,
       marginVertical: dimensions.height * 0.01,
       height: dimensions.height * 0.06,
-      // backgroundColor: 'red'
     },
     icon: {
       marginRight: dimensions.width * 0.02,
@@ -66,14 +65,14 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
   });
 
   const PlaceholderComponent: React.FC = () => (
-    <View style={styles.placeholder}>
-       <AppImage
-              source={icon}
-              style={styles.icon}
-              resizeMode="contain"
-            />
-      <Text style={styles.placeholderText}>{placeholder}</Text>
-    </View>
+      <View style={styles.placeholder}>
+        <AppImage
+            source={icon}
+            style={styles.icon}
+            resizeMode="contain"
+        />
+        <Text style={styles.placeholderText}>{placeholder}</Text>
+      </View>
   );
 
   const toggleShowPassword = () => {
@@ -81,27 +80,29 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <RNTextInput
-        style={styles.input}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={isPassword && !showPassword}
-        placeholder={placeholder}
-        placeholderTextColor="transparent"
-        {...props}
-      />
-      {!value && <PlaceholderComponent />}
-      {isPassword && (
-        <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
-          <Icon 
-            name={showPassword ? 'visibility' : 'visibility-off'} 
-            size={dimensions.width * 0.06} 
-            color="#999"
+      <TouchableWithoutFeedback onPress={() => {}}>
+        <View style={[styles.container, containerStyle]}>
+          <RNTextInput
+              style={styles.input}
+              value={value}
+              onChangeText={onChangeText}
+              secureTextEntry={isPassword && !showPassword}
+              placeholder={placeholder}
+              placeholderTextColor="transparent"
+              {...props}
           />
-        </TouchableOpacity>
-      )}
-    </View>
+          {!value && <PlaceholderComponent />}
+          {isPassword && (
+              <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
+                <Icon
+                    name={showPassword ? 'visibility' : 'visibility-off'}
+                    size={dimensions.width * 0.06}
+                    color="#999"
+                />
+              </TouchableOpacity>
+          )}
+        </View>
+      </TouchableWithoutFeedback>
   );
 };
 

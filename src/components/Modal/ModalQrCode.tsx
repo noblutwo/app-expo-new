@@ -16,15 +16,28 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
     const [seconds, setSeconds] = useState(30);
 
     useEffect(() => {
-        if (seconds > 0) {
-            const timer = setTimeout(() => {
+        // Reset seconds when the modal opens
+        if (open) {
+            setSeconds(30);
+        }
+    }, [open]);
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout | null = null;
+        if (seconds > 0 && open) {
+            timer = setTimeout(() => {
                 setSeconds(prevSeconds => prevSeconds - 1);
             }, 1000);
-
-            // Cleanup function to clear the timeout
-            return () => clearTimeout(timer);
         }
-    }, [seconds]);
+
+        // Cleanup function to clear the timeout
+        return () => {
+            if (timer) {
+                clearTimeout(timer);
+            }
+        };
+    }, [seconds, open]);
+
     return (
         <View style={styles.container}>
             <Modal
@@ -40,12 +53,11 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
                     <View style={[{paddingVertical: 20}, styles.containerLayout]}>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Feather onPress={() => setOpen(false)} name="x" size={24} color="white"/>
-                            {title == 'qr_cccd' ?
-                                <Text style={{color: 'white', fontWeight: '700', paddingHorizontal: 15}}>QR code thẻ căn
+                            {title === 'qr_cccd' ?
+                                <Text style={styles.item}>QR code thẻ căn
                                     cước công dân</Text> :
-                                <Text style={{color: 'white', fontWeight: '700', paddingHorizontal: 15}}>QR code định
-                                    danh
-                                    điện tử</Text>}
+                                <Text style={styles.item}>QR code định
+                                    danh điện tử</Text>}
                         </View>
                         <View style={{
                             flexDirection: 'row',
@@ -53,23 +65,26 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
                             alignItems: 'center',
                             height: '100%',
                             width: '100%',
-                            top: -30
+                            top: -30,
                         }}>
                             <View>
-                                <ImageBackground
-                                    source={imageSources[image]}
-                                    style={styles.fullQr}
-                                />
-                                {image === "qrCccd"
-                                    ? "" :
-                                    <View style={{flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
+                                <View style={styles.wrapImage}>
+                                    <ImageBackground
+                                        source={imageSources[image]}
+                                        style={styles.fullQr}
+                                    />
+                                </View>
 
+                                {image === "qrCccd" ? "" :
+                                    <View style={{flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
                                         <Text style={{color: 'white', fontWeight: '700'}}>Hiệu lực của QR code
                                             còn </Text>
-                                        <Text style={{color: '#dcc913', fontWeight: '700'}}>00:{seconds}</Text>
+                                        <Text style={{
+                                            color: '#dcc913',
+                                            fontWeight: '700'
+                                        }}>00:{seconds < 10 ? `0${seconds}` : seconds}</Text>
                                     </View>
                                 }
-
                             </View>
                         </View>
                     </View>
@@ -80,11 +95,9 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
 }
 
 const styles = StyleSheet.create({
-    // Giữ nguyên tất cả các styles như trong code gốc
     container: {
         flex: 1
     },
-
     containerLayout: {
         paddingHorizontal: '3%'
     },
@@ -93,7 +106,22 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     fullQr: {
-        width: wResponsive(210),
-        height: hResponsive(200)
+        width: wResponsive(160),
+        height: hResponsive(150),
+    },
+    wrapImage: {
+        backgroundColor: 'white',
+        paddingHorizontal: 40,
+        paddingVertical: 50,
+        borderRadius: 150,
+        borderWidth: 1,
+        borderColor: "#eadf7e",
+        width: '100%',
+        height: 'auto'
+    },
+    item: {
+        color: 'white',
+        fontWeight: '700',
+        paddingHorizontal: 15
     }
-})
+});
