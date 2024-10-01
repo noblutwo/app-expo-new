@@ -181,7 +181,7 @@ const RegisterScreen = () => {
                                     Quên mật khẩu
                                 </Text>
                             </TouchableOpacity>) : ''}
-                            <TouchableOpacity onPress={() => isRegister ? router.push("/drawer/login") : (
+                            <TouchableOpacity onPress={() => isRegister ? router.replace("/drawer/login") : (
                                 // router.push("/drawer/login")
                                 router.push("/drawer/register")
                             )

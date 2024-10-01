@@ -40,7 +40,6 @@ export default function AuthLayout() {
         {name: "activateAccount", options: {}},
         {name: "forgotPassword", options: {}},
         {name: "register", options: {}},
-
     ];
 
     return (
