@@ -4,51 +4,52 @@ import {lightTheme} from "@/styles/theme";
 import {InfoDropDown} from "@components/Dropdown/InfoDropDown";
 import React, {useState} from "react";
 import {EvilIcons} from '@expo/vector-icons';
+import {useAuth} from "@/context/AuthContext";
 
 const dataAdministrative = [
     {
-        info: "Họ và tên", value: "Nguyễn Hoàng Anh"
+        info: "Họ và tên"
     },
     {
-        info: "Số định danh cá nhân", value: "1234562950"
+        info: "Số định danh cá nhân"
     },
     {
-        info: "Giới tính ", value: "Nam"
+        info: "Giới tính "
     },
     {
-        info: "Ngày sinh", value: "22-05-2002"
+        info: "Ngày sinh"
     },
     {
-        info: "Dân tộc", value: "Kinh"
+        info: "Dân tộc"
     },
     {
-        info: "Tôn giáo", value: "Không"
+        info: "Tôn giáo"
     },
     {
-        info: "Quốc tịch", value: "Việt Nam"
+        info: "Quốc tịch"
     },
     {
-        info: "Quê quán", value: "Xã Vân Châu, Huyện Vân Châu, Tỉnh Vân Châu, Thành phố vân châu"
+        info: "Quê quán"
     },
 ]
 const dataResident = [
     {
-        info: "Nơi thường trú", value: "Xã Vân Châu, Huyện Vân Châu, Tỉnh Vân Châu, Thành phố vân châu"
+        info: "Nơi thường trú"
     },
     {
-        info: "Nơi tạm trú", value: "1234562950"
+        info: "Nơi tạm trú"
     },
     {
-        info: "Nơi ở hiện tại", value: "Xã Vân Châu, Huyện Vân Châu, Tỉnh Vân Châu, Thành phố vân châu"
+        info: "Nơi ở hiện tại"
     },
     {
-        info: "Họ và tên chủ hộ", value: "Nguyễn Hoàng Anh"
+        info: "Họ và tên chủ hộ"
     },
     {
-        info: "Số định danh chủ hộ", value: "123462050"
+        info: "Số định danh chủ hộ"
     },
     {
-        info: "Quan hệ chủ hộ", value: "Con đẻ"
+        info: "Quan hệ chủ hộ"
     },
 ]
 
@@ -56,17 +57,20 @@ function ResidenceScreen() {
     const currentPath = usePathname();
     const [openInfoSoon, setOpenInfoSoon] = useState(true);
     const [openInfoPerson, setOpenInfoPerson] = useState(true);
-
+    const {authUser} = useAuth();
+    console.log("authUser", authUser)
     return (
         <ScrollView>
             <View style={styles.container}>
-                <InfoDropDown data={dataAdministrative}
+                <InfoDropDown info={dataAdministrative}
+                              data={authUser}
                               title={"Thông tin hành chính"}
                               open={openInfoSoon}
                               setOpen={setOpenInfoSoon}
                 />
                 <View style={styles.appLineBig}/>
-                <InfoDropDown data={dataResident}
+                <InfoDropDown info={dataResident}
+                              data={dataResident}
                               title={"Thông tin cư trú"}
                               open={openInfoPerson}
                               setOpen={setOpenInfoPerson}

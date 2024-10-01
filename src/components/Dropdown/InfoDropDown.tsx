@@ -2,22 +2,23 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React, {useState} from "react";
 import AppImage from "@components/Images/ImgReq";
 import {FontSize, hResponsive, wResponsive} from "@/constants/Colors";
+import ItemSelectInfo from "@components/Item/ItemSelectInfo";
 
 
 interface Item {
     info: string;
-    value: string;
 }
 
 // Định nghĩa interface cho dropdown
 interface Dropdown {
-    data: Item[];
+    data: any;
     title: string;
     open: boolean;
     setOpen: (open: boolean) => void; // Hàm để thay đổi trạng thái mở
+    info?: any
 }
 
-export function InfoDropDown({data, title, open, setOpen}: Dropdown) {
+export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
 
 
     return (
@@ -29,21 +30,18 @@ export function InfoDropDown({data, title, open, setOpen}: Dropdown) {
                 </TouchableOpacity>
             </View>
             <View>
-                {open && data?.map((item: any, index: number) => (
-                    <View key={index}>
-                        <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
-                            <Text style={{color: "#8e8e8e"}}>{item?.info}</Text>
-
-                            <Text
-                                style={styles.text}
-                            >
-                                {item?.value}
-                            </Text>
-
-                        </View>
-                        {index < data.length - 1 && <View style={styles.appLine}/>}
+                {open &&
+                    <View>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.Name}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.CCCD}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.Sex}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.DOB}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.dantoc}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.tongiao}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.quoctich}/>
+                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.quequan}/>
                     </View>
-                ))}
+                }
             </View>
         </View>
     );
