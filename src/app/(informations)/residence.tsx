@@ -1,109 +1,91 @@
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {router, usePathname} from "expo-router";
-import {lightTheme} from "@/styles/theme";
 import {InfoDropDown} from "@components/Dropdown/InfoDropDown";
 import React, {useState} from "react";
 import {EvilIcons} from '@expo/vector-icons';
+import {useAuth} from "@/context/AuthContext";
 
 const dataAdministrative = [
-    {
-        info: "Họ và tên", value: "Nguyễn Hoàng Anh"
-    },
-    {
-        info: "Số định danh cá nhân", value: "1234562950"
-    },
-    {
-        info: "Giới tính ", value: "Nam"
-    },
-    {
-        info: "Ngày sinh", value: "22-05-2002"
-    },
-    {
-        info: "Dân tộc", value: "Kinh"
-    },
-    {
-        info: "Tôn giáo", value: "Không"
-    },
-    {
-        info: "Quốc tịch", value: "Việt Nam"
-    },
-    {
-        info: "Quê quán", value: "Xã Vân Châu, Huyện Vân Châu, Tỉnh Vân Châu, Thành phố vân châu"
-    },
-]
+    {info: "Họ và tên", key: "Name"},
+    {info: "Số định danh cá nhân", key: "CCCD"},
+    {info: "Giới tính", key: "Sex"},
+    {info: "Ngày sinh", key: "DOB"},
+    {info: "Dân tộc", key: "dantoc"},
+    {info: "Tôn giáo", key: "tongiao"},
+    {info: "Quốc tịch", key: "quoctich"},
+    {info: "Quê quán", key: "quequan"},
+];
+
 const dataResident = [
-    {
-        info: "Nơi thường trú", value: "Xã Vân Châu, Huyện Vân Châu, Tỉnh Vân Châu, Thành phố vân châu"
-    },
-    {
-        info: "Nơi tạm trú", value: "1234562950"
-    },
-    {
-        info: "Nơi ở hiện tại", value: "Xã Vân Châu, Huyện Vân Châu, Tỉnh Vân Châu, Thành phố vân châu"
-    },
-    {
-        info: "Họ và tên chủ hộ", value: "Nguyễn Hoàng Anh"
-    },
-    {
-        info: "Số định danh chủ hộ", value: "123462050"
-    },
-    {
-        info: "Quan hệ chủ hộ", value: "Con đẻ"
-    },
-]
+    {info: "Nơi thường trú", key: "Address"},
+    {info: "Nơi tạm trú", key: ""},
+    {info: "Nơi ở hiện tại", key: "Address"},
+    {info: "Họ và tên chủ hộ", key: "giadinh[0]?.name"},
+    {info: "Số định danh cá nhân chủ hộ", key: "giadinh[0]?.sdd"},
+    {info: "Quan hệ với chủ hộ", key: "quanhe"},
+];
 
 function ResidenceScreen() {
-    const currentPath = usePathname();
-    const [openInfoSoon, setOpenInfoSoon] = useState(true);
-    const [openInfoPerson, setOpenInfoPerson] = useState(true);
+    const {authUser} = useAuth();
+    const [openInfoAdministrative, setOpenInfoAdministrative] = useState(true);
+    const [openInfoResident, setOpenInfoResident] = useState(true);
 
     return (
         <ScrollView>
-            <View style={styles.container}>
-                <InfoDropDown data={dataAdministrative}
-                              title={"Thông tin hành chính"}
-                              open={openInfoSoon}
-                              setOpen={setOpenInfoSoon}
-                />
-                <View style={styles.appLineBig}/>
-                <InfoDropDown data={dataResident}
-                              title={"Thông tin cư trú"}
-                              open={openInfoPerson}
-                              setOpen={setOpenInfoPerson}
-                />
-                <View style={styles.containerLayout}>
-                    <TouchableOpacity onPress={() => router.push("/(informations)/family")} style={{
-                        justifyContent: 'space-between',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        borderWidth: 1,
-                        padding: 15,
-                        borderRadius: 5,
-                        borderColor: "#e3e3e3"
-                    }}>
-                        <Text>Thành viên trong hộ gia đình (2)</Text>
-                        <EvilIcons name="chevron-right" size={24} color="black"/>
-                    </TouchableOpacity>
-                </View>
+            <InfoDropDown
+                info={dataAdministrative}
+                data={authUser}
+                title={"Thông tin hành chính"}
+                open={openInfoAdministrative}
+                setOpen={setOpenInfoAdministrative}
+            />
+            <View style={{height: 3, backgroundColor: '#eaeaea'}}/>
+            <InfoDropDown
+                info={dataResident}
+                data={authUser}
+                title={"Thông tin cư trú"}
+                open={openInfoResident}
+                setOpen={setOpenInfoResident}
+            />
+            <View style={styles.containerLayout}>
+                <TouchableOpacity onPress={() => router.push("/(informations)/family")} style={{
+                    justifyContent: 'space-between',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    borderWidth: 1,
+                    padding: 15,
+                    borderRadius: 5,
+                    borderColor: "#e3e3e3"
+                }}>
+                    <Text>Thành viên trong hộ gia đình (2)</Text>
+                    <EvilIcons name="chevron-right" size={24} color="black"/>
+                </TouchableOpacity>
             </View>
-
         </ScrollView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     containerLayout: {
-        padding: '5%'
+        padding: '5%',
     },
     appLineBig: {
         height: 3,
         backgroundColor: '#eaeaea',
     },
-
+    touchable: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        padding: 15,
+        borderRadius: 5,
+        borderColor: "#e3e3e3",
+    },
 });
 
-export default ResidenceScreen
+export default ResidenceScreen;
