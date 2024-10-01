@@ -1,5 +1,5 @@
-import {Text, TouchableOpacity, View, Keyboard} from "react-native";
-import React, {useCallback, useState} from "react";
+import {Text, TouchableOpacity,StyleSheet, View, Keyboard, ScrollView, SafeAreaView, TouchableWithoutFeedback, Dimensions} from "react-native";
+import React, {useCallback, useRef, useState} from "react";
 import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveTextInput";
 import {Button} from "react-native-paper";
 import {Colors} from "@/constants/Colors";
@@ -9,9 +9,11 @@ import {router} from "expo-router";
 import {useFetchData} from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useAuth} from "@/context/AuthContext";
-
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const LoginScreen = () => {
     const {login, isLoggedIn} = useAuth();
+    const scrollViewRef: any = useRef(null);
+    const [scrollEnabled, setScrollEnabled] = useState(false);
     const globalStyles = useStyles();
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -57,6 +59,14 @@ const LoginScreen = () => {
 
 
     return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView style={styles.content}>
+            <ScrollView
+                ref={scrollViewRef}
+                contentContainerStyle={styles.scrollView}
+                keyboardShouldPersistTaps="handled"
+                scrollEnabled={scrollEnabled}
+            >
         <View style={globalStyles.containerLogin}>
             <Text style={globalStyles.titleLogin}>
                 Vui lòng nhập thông tin đăng nhập để tiếp tục
@@ -218,7 +228,7 @@ const LoginScreen = () => {
                             flexDirection: "column",
                             justifyContent: "center",
                             alignItems: "center",
-                            marginTop: 10,
+                            marginBottom: 60,
                         }}
                     >
                         <TouchableOpacity
@@ -242,7 +252,18 @@ const LoginScreen = () => {
                 </View>
             </View>
         </View>
+        </ScrollView>
+            </SafeAreaView>
+        </TouchableWithoutFeedback>
     );
 };
-
+const styles = StyleSheet.create({
+    content: {
+        flex: 1,
+    },
+    scrollView: {
+        flexGrow: 1,
+        height: SCREEN_HEIGHT,
+    },
+})
 export default LoginScreen;

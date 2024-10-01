@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     fullQr: {
-        width: wResponsive(220),
-        height: hResponsive(250)
+        width: wResponsive(210),
+        height: hResponsive(200)
     }
 })

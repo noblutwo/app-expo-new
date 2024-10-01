@@ -20,6 +20,7 @@ import { router } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useFetchData } from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { isLoaded } from "expo-font";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const RegisterScreen = () => {
@@ -93,6 +94,9 @@ const RegisterScreen = () => {
             setIsError(true);
         }
     }, [username, password]);
+
+//    if(!loading) return <ActivityIndicator size="large" color='#fff' />
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <SafeAreaView style={styles.content}>
@@ -178,8 +182,8 @@ const RegisterScreen = () => {
                                 </Text>
                             </TouchableOpacity>) : ''}
                             <TouchableOpacity onPress={() => isRegister ? setIsRegister(false) : (
-                                router.push("/drawer/login")
-                                // router.push("/drawer/register")
+                                // router.push("/drawer/login")
+                                router.push("/drawer/register")
                             )
                             }>
                                 <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>

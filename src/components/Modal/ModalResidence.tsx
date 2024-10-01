@@ -28,12 +28,11 @@ export default function ModalResidence({modalVisible, setModalVisible}: ModelPro
         setTimeout(async () => {
             await AsyncStorage.setItem('passErr', '5');
             setWrongPass(0);
-            resetPassErrorAt00(); // Set up the next day's reset
+            resetPassErrorAt00()
         }, timeUntilMidnight);
     };
 
     const selectPasscode = async () => {
-        // await AsyncStorage.setItem('passErr', '5');
         const userString = await AsyncStorage.getItem('user') as string;
         const user = JSON.parse(userString);
         const numberErr = await AsyncStorage.getItem('passErr');

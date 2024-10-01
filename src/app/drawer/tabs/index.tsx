@@ -20,6 +20,7 @@ import ModalResidence from "@/components/Modal/ModalResidence";
 import {Feather} from "@expo/vector-icons";
 import {useAuth} from "@/context/AuthContext";
 import {ModalQrCode} from "@/components/Modal/ModalQrCode";
+import { ModalInformation } from "@/components/Modal/ModalInformation";
 
 const {width, height} = Dimensions.get("window");
 
@@ -58,6 +59,8 @@ const ServiceItem = ({icon, title, showNew}: any) => {
 };
 
 const ScreenWithOverlap = () => {
+    const [isInformation,setIsInformation] = useState(false)
+    const [type, setType] = useState("")
     const [modalVisible, setModalVisible] = useState(false);
     const [openModal, setOpenModal] = useState(false)
     const [openModalDd, setOpenModalDd] = useState(false)
@@ -70,6 +73,11 @@ const ScreenWithOverlap = () => {
         setModalType(title);
         setOpen(true);
     };
+
+    const openModalInfor = (title: string) => {
+        setType(title);
+        setIsInformation(true); 
+    }
 
     const renderProfileImage = (source: string, open: boolean, setOpen: any, image: string) => (
         <TouchableOpacity style={{flex: 1}} onPress={() => showQrCode(source, setOpen)}>
@@ -91,10 +99,14 @@ const ScreenWithOverlap = () => {
                             {justifyContent: "space-between"},
                         ]}
                     >
-                        <AppImage
+                        <TouchableOpacity onPress={() => openModalInfor('information')}>
+                         <AppImage
                             source={authUser?.Image!}
                             style={styles.profileImageHome}
-                        />
+                        />   
+                         <ModalInformation open={isInformation} setOpen={setIsInformation} title={type} image={""}/>
+                        </TouchableOpacity>
+                        
                     </View>
                     <View style={styles.nameContainerHome}>
                         <View style={styles.nameTagHome}>
