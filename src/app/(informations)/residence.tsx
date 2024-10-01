@@ -56,7 +56,7 @@ function ResidenceScreen() {
     const currentPath = usePathname();
     const [openInfoSoon, setOpenInfoSoon] = useState(true);
     const [openInfoPerson, setOpenInfoPerson] = useState(true);
-    console.log("Current path:", currentPath);
+
     return (
         <ScrollView>
             <View style={styles.container}>
