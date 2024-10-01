@@ -9,14 +9,14 @@
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff",
-      "image": "./src/assets/images/adaptive-icon.png"
+      "image": "./src/assets/images/splash.png"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/src_assets_images_bg_logo_square.png",
+        "foregroundImage": "./src/assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.noblutwo.expoapp",
