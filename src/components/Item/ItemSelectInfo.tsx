@@ -2,7 +2,7 @@ import {StyleSheet, Text, View} from "react-native";
 import React from "react";
 
 
-export default function ItemSelectInfo({info, value}: any) {
+export default function ItemSelectInfo({info, value, index}: any) {
     return (
         <View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
@@ -15,7 +15,7 @@ export default function ItemSelectInfo({info, value}: any) {
                 </Text>
 
             </View>
-            <View style={styles.appLine}/>
+            {info !== "Quan hệ với chủ hộ" && <View style={styles.appLine}/>}
         </View>
     )
 }

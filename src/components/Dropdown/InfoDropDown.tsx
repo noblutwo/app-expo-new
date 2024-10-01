@@ -1,68 +1,65 @@
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import React, {useState} from "react";
+import React from "react";
 import AppImage from "@components/Images/ImgReq";
-import {FontSize, hResponsive, wResponsive} from "@/constants/Colors";
 import ItemSelectInfo from "@components/Item/ItemSelectInfo";
-
 
 interface Item {
     info: string;
+    key: string; // Added key for easy access
 }
 
-// Định nghĩa interface cho dropdown
 interface Dropdown {
-    data: any;
+    data: any; // The authUser object
     title: string;
     open: boolean;
-    setOpen: (open: boolean) => void; // Hàm để thay đổi trạng thái mở
-    info?: any
+    setOpen: (open: boolean) => void;
+    info: Item[]; // Array containing info objects
 }
 
 export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
-
-
+    console.log("data", data)
     return (
         <View style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={{fontSize: FontSize.textLowercase, fontWeight: 700}}>{title}</Text>
+                <Text style={{fontWeight: '700'}}>{title}</Text>
                 <TouchableOpacity onPress={() => setOpen(!open)}>
                     <AppImage source={open ? "dropDown" : "dropRight"} style={styles.icon}/>
                 </TouchableOpacity>
             </View>
-            <View>
-                {open &&
-                    <View>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.Name}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.CCCD}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.Sex}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.DOB}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.dantoc}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.tongiao}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.quoctich}/>
-                        <ItemSelectInfo info={info[0]?.info || ""} value={data?.quequan}/>
-                    </View>
-                }
-            </View>
+            {info[0]?.info === "Nơi thường trú" ? open && (
+                <View>
+                    <ItemSelectInfo info={info[0]?.info} value={data?.Address}/>
+                    <ItemSelectInfo info={info[1]?.info} value={""}/>
+                    <ItemSelectInfo info={info[2]?.info} value={data?.Address}/>
+                    <ItemSelectInfo info={info[3]?.info} value={data?.me}/>
+                    <ItemSelectInfo info={info[4]?.info} value={"122462960"}/>
+                    <ItemSelectInfo info={info[5]?.info} value={"Con đẻ"}/>
+
+                </View>
+            ) : open && (
+                <View>
+                    <ItemSelectInfo info={info[0]?.info} value={data?.Name}/>
+                    <ItemSelectInfo info={info[1]?.info} value={data?.CCCD}/>
+                    <ItemSelectInfo info={info[2]?.info} value={data?.Sex}/>
+                    <ItemSelectInfo info={info[3]?.info} value={data?.DOB}/>
+                    <ItemSelectInfo info={info[4]?.info} value={data?.dantoc}/>
+                    <ItemSelectInfo info={info[5]?.info} value={data?.tongiao}/>
+                    <ItemSelectInfo info={info[6]?.info} value={data?.quoctich}/>
+                    <ItemSelectInfo info={info[7]?.info} value={data?.quequan}/>
+                </View>
+            )}
+
+
         </View>
     );
-};
-
+}
 
 const styles = StyleSheet.create({
     containerLayout: {
-        padding: '5%'
+        padding: '5%',
     },
     icon: {
-        width: wResponsive(20),
-        height: hResponsive(20)
+        width: 20,
+        height: 20,
     },
-    appLine: {
-        height: 1,
-        backgroundColor: '#eaeaea',
-    },
-    text: {
-        textAlign: 'right',
-        width: '60%'
-    },
-
-})
+});
