@@ -12,15 +12,15 @@ interface SlideItem {
 
 const slides: SlideItem[] = [
   {
-    source: "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg",
+    source: "home_cthtdbll",
     title: "Định danh công dân trên môi trường kỹ thuật số",
   },
   { 
-    source: "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg", 
+    source: "home_vneid_add", 
     title: "Thay thế các giấy tờ truyền thống" 
   },
   {
-    source: "https://d1hjkbq40fs2x4.cloudfront.net/2017-08-21/files/landscape-photography_1645.jpg", 
+    source: "home_vneid_add", 
     title: "Cung cấp các tiện ích phát triển công dân số, chính phủ số, xã hội số",
   },
 ];
