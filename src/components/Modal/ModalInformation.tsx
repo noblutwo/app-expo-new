@@ -45,7 +45,7 @@ export function ModalInformation({ open, setOpen, title, image }: QrCodeProps) {
               }}
             >
               <TouchableOpacity
-                onPress={() => router.back()}
+                onPress={() => router.push("/home")}
                 style={{ paddingHorizontal: 20 }}
               >
                 <AppImage

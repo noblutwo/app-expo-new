@@ -5,11 +5,13 @@ import { Button } from "react-native-paper";
 import { Colors } from "@/constants/Colors";
 import { useStyles } from "@/styles/styles";
 import { router } from "expo-router";
+import { useAuth } from "@/context/AuthContext";
 
 const ActivateScreen = () => {
   const globalStyles = useStyles();
   const [username, setUsername] = useState<string>("");
   const [numberPhone, setNumberPhone] = useState<string>("");
+  const { login, handlerNoticifation, isLoggedIn, isNoticifation } = useAuth();
   return (
     <View style={globalStyles.containerLogin}>
       <Text style={globalStyles.titleLogin}>Quên mật khẩu</Text>
@@ -49,7 +51,10 @@ const ActivateScreen = () => {
         </Button>
         <View>
         <TouchableOpacity
-              onPress={() => router.push("/drawer/register")}
+              onPress={() =>{
+                // handlerNoticifation()
+                router.push("/drawer/login")
+              } }
             >
 
          <Text style={[globalStyles.textLogin, { marginVertical: 10 }]}>

@@ -4,18 +4,32 @@ import {StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useAuth} from "@/context/AuthContext";
 import {Ionicons} from "@expo/vector-icons";
+import { useRouter } from 'expo-router';
 
 
 export default function AuthLayout() {
+    // const rou = useRouter();
     const pathname = usePathname();
-
-    const {isLoggedIn} = useAuth();
+    const { isNoticifation, handlerNoticifation,isLoggedIn} = useAuth();
+    const handlePress = () => {
+        const authPaths = ["/drawer/login", "/drawer/register", "/drawer/forgotPassword", "/drawer/activateAccount"];
+        if (authPaths.includes(pathname)) {
+            if(!isNoticifation) {
+                router.push("/home");  
+            } else {
+              router.back();  
+            }
+        } else {
+              router.push("/home");  
+        }
+      };
     const commonHeaderOptions = isLoggedIn ? {headerShown: false} : {
         headerTitleAlign: "center" as const,
         headerTitle: () => null,
         headerLeft: () => (
             <TouchableOpacity
-                onPress={() => pathname === "/drawer/login" || "/drawer/register" ? router.push("/home") : router.back()}>
+            onPress={() => handlePress()}
+            >
                 <AppImage source="header_back" style={styles.item} resizeMode="cover"/>
             </TouchableOpacity>
         ),
@@ -28,7 +42,7 @@ export default function AuthLayout() {
 
                     return (
                         <TouchableOpacity>
-                            <Ionicons name="notifications" size={24} color="black"/>
+                        {isNoticifation ?  <Ionicons name="notifications" size={24} color="black"/> : ''}
                         </TouchableOpacity>
                     );
                 },

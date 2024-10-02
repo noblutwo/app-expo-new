@@ -58,7 +58,6 @@ export default function TabPage() {
         },
         tabBarLabel: ({ focused }) => {
           const tabName = route.name as TabName;
-          const isScanner = tabConfig[tabName].label === "";
           return (
             <Text
               style={[
