@@ -69,6 +69,33 @@ export default function AuthLayout() {
                     ),
                 }}
             />
+            <Stack.Screen
+                name="driving"
+                options={{
+                    headerBackVisible: false,
+                    headerTitle: () => <HeaderTitle title="Giấy phép lái xe"/>,
+                    headerLeft: () => (
+                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                        </TouchableOpacity>
+                    ),
+                    headerRight: () => (
+                        <View>
+                            <TouchableOpacity onPress={() => setOpenModal(true)}>
+                                <AppImage source="qrCodeHeader" style={styles.item}/>
+                            </TouchableOpacity>
+                            <ModalQrCode open={openModal} setOpen={setOpenModal} image={"qrScan"}/>
+                        </View>
+
+                    ),
+                    headerBackground: () => (
+                        <ImageBackground
+                            source={imageSources["bgHeader"]}
+                            style={styles.headerBackground}
+                        />
+                    ),
+                }}
+            />
         </Stack>
     );
 }

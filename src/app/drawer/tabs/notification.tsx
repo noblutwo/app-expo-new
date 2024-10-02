@@ -36,7 +36,7 @@ const HeThongRoute = () => (
     <View style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
         <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#777777'}}>Đánh dấu tất cả đã
             đọc</Text>
-        <LayoutNotFound/>
+        <LayoutNotFound  styleHeight={100} title={"Bạn không có thông báo nào"}/>
     </View>
 );
 
@@ -44,7 +44,7 @@ const TinTucRoute = () => (
     <View style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
         <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#777777'}}>Đánh dấu tất cả đã
             đọc</Text>
-        <LayoutNotFound/>
+        <LayoutNotFound  styleHeight={100} title={"Bạn không có thông báo nào"}/>
     </View>
 );
 
