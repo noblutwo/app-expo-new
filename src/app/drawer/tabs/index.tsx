@@ -131,7 +131,7 @@ const ScreenWithOverlap = () => {
               <Text
                 style={[
                   styles.textLogin,
-                  { fontWeight: "bold", paddingHorizontal: 2 },
+                  { fontWeight: "bold", paddingHorizontal: 2, color:'#3A3736' },
                 ]}
               >
                 {authUser?.designationLevel!}
@@ -205,18 +205,18 @@ const ScreenWithOverlap = () => {
         </View>
         <View style={styles.containerOverlap}>
           {[0, 1].map((rowIndex) => (
-            <View key={rowIndex} style={globalStyle.rowOverlap}>
+            <View key={rowIndex} style={[globalStyle.rowOverlap]}>
               {data.slice(rowIndex * 3, (rowIndex + 1) * 3).map((item) => (
                 <TouchableOpacity
                   key={item.id}
-                  style={globalStyle.itemOverlap}
+                  style={[globalStyle.itemOverlap]}
                   onPress={() => handlerModal(item?.id)}
                 >
                   <AppImage
                     source={item.picture}
                     style={globalStyle.imageOverlap}
                   />
-                  <Text style={globalStyle.titleOverlap}>{item.title}</Text>
+                  <Text style={styles.textLogin}>{item.title}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -443,6 +443,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     fontFamily: lightTheme.fontSizes.fontFamilyRegular,
+    color:"#3A3736"
   },
   serviceItemHome: {
     flex: 1,
@@ -476,6 +477,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 13,
     fontFamily: lightTheme.fontSizes.fontFamilyRegular,
+    color: lightTheme.colors.text
   },
   titleLayoutHome: {
     fontSize: 15,
@@ -569,8 +571,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textLogin: {
-    fontSize: pResponsive(14),
+    fontSize: pResponsive(13),
     fontFamily: lightTheme.fontFamilies.sansSerif,
+    color: lightTheme.colors.text,
   },
   title: {
     fontSize: 16,

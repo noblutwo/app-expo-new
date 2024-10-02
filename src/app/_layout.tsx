@@ -36,17 +36,10 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  // Cấu hình StatusBar
-  const statusBarConfig = {
-    translucent: true,
-    backgroundColor: "transparent",
-    barStyle: "light-content" as "light-content" | "dark-content" | "default",
-  };
-
   if (!loaded) {
     return (
-      <View style={[styles.containerLyout, { backgroundColor: "#79797e" }]}>
-        <StatusBar {...statusBarConfig} />
+      <View style={[styles.containerLyout]}>
+        <StatusBar backgroundColor="#757575" barStyle="light-content"/>
         <BackgroundImage source={imageSources["bg_pick"]} />
       </View>
     );
@@ -56,7 +49,7 @@ export default function RootLayout() {
     <AuthProvider>
       <SafeAreaProvider>
         <View style={styles.containerLyout}>
-          <StatusBar {...statusBarConfig} />
+        <StatusBar backgroundColor="#757575" barStyle="light-content"/>
           <View style={styles.contentLayout}>
             <Slot />
           </View>
