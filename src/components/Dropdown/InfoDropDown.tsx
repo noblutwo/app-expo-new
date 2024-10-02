@@ -21,7 +21,7 @@ export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
     return (
         <View style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text style={{fontWeight: '700'}}>{title}</Text>
+                <Text style={{fontWeight: '700', fontSize: 16, color: '#000'}}>{title}</Text>
                 <TouchableOpacity onPress={() => setOpen(!open)}>
                     <AppImage source={open ? "dropDown" : "dropRight"} style={styles.icon}/>
                 </TouchableOpacity>

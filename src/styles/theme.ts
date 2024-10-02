@@ -4,7 +4,7 @@ export const lightTheme = {
     colors: {
       primary: '#888a8d',
       white: '#FFF',
-      text: '#000000',
+      text: '#6d6d6d',
       error: '#FF3B30',
     },
     fontSizes: {

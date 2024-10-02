@@ -1,19 +1,20 @@
 import {StyleSheet, Text, View} from "react-native";
 import React from "react";
-
+import { lightTheme } from "@/styles/theme";
 
 export default function ItemSelectInfo({info, value, index}: any) {
     return (
         <View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
-                <Text style={{color: "#8e8e8e"}}>{info}</Text>
-
-                <Text
-                    style={styles.text}
+                <Text style={{color: '#a1a1a1', fontSize: 16, backgroundColor:'red'}}>{info}</Text>
+                <Text maxFontSizeMultiplier={4} numberOfLines={4} ellipsizeMode={'middle'}
+                    style={[
+                        styles.text, 
+                        info === 'Họ và tên chủ hộ' ? {textTransform: 'uppercase'} : {backgroundColor:'blue'}
+                    ]}
                 >
                     {value}
                 </Text>
-
             </View>
             {info !== "Quan hệ với chủ hộ" && <View style={styles.appLine}/>}
         </View>
@@ -26,7 +27,9 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'right',
-        width: '60%'
+        paddingLeft:40,
+        color: lightTheme.colors.text,
+        fontFamily: lightTheme.fontSizes.fontFamilyRegular,
+        fontSize: 16
     },
-
 })

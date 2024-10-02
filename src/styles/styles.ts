@@ -301,7 +301,7 @@ export const useStyles = () => {
             textAlign: 'center',
             fontSize: 14,
             fontFamily: lightTheme.fontSizes.fontFamilyRegular,
-            color:'#4E4B4C',
+            color:lightTheme.colors.text,
             fontWeight:"semibold"
         },
         slideLayoutHome: {
@@ -330,7 +330,7 @@ export const useStyles = () => {
         itemOverlap: {
             width: itemWidth,
             alignItems: 'center',
-            padding: 10
+            paddingVertical:10
         },
         imageOverlap: {
             width: wResponsive(45),
