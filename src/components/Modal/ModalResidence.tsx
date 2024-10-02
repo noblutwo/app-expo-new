@@ -8,10 +8,19 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 interface ModelProps {
     modalVisible: boolean,
     setModalVisible: (modalVisible: boolean) => void
+    openId: number
 }
 
+const infoScreen = [
+    {id: 1, key: "/(informations)/residence"},
+    {id: 2, key: "/(informations)/driving"},
+    {id: 3, key: "/(informations)/residence"},
+    {id: 4, key: "/(informations)/residence"},
+    {id: 5, key: "/(informations)/residence"},
+    {id: 6, key: "/(informations)/residence"}
+]
 
-export default function ModalResidence({modalVisible, setModalVisible}: ModelProps) {
+export default function ModalResidence({modalVisible, setModalVisible, openId}: ModelProps) {
     const [code, setCode] = useState<any>([]);
     const codeLength = Array(6).fill(0);
     const [open, setOpen] = useState(false)
@@ -44,8 +53,10 @@ export default function ModalResidence({modalVisible, setModalVisible}: ModelPro
                 passcodeArray.every((value: any, index: number) => value === code[index]);
 
             if (isEqual) {
+                const findItem = infoScreen.find((item) => item?.id === openId)
+                console.log("findItem", findItem?.key)
                 await AsyncStorage.setItem('passErr', '5');
-                router.push("/(informations)/residence");
+                router.push(`${findItem?.key}`);
                 return;
             }
 
@@ -62,6 +73,7 @@ export default function ModalResidence({modalVisible, setModalVisible}: ModelPro
     useEffect(() => {
         selectPasscode()
     }, [code]);
+
     const onPress = (prop: any) => {
         if (prop === "delete") {
             setCode((prevArray: any) => {

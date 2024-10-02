@@ -65,6 +65,7 @@ const ScreenWithOverlap = () => {
     const [openModal, setOpenModal] = useState(false)
     const [openModalDd, setOpenModalDd] = useState(false)
     const [modalType, setModalType] = useState<string>('');
+    const [openId, setOpenId] = useState<number>(0)
     const {authUser} = useAuth();
     const globalStyle = useStyles();
     const scrollY = useRef(new Animated.Value(0)).current;
@@ -160,7 +161,8 @@ const ScreenWithOverlap = () => {
 
     const renderFavoriteUtilities = () => {
         const handlerModal = (id: number) => {
-            if (id !== 4) return;
+            if (!id) return
+            setOpenId(id)
             setModalVisible(true);
         };
         return (
@@ -277,6 +279,7 @@ const ScreenWithOverlap = () => {
             {renderHeader()}
             {modalVisible && (
                 <ModalResidence
+                    openId={openId}
                     modalVisible={modalVisible}
                     setModalVisible={setModalVisible}
                 />

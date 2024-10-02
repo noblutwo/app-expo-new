@@ -92,7 +92,7 @@ export interface AppImageProps {
         | "tichHoptt"
         | "xuatTrinh"
         | "cccd"
-        | "qrCccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add"
+        | "qrCccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add" | "bgTienIch"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -175,6 +175,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     setting11: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_chinhsachbaomat.png"),
     setting12: require("../../assets/images/src_assets_images_vnp_ico_30_px_fn_quyenriengtuvadichvu.png"),
     bgHeader: require("../../assets/images/src_assets_images_vnp_card_nguoiphuthuoc_copy.png"),
+    bgTienIch: require("../../assets/images/src_assets_images_vnp_rectangle_11945.png"),
     qrCodeHeader: require("../../assets/images/src_assets_images_vnp_ico_header_qrcode.png"),
     dropDown: require("../../assets/images/src_assets_images_vnp_ico_ic_18_px_down.png"),
     dropRight: require("../../assets/images/src_assets_images_vnp_ico_ic_right_grey.png"),
