@@ -143,9 +143,9 @@ const RegisterScreen = () => {
                                     onBlur={handleBlur}
                                 />
                                 <Text
-                                    style={[globalStyles.textLogin, {marginBottom: 20}]}>{`${!isRegister ? 'Mật khẩu' : 'Số điện thoại'}`} </Text>
+                                    style={[globalStyles.textLogin, {marginBottom: 20}]}>{`${isRegister ? 'Mật khẩu' : 'Số điện thoại'}`} </Text>
                                 <ResponsiveTextInput
-                                    placeholder={!isRegister ? "Nhập mật khẩu" : "Nhập số điện thoại"}
+                                    placeholder={isRegister ? "Nhập mật khẩu" : "Nhập số điện thoại"}
                                     icon={!isRegister ? "lockLogin" : "numberRegister"}
                                     value={password}
                                     onChangeText={setPassword}
@@ -181,9 +181,8 @@ const RegisterScreen = () => {
                                     Quên mật khẩu
                                 </Text>
                             </TouchableOpacity>) : ''}
-                            <TouchableOpacity onPress={() => isRegister ? router.replace("/drawer/login") : (
-                                // router.push("/drawer/login")
-                                router.push("/drawer/register")
+                            <TouchableOpacity onPress={() => !isRegister ? router.replace("/drawer/register") : (
+                                setIsRegister(false)
                             )
                             }>
                                 <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>
@@ -193,6 +192,7 @@ const RegisterScreen = () => {
                                     </Text>
                                 </Text>
                             </TouchableOpacity>
+                            {!isRegister ?
                             <TouchableOpacity onPress={() => router.push("/drawer/activateAccount")}>
                                 <Text style={globalStyles.textLogin}>
                                     Tài khoản đã được định danh điện tử ?{" "}
@@ -200,7 +200,7 @@ const RegisterScreen = () => {
                                         Kích hoạt
                                     </Text>
                                 </Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> :'' }
                         </View>
 
                         <View
@@ -272,10 +272,10 @@ const RegisterScreen = () => {
                                     alignItems: 'center',
                                     marginTop: 10
                                 }}>
-                                    <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>Chính sách quyền riêng
+                                    <Text style={[globalStyles.textLogin, {marginVertical: 10, textDecorationLine: "underline"}]}>Chính sách quyền riêng
                                         tư</Text>
                                     <Text style={[globalStyles.textLogin, {color: Colors.colorSilver}]}>Phiên bản
-                                        2.1.9</Text>
+                                        2.1.10</Text>
                                 </View>
                             </View>
                         </View>

@@ -3,7 +3,7 @@ import { Slot, SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { StatusBar, View} from "react-native";
+import { StatusBar, View, Platform } from "react-native";
 import * as Updates from "expo-updates";
 import { fontConfig } from "@/assets/fonts/font";
 import { useStyles } from "@/styles/styles";
@@ -13,7 +13,8 @@ import { AuthProvider } from "@/context/AuthContext";
 
 export default function RootLayout() {
   const [loaded] = useFonts(fontConfig);
-const styles = useStyles();
+  const styles = useStyles();
+
   async function checkForUpdates() {
     if (!__DEV__) {
       try {
@@ -35,25 +36,32 @@ const styles = useStyles();
     }
   }, [loaded]);
 
+  // Cấu hình StatusBar
+  const statusBarConfig = {
+    translucent: true,
+    backgroundColor: "transparent",
+    barStyle: "light-content" as "light-content" | "dark-content" | "default",
+  };
+
   if (!loaded) {
     return (
-      <View style={styles.loadingContainer}>
-        <StatusBar translucent backgroundColor="#79797e" barStyle="light-content" />
-        <BackgroundImage source={imageSources["bg_pick"]}/>
+      <View style={[styles.containerLyout, { backgroundColor: "#79797e" }]}>
+        <StatusBar {...statusBarConfig} />
+        <BackgroundImage source={imageSources["bg_pick"]} />
       </View>
     );
   }
+
   return (
     <AuthProvider>
-      <View style={styles.containerLyout}>
-      <StatusBar translucent backgroundColor="#79797e" barStyle="light-content" />
       <SafeAreaProvider>
-        <View style={styles.contentLayout}>
-          <Slot />
+        <View style={styles.containerLyout}>
+          <StatusBar {...statusBarConfig} />
+          <View style={styles.contentLayout}>
+            <Slot />
+          </View>
         </View>
       </SafeAreaProvider>
-    </View> 
     </AuthProvider>
-   
   );
 }

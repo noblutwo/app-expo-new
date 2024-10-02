@@ -5,11 +5,13 @@ import { router } from 'expo-router';
 import { postData } from '@/api/api';
 
 type AuthContextType = {
+  isNoticifation: boolean
   isLoggedIn: boolean;
   authUser: any;
   login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   updateActivity: () => void;
+  handlerNoticifation: (isNoticifation:boolean) => void;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,6 +25,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isNoticifation, setIsNoticifation] = useState<boolean>(true)
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [authUser, setAuthUser] = useState<any>(null);
     const [lastActivity, setLastActivity] = useState(Date.now());
@@ -84,12 +87,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const updateActivity = () => {
       setLastActivity(Date.now());
     };
+
+    const handlerNoticifation = (bs:boolean) => {
+      setIsNoticifation(bs)
+    }
+
     const value = {
+      isNoticifation,
       isLoggedIn,
       authUser,
       login,
       logout,
       updateActivity,
+      handlerNoticifation
     };
   
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

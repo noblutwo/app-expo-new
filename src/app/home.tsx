@@ -2,12 +2,14 @@ import { Button } from "@/components/Button/Button";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import { imageSources } from "@/components/Images/ImgReq";
 import { Colors, FontSize } from "@/constants/Colors";
+import { useAuth } from "@/context/AuthContext";
 import { lightTheme } from "@/styles/theme";
 import { router } from "expo-router";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function homeScreen() {
+  const { login, handlerNoticifation, isLoggedIn, isNoticifation } = useAuth();
   return (
     <View style={styles.container}>
       <BackgroundImage source={imageSources["bglogin"]}>
@@ -20,9 +22,13 @@ export default function homeScreen() {
               cấp các tiện ích phát triển công dân số, chính phủ số, xã hội số
             </Text>
             <Button
-              onPress={() => router.push("/drawer/login")}
+              onPress={() => {
+                handlerNoticifation(true)
+                router.push("/drawer/login")
+              } }
               mode="outlined"
               style={[
+
                 styles.button,
                 {
                   backgroundColor: Colors.colorButtonLogin,
@@ -48,6 +54,7 @@ export default function homeScreen() {
             <View style={styles.footerHomeLogin}>
               <TouchableOpacity
                 onPress={() => {
+                  handlerNoticifation(false)
                   router.push("/drawer/login");
                 }}
               >

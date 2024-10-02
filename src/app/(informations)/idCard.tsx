@@ -1,8 +1,10 @@
+import {Text, View} from "react-native";
+
 function IdCard() {
     return (
-<View>
-
-</View>
+        <View>
+            <Text>haha</Text>
+        </View>
     )
 }
 
