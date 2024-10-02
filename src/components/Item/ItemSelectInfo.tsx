@@ -6,11 +6,11 @@ export default function ItemSelectInfo({info, value, index}: any) {
     return (
         <View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
-                <Text style={{color: '#a1a1a1', fontSize: 16, backgroundColor:'red'}}>{info}</Text>
+                <Text style={{color: '#a1a1a1', fontSize: 16}}>{info}</Text>
                 <Text maxFontSizeMultiplier={4} numberOfLines={4} ellipsizeMode={'middle'}
                     style={[
                         styles.text, 
-                        info === 'Họ và tên chủ hộ' ? {textTransform: 'uppercase'} : {backgroundColor:'blue'}
+                        info === 'Họ và tên chủ hộ' ? {textTransform: 'uppercase'} : info === 'Nơi thường trú' || info === 'Nơi ở hiện tại' ? {width: '60%'} : {},
                     ]}
                 >
                     {value}
@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'right',
-        paddingLeft:40,
         color: lightTheme.colors.text,
         fontFamily: lightTheme.fontSizes.fontFamilyRegular,
         fontSize: 16
