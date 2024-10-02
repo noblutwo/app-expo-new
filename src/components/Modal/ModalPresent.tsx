@@ -3,6 +3,7 @@ import {Feather} from '@expo/vector-icons/';
 import {FontSize} from "@/constants/Colors";
 import {Button, Checkbox} from "react-native-paper";
 import React, {useState} from "react";
+import {router} from "expo-router";
 
 
 interface OpenBole {
@@ -13,6 +14,15 @@ interface OpenBole {
 function ModalPresent({open, setOpen}: OpenBole) {
     const [checked, setChecked] = useState<boolean>(false);
     const [checked2, setChecked2] = useState<boolean>(false);
+
+    const handlerTick = () => {
+        if (!checked && !checked2) return
+        if (checked) {
+            router.push("/(informations)/idCard")
+        } else {
+            console.log("hihi")
+        }
+    }
     return (
         <Modal
             animationType="slide"
@@ -74,6 +84,7 @@ function ModalPresent({open, setOpen}: OpenBole) {
                                 <View style={styles.linedUser}/>
                             </View>
                             <TouchableOpacity
+                                onPress={handlerTick}
                                 style={[{marginVertical: 30, backgroundColor: '#dd0000', marginHorizontal: '3%'}]}>
                                 <Text style={{
                                     fontSize: FontSize.textLowercase,
