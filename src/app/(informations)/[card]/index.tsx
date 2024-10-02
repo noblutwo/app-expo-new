@@ -2,21 +2,28 @@ import {ImageBackground, StyleSheet, Text, View} from "react-native";
 import {FontSize, hResponsive, wResponsive} from "@/constants/Colors";
 import {imageSources} from "@components/Images/ImgReq";
 import React from "react";
+import ItemCard from "@components/Item/ItemCard";
 
 function IdCard(parameterName, url) {
     console.log("parameterName", parameterName)
     console.log("url", url)
     return (
         <View style={styles.container}>
+
             <View style={styles.layoutContainer}>
-                <Text style={{fontWeight: 700, fontSize: FontSize.textLowercase}}>Thẻ căn cước công dân</Text>
+                <Text style={{fontWeight: 700, fontSize: FontSize.textLowercase, paddingVertical: 15}}>Thẻ căn cước công
+                    dân</Text>
+                <View style={styles.cccdContainer}>
+                    <ImageBackground
+                        source={imageSources["cccd"]}
+                        style={[styles.cccd, styles.shadow]}
+                    />
+                </View>
+                <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
+                <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
+
             </View>
-            <View style={styles.cccdContainer}>
-                <ImageBackground
-                    source={imageSources["cccd"]}
-                    style={[styles.cccd, styles.shadow]}
-                />
-            </View>
+
         </View>
     )
 }
@@ -34,8 +41,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     cccd: {
-        width: wResponsive(325),
-        height: hResponsive(220),
+        width: wResponsive(355),
+        height: hResponsive(230),
         alignItems: 'center',
         textAlign: 'center',
         overflow: 'visible',
@@ -49,6 +56,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 4,
         elevation: 5,
+    },
+    linedUser: {
+        borderBottomWidth: 1,
+        borderBottomColor: "#eaeaea",
+        flex: 1,
     },
 });
 export default IdCard

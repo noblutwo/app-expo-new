@@ -18,7 +18,7 @@ function ModalPresent({open, setOpen}: OpenBole) {
     const handlerTick = () => {
         if (!checked && !checked2) return
         if (checked) {
-            router.push("/(informations)/idCard")
+            router.push("/(informations)/card?query=hihi")
         } else {
             console.log("hihi")
         }
