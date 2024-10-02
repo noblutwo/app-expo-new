@@ -19,6 +19,7 @@ import { router } from "expo-router";
 import { useFetchData } from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuth } from "@/context/AuthContext";
+import LoadingPopup from "@/components/loading/LoadingPopup ";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const LoginScreen = () => {
@@ -88,6 +89,8 @@ const LoginScreen = () => {
       });
     }
   };
+
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView style={styles.content}>
@@ -167,6 +170,7 @@ const LoginScreen = () => {
               >
                 {isNoticifation ? "Đăng nhập" : "Đăng ký"}
               </Button>
+              <LoadingPopup visible={loading} text="Đang xử lý..." />
             </View>
             <View style={{ marginTop: 20 }}>
               {isNoticifation ? (

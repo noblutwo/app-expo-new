@@ -17,7 +17,6 @@ interface Dropdown {
 }
 
 export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
-    console.log("data", data)
     return (
         <View style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>

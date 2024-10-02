@@ -183,9 +183,11 @@ const ScreenWithOverlap = () => {
 
   const renderFavoriteUtilities = () => {
     const handlerModal = (id: number) => {
-      if (!id) return
-      setOpenId(id)
+      if(id === 2 || id === 4) {
+         setOpenId(id)
       setModalVisible(true);
+      } else return null
+     
     };
     return (
       <View style={styles.favoriteUtilitiesContainer}>
