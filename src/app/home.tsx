@@ -9,7 +9,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function homeScreen() {
-  const { login, handlerNoticifation, isLoggedIn, isNoticifation } = useAuth();
+  const { handlerNoticifation} = useAuth();
   return (
     <View style={styles.container}>
       <BackgroundImage source={imageSources["bglogin"]}>
@@ -118,7 +118,7 @@ export default function homeScreen() {
                   fontWeight: "500",
                 }}
               >
-                Phiên bản 2.1.9
+                Phiên bản 2.1.10
               </Text>
             </View>
           </View>

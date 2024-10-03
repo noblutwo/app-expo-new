@@ -10,7 +10,7 @@ import { useRouter } from 'expo-router';
 export default function AuthLayout() {
     // const rou = useRouter();
     const pathname = usePathname();
-    const { isNoticifation, handlerNoticifation,isLoggedIn} = useAuth();
+    const { isNoticifation,isLoggedIn} = useAuth();
     const handlePress = () => {
         const authPaths = ["/drawer/login", "/drawer/register", "/drawer/forgotPassword", "/drawer/activateAccount"];
         if (authPaths.includes(pathname)) {

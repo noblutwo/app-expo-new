@@ -110,7 +110,7 @@ const handleLogin = useCallback(async () => {
         return setTitle("Tài khoản hoặc mật khẩu không đúng. vui lòng kiểm tra lại");
       }
     }
-  }, [username, password]);
+  }, [username, password, isLoggedIn]);
 
 
   return (

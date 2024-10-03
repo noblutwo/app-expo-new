@@ -3,7 +3,7 @@ import { Slot, SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { StatusBar, View, Platform } from "react-native";
+import { StatusBar, View} from "react-native";
 import * as Updates from "expo-updates";
 import { fontConfig } from "@/assets/fonts/font";
 import { useStyles } from "@/styles/styles";
@@ -39,7 +39,6 @@ export default function RootLayout() {
   if (!loaded) {
     return (
       <View style={[styles.containerLyout]}>
-        <StatusBar backgroundColor="#757575" barStyle="light-content"/>
         <BackgroundImage source={imageSources["bg_pick"]} />
       </View>
     );

@@ -282,7 +282,7 @@ const ScreenWithOverlap = () => {
         style={{
           flexDirection: "row",
           alignItems: "center",
-          paddingVertical: 10,
+          paddingVertical: 5,
         }}
       >
         <Feather name="calendar" size={24} color="#9c9c9c" />
@@ -334,7 +334,7 @@ const ScreenWithOverlap = () => {
           </View>
           {renderFavoriteUtilities()}
           <View style={styles.container}>
-            <Text style={[styles.textLogin, styles.title]}>Thông tin</Text>
+            <Text style={[styles.textSectionLayoutHome, styles.title]}>Thông tin</Text>
             <View style={styles.rowContainer}>
               {renderColumn({
                 titleInfor: "Cảnh báo thủ đoạn tội phạm",
@@ -345,10 +345,9 @@ const ScreenWithOverlap = () => {
               })}
               <View
                 style={{
-                  width: 2,
+                  width: 1.5,
                   height: "100%",
                   backgroundColor: "#dddddd",
-                  marginHorizontal: 5,
                 }}
               />
               {renderColumn({
@@ -610,8 +609,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 22,
+    height: 23,
     marginRight: 5,
   },
   titleText: {
