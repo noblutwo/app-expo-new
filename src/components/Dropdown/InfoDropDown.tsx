@@ -33,7 +33,6 @@ export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
                     <ItemSelectInfo info={info[3]?.info} value={data?.me}/>
                     <ItemSelectInfo info={info[4]?.info} value={"122462960"}/>
                     <ItemSelectInfo info={info[5]?.info} value={"Con đẻ"}/>
-
                 </View>
             ) : open && (
                 <View>

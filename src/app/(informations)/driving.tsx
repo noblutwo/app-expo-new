@@ -7,6 +7,7 @@ import {hResponsive} from "@/constants/Colors";
 import BackgroundImage from "@components/Images/BackgroundImage";
 import {Button} from "react-native-paper";
 import ModalPresent from "@components/Modal/ModalPresent";
+import {router} from "expo-router";
 
 const Daxacthuc = () => {
     const [open, setOpen] = useState(false)
@@ -23,9 +24,13 @@ const Daxacthuc = () => {
                         <Button style={{backgroundColor: '#df0000', borderRadius: 5}} textColor="white">Xuất trình giấy
                             tờ</Button>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{marginVertical: 10}}>
-                        <Button style={{backgroundColor: '#ffd3d3', borderRadius: 5}} textColor="#df0000">Thêm giấy phép
-                            lái xe</Button>
+                    <TouchableOpacity style={{marginVertical: 10}}
+                                      onPress={() => router.push("/(informations)/cardCar")}>
+                        <Button style={{backgroundColor: '#ffd3d3', borderRadius: 5}}
+                                textColor="#df0000"
+                        >
+                            Thêm giấy phép lái xe
+                        </Button>
                     </TouchableOpacity>
                 </View>
             </View>

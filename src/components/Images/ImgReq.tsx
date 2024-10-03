@@ -92,7 +92,7 @@ export interface AppImageProps {
         | "tichHoptt"
         | "xuatTrinh"
         | "cccd"
-        | "qrCccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add"
+        | "qrCccd" | "home_cbld" | "home_tbt_cuba" | "home_cthtdbll" | "home_vneid_add" | "bgHeaderLayout"
         | string;
     style?: StyleProp<ImageStyle>;
     resizeMode?: "cover" | "contain" | "stretch" | "repeat" | "center";
@@ -188,7 +188,8 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
     bgXaHoi: require("../../assets/images/src_assets_images_vnp_ico_ic_bao_hiem_xa_hoi.png"),
     tichHoptt: require("../../assets/images/src_assets_images_ico_ic_tichhopthongtin.png"),
     xuatTrinh: require("../../assets/images/src_assets_images_ico_ic_xuatrinh.png"),
-    cccd: require("../../assets/images/cccd.png")
+    cccd: require("../../assets/images/cccd.png"),
+    bgHeaderLayout: require("../../assets/images/src_assets_images_vnp_header_home_bg_2.png")
 };
 
 const AppImage: React.FC<AppImageProps> = ({
