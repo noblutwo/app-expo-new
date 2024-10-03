@@ -150,6 +150,32 @@ export default function AuthLayout() {
                     ),
                 }}
             />
+            <Stack.Screen
+                name="cardCar"
+                options={{
+                    headerBackVisible: false,
+                    headerTitle: () => <HeaderTitle title="Nhập thông tin tích hợp"/>,
+                    headerLeft: () => (
+                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                        </TouchableOpacity>
+                    ),
+                    headerRight: () => (
+                        <View>
+                            <TouchableOpacity onPress={() => setOpenModal(true)}>
+                                <AppImage source="qrCodeHeader" style={styles.item}/>
+                            </TouchableOpacity>
+                            <ModalQrCode open={openModal} setOpen={setOpenModal} image={"qrScan"}/>
+                        </View>
+                    ),
+                    headerBackground: () => (
+                        <ImageBackground
+                            source={imageSources["bgHeaderLayout"]}
+                            style={styles.backgroundImage}
+                        />
+                    ),
+                }}
+            />
         </Stack>
     );
 }
@@ -167,6 +193,12 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
+        resizeMode: 'cover',
+    },
+    backgroundImage: {
+        flex: 1,
+        width: '100%',
+        height: '35%',
         resizeMode: 'cover',
     },
 });

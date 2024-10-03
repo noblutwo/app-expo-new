@@ -1,38 +1,82 @@
-import {ImageBackground, StyleSheet, Text, View} from "react-native";
+import {ImageBackground, ScrollView, StyleSheet, Text, View} from "react-native";
 import {useLocalSearchParams} from 'expo-router';
 import {FontSize, hResponsive, wResponsive} from "@/constants/Colors";
 import {imageSources} from "@components/Images/ImgReq";
 import ItemCard from "@components/Item/ItemCard";
 import React from "react";
+import InfoCardUser from "@components/Dropdown/InfoCardUser";
 
 function User() {
     const {user} = useLocalSearchParams();
-    console.log("user", user)
+    console.log("user", user);
+
     return (
         <View style={styles.container}>
-            <View style={styles.layoutContainer}>
-                <Text style={{fontWeight: 700, fontSize: FontSize.textLowercase, paddingVertical: 15}}>Thẻ căn cước công
-                    dân</Text>
-                <View style={styles.cccdContainer}>
-                    <ImageBackground
-                        source={imageSources["cccd"]}
-                        style={[styles.cccd, styles.shadow]}
-                    />
-                </View>
-                <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
-                <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
-            </View>
+            <ScrollView>
+                {user === "cccd" && (
+                    <View style={styles.layoutContainer}>
+                        <Text style={{fontWeight: '700', fontSize: FontSize.textLowercase, paddingVertical: 15}}>
+                            Thẻ căn cước công dân
+                        </Text>
+                        <View style={styles.cccdContainer}>
+                            <ImageBackground
+                                source={imageSources["cccd"]}
+                                style={[styles.cccd, styles.shadow]}
+                            />
+                        </View>
+                        <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
+                        <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
+                    </View>
+                )}
+                {user === "info" && (
+                    <View style={{backgroundColor: 'white'}}>
+                        <InfoCardUser/>
+                    </View>
+                )}
+                {user === "true" && (
+                    <View>
+                        <View style={styles.layoutContainer}>
+                            <Text style={{fontWeight: '700', fontSize: FontSize.textLowercase, paddingVertical: 15}}>
+                                Thẻ căn cước công dân
+                            </Text>
+                            <View style={styles.cccdContainer}>
+                                <ImageBackground
+                                    source={imageSources["cccd"]}
+                                    style={[styles.cccd, styles.shadow]}
+                                />
+                            </View>
+                            <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
+                            <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
+                        </View>
+                        <View style={[styles.layoutContainer, {backgroundColor: 'white', marginTop: 8,paddingTop:10}]}>
+                            <InfoCardUser/>
+                        </View>
+                    </View>
+                )}
+            </ScrollView>
 
+            <View style={{backgroundColor: 'white'}}>
+                <View style={{backgroundColor: '#cf0000', margin: 10, borderRadius: 5}}>
+                    <Text style={{color: 'white', fontWeight: '700', textAlign: 'center', paddingVertical: 10}}>Xuất
+                        trình
+                        giấy giờ</Text>
+                </View>
+            </View>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#f3f3f3',
+        height: '100%',
+        justifyContent: 'space-between'
+
     },
     layoutContainer: {
-        paddingHorizontal: '3%'
+        paddingHorizontal: '3%',
+        backgroundColor: 'white'
     },
     cccdContainer: {
         width: '100%',
@@ -40,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     cccd: {
-        width: wResponsive(355),
+        width: wResponsive(350),
         height: hResponsive(230),
         alignItems: 'center',
         textAlign: 'center',
@@ -62,4 +106,5 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
-export default User
+
+export default User;

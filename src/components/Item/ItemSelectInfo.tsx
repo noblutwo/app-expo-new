@@ -6,7 +6,7 @@ export default function ItemSelectInfo({info, value, index}: any) {
     return (
         <View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
-                <Text style={{color: '#a1a1a1', fontSize: 16}}>{info}</Text>
+                <Text style={{color: '#a1a1a1'}}>{info}</Text>
                 <Text maxFontSizeMultiplier={4} numberOfLines={4} ellipsizeMode={'middle'}
                     style={[
                         styles.text, 
@@ -29,6 +29,5 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         color: lightTheme.colors.text,
         fontFamily: lightTheme.fontSizes.fontFamilyRegular,
-        fontSize: 16
     },
 })
