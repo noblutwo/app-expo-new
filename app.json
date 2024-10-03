@@ -16,8 +16,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/images/adaptive-icons.png",
+        "backgroundColor": "#24701A"
       },
       "package": "com.noblutwo.expoapp",
       "permissions": [
