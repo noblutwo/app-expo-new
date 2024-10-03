@@ -29,8 +29,10 @@ function User() {
                     </View>
                 )}
                 {user === "info" && (
-                    <View style={[styles.layoutContainer,{backgroundColor: 'white'}]}>
-                        <InfoCardUser/>
+                    <View style={[styles.layoutContainer, {backgroundColor: 'white',}]}>
+                        <View style={{marginTop: 10}}>
+                            <InfoCardUser/>
+                        </View>
                     </View>
                 )}
                 {user === "true" && (
@@ -48,7 +50,8 @@ function User() {
                             <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
                             <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
                         </View>
-                        <View style={[styles.layoutContainer, {backgroundColor: 'white', marginTop: 8,paddingTop:10}]}>
+                        <View
+                            style={[styles.layoutContainer, {backgroundColor: 'white', marginTop: 8, paddingTop: 10}]}>
                             <InfoCardUser/>
                         </View>
                     </View>
