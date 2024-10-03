@@ -1,15 +1,15 @@
 import {ImageBackground, StyleSheet, Text, View} from "react-native";
+import {useLocalSearchParams} from 'expo-router';
 import {FontSize, hResponsive, wResponsive} from "@/constants/Colors";
 import {imageSources} from "@components/Images/ImgReq";
-import React from "react";
 import ItemCard from "@components/Item/ItemCard";
+import React from "react";
 
-function IdCard(parameterName, url) {
-    console.log("parameterName", parameterName)
-    console.log("url", url)
+function User() {
+    const {user} = useLocalSearchParams();
+    console.log("user", user)
     return (
         <View style={styles.container}>
-
             <View style={styles.layoutContainer}>
                 <Text style={{fontWeight: 700, fontSize: FontSize.textLowercase, paddingVertical: 15}}>Thẻ căn cước công
                     dân</Text>
@@ -21,7 +21,6 @@ function IdCard(parameterName, url) {
                 </View>
                 <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
                 <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
-
             </View>
 
         </View>
@@ -63,4 +62,4 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
-export default IdCard
+export default User
