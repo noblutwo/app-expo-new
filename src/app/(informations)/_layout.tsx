@@ -129,7 +129,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Xuất trình giấy tờ"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
+                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}>
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
@@ -160,14 +160,7 @@ export default function AuthLayout() {
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
-                    headerRight: () => (
-                        <View>
-                            <TouchableOpacity onPress={() => setOpenModal(true)}>
-                                <AppImage source="qrCodeHeader" style={styles.item}/>
-                            </TouchableOpacity>
-                            <ModalQrCode open={openModal} setOpen={setOpenModal} image={"qrScan"}/>
-                        </View>
-                    ),
+
                     headerBackground: () => (
                         <ImageBackground
                             source={imageSources["bgHeaderLayout"]}
