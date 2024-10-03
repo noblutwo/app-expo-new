@@ -129,7 +129,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Xuất trình giấy tờ"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
+                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}>
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),

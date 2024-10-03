@@ -203,7 +203,6 @@ const AppImage: React.FC<AppImageProps> = ({
         imageSource = {uri: source};
     } else {
         imageSource = imageSources[source];
-
         if (!imageSource) {
             console.warn(`Image source "${source}" not found.`);
             return null;

@@ -29,7 +29,7 @@ function User() {
                     </View>
                 )}
                 {user === "info" && (
-                    <View style={{backgroundColor: 'white'}}>
+                    <View style={[styles.layoutContainer,{backgroundColor: 'white'}]}>
                         <InfoCardUser/>
                     </View>
                 )}
