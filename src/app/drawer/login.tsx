@@ -20,7 +20,6 @@ import { useFetchData } from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuth } from "@/context/AuthContext";
 import LoadingPopup from "@/components/loading/LoadingPopup ";
-import Loader from "@/components/loading/Loading";
 import ErrorLogin from "@/components/loading/ErrorLogin";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -46,31 +45,6 @@ const LoginScreen = () => {
   }, []);
 
   const { isUserFound } = useFetchData(username);
-//   const handleLogin = useCallback(async () => {
-//     Keyboard.dismiss();
-//     validateUsername(username);
-//     validatePassword(password);
-//     if (username && password) {
-//       try {
-//         setLoading(true);
-//         await login(username, password);
-//         const userJson = await AsyncStorage.getItem("user");
-//         if (userJson) {
-//           router.push("./tabs");
-//         } else {
-//           setIsError(true);
-//           setLoading(false);
-//         }
-//       } catch (error) {
-//         setIsError(true);
-//         setLoading(false);
-//       } finally {
-//         setLoading(false);
-//       }
-//     } else {
-//       setIsError(true);
-//     }
-//   }, [username, password]);
 const handleLogin = useCallback(async () => {
     Keyboard.dismiss();
     validateUsername(username);
@@ -80,6 +54,8 @@ const handleLogin = useCallback(async () => {
         setLoading(true);
         await login(username, password);
         const userJson = await AsyncStorage.getItem("user");
+        console.log(userJson,'>>>>>>>>>>>>>userJsonuserJson')
+        console.log(isLoggedIn,'>>>>>>>>>>>>>isLoggedInisLoggedIn')
         if (userJson && isLoggedIn) {
             router.push("./tabs");
         } else {
@@ -128,10 +104,10 @@ const handleLogin = useCallback(async () => {
     if (username && password) {
       if (!isUserFound) {
         return setTitle(
-          `Vui lòng cập nhật ứng dụng`
+          `Tài khoản hoặc mật khẩu không đúng. vui lòng kiểm tra lại`
         );
       } else {
-        return setTitle("Vui lòng cập nhật ứng dụng");
+        return setTitle("Tài khoản hoặc mật khẩu không đúng. vui lòng kiểm tra lại");
       }
     }
   }, [username, password]);
