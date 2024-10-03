@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
   Dimensions,
 } from "react-native";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveTextInput";
 import { Button } from "react-native-paper";
 import { Colors } from "@/constants/Colors";
@@ -20,6 +20,8 @@ import { useFetchData } from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuth } from "@/context/AuthContext";
 import LoadingPopup from "@/components/loading/LoadingPopup ";
+import Loader from "@/components/loading/Loading";
+import ErrorLogin from "@/components/loading/ErrorLogin";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const LoginScreen = () => {
@@ -32,6 +34,7 @@ const LoginScreen = () => {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [usernameError, setUsernameError] = useState(false);
+  const [title, setTitle] = useState("");
 
   const validateUsername = useCallback((text: string) => {
     setUsername(text);
@@ -43,7 +46,32 @@ const LoginScreen = () => {
   }, []);
 
   const { isUserFound } = useFetchData(username);
-  const handleLogin = useCallback(async () => {
+//   const handleLogin = useCallback(async () => {
+//     Keyboard.dismiss();
+//     validateUsername(username);
+//     validatePassword(password);
+//     if (username && password) {
+//       try {
+//         setLoading(true);
+//         await login(username, password);
+//         const userJson = await AsyncStorage.getItem("user");
+//         if (userJson) {
+//           router.push("./tabs");
+//         } else {
+//           setIsError(true);
+//           setLoading(false);
+//         }
+//       } catch (error) {
+//         setIsError(true);
+//         setLoading(false);
+//       } finally {
+//         setLoading(false);
+//       }
+//     } else {
+//       setIsError(true);
+//     }
+//   }, [username, password]);
+const handleLogin = useCallback(async () => {
     Keyboard.dismiss();
     validateUsername(username);
     validatePassword(password);
@@ -52,8 +80,8 @@ const LoginScreen = () => {
         setLoading(true);
         await login(username, password);
         const userJson = await AsyncStorage.getItem("user");
-        if (userJson) {
-          router.push("./tabs");
+        if (userJson && isLoggedIn) {
+            router.push("./tabs");
         } else {
           setIsError(true);
           setLoading(false);
@@ -89,6 +117,24 @@ const LoginScreen = () => {
       });
     }
   };
+
+
+  useEffect(() => {
+    if (username == "" && password == "") {
+      return setTitle("Số định danh cá nhân và mật khẩu không được để trống");
+    } else if (username != "" && password == "") {
+      return setTitle("Số định danh cá nhân và mật khẩu không được để trống");
+    }
+    if (username && password) {
+      if (!isUserFound) {
+        return setTitle(
+          `Vui lòng cập nhật ứng dụng`
+        );
+      } else {
+        return setTitle("Vui lòng cập nhật ứng dụng");
+      }
+    }
+  }, [username, password]);
 
 
   return (
@@ -171,6 +217,11 @@ const LoginScreen = () => {
                 {isNoticifation ? "Đăng nhập" : "Đăng ký"}
               </Button>
               <LoadingPopup visible={loading} text="Đang xử lý..." />
+              <ErrorLogin
+              isModalVisible={isError}
+              setModalVisible={setIsError}
+              title={title}
+            />
             </View>
             <View style={{ marginTop: 20 }}>
               {isNoticifation ? (
