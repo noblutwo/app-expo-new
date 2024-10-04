@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'right',
-        color: lightTheme.colors.text,
+        color: "#000000",
         fontFamily: lightTheme.fontSizes.fontFamilyRegular,
+
     },
 })
