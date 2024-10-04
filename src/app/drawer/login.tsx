@@ -8,6 +8,8 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
   Dimensions,
+  BackHandler,
+  Alert,
 } from "react-native";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveTextInput";
@@ -24,7 +26,7 @@ import ErrorLogin from "@/components/loading/ErrorLogin";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const LoginScreen = () => {
-  const { login, handlerNoticifation, isLoggedIn, isNoticifation } = useAuth();
+  const { login, handlerNoticifation,hiddenNoticifation,isHiddenLoggedIn, isLoggedIn, isNoticifation } = useAuth();
   const scrollViewRef: any = useRef(null);
   const [scrollEnabled, setScrollEnabled] = useState(false);
   const globalStyles = useStyles();
@@ -54,9 +56,9 @@ const handleLogin = useCallback(async () => {
         setLoading(true);
         await login(username, password);
         const userJson = await AsyncStorage.getItem("user");
-        console.log(userJson,'>>>>>>>>>>>>>userJsonuserJson')
-        console.log(isLoggedIn,'>>>>>>>>>>>>>isLoggedInisLoggedIn')
         if (userJson && isLoggedIn) {
+          handlerNoticifation(true)
+          hiddenNoticifation(true)
             router.push("./tabs");
         } else {
           setIsError(true);
@@ -112,6 +114,20 @@ const handleLogin = useCallback(async () => {
     }
   }, [username, password, isLoggedIn]);
 
+  useEffect(() => {
+    hiddenNoticifation(false)
+    const backAction = () => {
+      hiddenNoticifation(false)
+      router.back(); // Quay về màn hình trước
+      return true; // Ngăn chặn hành động mặc định
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    );
+
+    return () => backHandler.remove(); // Cleanup listener
+  }, [router]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

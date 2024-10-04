@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   SafeAreaView,
@@ -66,7 +66,7 @@ const ScreenWithOverlap = () => {
   const [openModalDd, setOpenModalDd] = useState(false);
   const [modalType, setModalType] = useState<string>("");
   const [openId, setOpenId] = useState<number>(0)
-  const { authUser } = useAuth();
+  const { authUser, hiddenNoticifation } = useAuth();
   const globalStyle = useStyles();
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -74,6 +74,8 @@ const ScreenWithOverlap = () => {
     setModalType(title);
     setOpen(true);
   };
+
+  // useEffect(() =>hiddenNoticifation(false), [])
 
   const openModalInfor = (title: string) => {
     setType(title);

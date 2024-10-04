@@ -5,11 +5,27 @@ import { Colors, FontSize } from "@/constants/Colors";
 import { useAuth } from "@/context/AuthContext";
 import { lightTheme } from "@/styles/theme";
 import { router } from "expo-router";
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity,BackHandler, Alert  } from "react-native";
 
 export default function homeScreen() {
-  const { handlerNoticifation} = useAuth();
+  const { handlerNoticifation,hiddenNoticifation, isHiddenLoggedIn} = useAuth();
+
+  useEffect(() => {
+    const backAction = () => {
+      hiddenNoticifation(false)
+      router.back();
+      return true; // Ngăn chặn hành động mặc định
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    );
+    
+    return () => backHandler.remove(); // Cleanup
+  }, [isHiddenLoggedIn]);
+
   return (
     <View style={styles.container}>
       <BackgroundImage source={imageSources["bglogin"]}>
@@ -24,6 +40,7 @@ export default function homeScreen() {
             <Button
               onPress={() => {
                 handlerNoticifation(true)
+                // hiddenNoticifation(true)
                 router.push("/drawer/login")
               } }
               mode="outlined"
