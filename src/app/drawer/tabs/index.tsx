@@ -576,7 +576,7 @@ const styles = StyleSheet.create({
   textLogin: {
     fontSize: pResponsive(13),
     fontFamily: lightTheme.fontFamilies.sansSerif,
-    color: lightTheme.colors.text,
+    color: '#383637',
   },
   title: {
     fontSize: 16,
