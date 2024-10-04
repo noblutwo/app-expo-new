@@ -25,12 +25,12 @@ export default function InfoDropDownFamily({data, title, open, setOpen, info}: D
                     <AppImage source={open ? "dropDown" : "dropRight"} style={styles.icon}/>
                 </TouchableOpacity>
             </View>
-            <View>
+            {open && <View>
                 {data?.map((item: any, index: number) => (
                     <ItemSelectInfo key={index} index={index} info={item?.info} value={item?.key}/>
                 ))}
 
-            </View>
+            </View>}
 
 
         </View>

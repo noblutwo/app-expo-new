@@ -38,6 +38,7 @@ const dataHuman = [
 function Family() {
     const [openInfoSoon, setOpenInfoSoon] = useState(true);
     const [openInfoHuman, setOpenInfoHuman] = useState(true);
+    console.log("openInfoHuman", openInfoHuman)
     return (
         <ScrollView style={styles.container}>
             <InfoDropDownFamily data={dataResident}
