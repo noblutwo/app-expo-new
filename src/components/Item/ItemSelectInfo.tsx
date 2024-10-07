@@ -1,12 +1,13 @@
 import {StyleSheet, Text, View} from "react-native";
 import React from "react";
 import { lightTheme } from "@/styles/theme";
+import {FontSize} from "@/constants/Colors";
 
 export default function ItemSelectInfo({info, value, index}: any) {
     return (
         <View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15}}>
-                <Text style={{color: '#a1a1a1'}}>{info}</Text>
+                <Text style={{color: '#a1a1a1',fontSize:FontSize.textSmall}}>{info}</Text>
                 <Text maxFontSizeMultiplier={4} numberOfLines={4} ellipsizeMode={'middle'}
                     style={[
                         styles.text, 

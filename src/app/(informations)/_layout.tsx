@@ -61,7 +61,7 @@ export default function AuthLayout() {
                     ),
                     headerBackground: () => (
                         <ImageBackground
-                            source={imageSources["bgHeader"]}
+                            source={imageSources["bgHeaderFamily"]}
                             style={styles.headerBackground}
                         />
 
