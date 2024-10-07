@@ -218,7 +218,7 @@ const ScreenWithOverlap = () => {
                     source={item.picture}
                     style={globalStyle.imageOverlap}
                   />
-                  <Text style={styles.textLogin}>{item.title}</Text>
+                  <Text style={[styles.textLogin, {textAlign: 'center'}]}>{item.title}</Text>
                 </TouchableOpacity>
               ))}
             </View>
