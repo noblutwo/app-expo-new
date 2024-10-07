@@ -10,7 +10,7 @@ import { useRouter } from 'expo-router';
 export default function AuthLayout() {
     // const rou = useRouter();
     const pathname = usePathname();
-    const { isNoticifation, handlerNoticifation,isLoggedIn} = useAuth();
+    const { isNoticifation,isHiddenLoggedIn,isLoggedIn} = useAuth();
     const handlePress = () => {
         const authPaths = ["/drawer/login", "/drawer/register", "/drawer/forgotPassword", "/drawer/activateAccount"];
         if (authPaths.includes(pathname)) {
@@ -23,7 +23,7 @@ export default function AuthLayout() {
               router.push("/home");  
         }
       };
-    const commonHeaderOptions = isLoggedIn ? {headerShown: false} : {
+    const commonHeaderOptions = isHiddenLoggedIn ? {headerShown: false} : {
         headerTitleAlign: "center" as const,
         headerTitle: () => null,
         headerLeft: () => (

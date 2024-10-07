@@ -12,6 +12,8 @@ type AuthContextType = {
     logout: () => Promise<void>;
     updateActivity: () => void;
     handlerNoticifation: (isNoticifation: boolean) => void;
+    hiddenNoticifation: (isHiddenLoggedIn:boolean) => void,
+    isHiddenLoggedIn: boolean
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -29,6 +31,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [authUser, setAuthUser] = useState<any>(null);
     const [lastActivity, setLastActivity] = useState(Date.now());
+    const [isHiddenLoggedIn, setIsHiddenLoggedIn] = useState(false);
 
     const TIMEOUT_DURATION = 4 * 60 * 1000;
 
@@ -65,7 +68,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
                 setAuthUser(data.user);
                 setIsLoggedIn(success);
             const at = await AsyncStorage.setItem('user', JSON.stringify(data.user));
-            console.log(at,'>>>>>>>>>>>>>atatatatat')
                 updateActivity();
             }
         } catch (error) {
@@ -93,6 +95,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
         setIsNoticifation(bs)
     }
 
+     const hiddenNoticifation = (boolean:boolean) => {
+        setIsHiddenLoggedIn(boolean)
+     }
     const value = {
         isNoticifation,
         isLoggedIn,
@@ -100,7 +105,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
         login,
         logout,
         updateActivity,
-        handlerNoticifation
+        handlerNoticifation,
+        isHiddenLoggedIn,
+        hiddenNoticifation
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

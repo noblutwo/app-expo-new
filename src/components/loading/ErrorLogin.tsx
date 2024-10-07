@@ -35,7 +35,7 @@ const ErrorLogin: React.FC<ErrorLoginProps> = ({
             onPress={toggleModal}
             style={{
               backgroundColor: lightTheme.colorTextLogin,
-              // borderColor: Colors.colorApp.color13,
+              borderColor: 'transparent',
               borderWidth: 1.5,
               borderRadius: 5,
               marginVertical: 5,

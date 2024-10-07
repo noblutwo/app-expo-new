@@ -11,21 +11,27 @@
       "backgroundColor": "#ffffff",
       "image": "./src/assets/images/splash.png"
     },
+    "icon": "./src/assets/images/icon.png",
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.noblutwo.expoapp",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/adaptive-icons.png",
+        "foregroundImage": "./src/assets/images/icon.png",
         "backgroundColor": "#24701A"
       },
       "package": "com.noblutwo.expoapp",
       "permissions": [
         "android.permission.CAMERA",
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "versionCode": 1
     },
-    
     "web": {
       "favicon": "./src/assets/images/src_assets_images_bg_logo_square.png"
     },

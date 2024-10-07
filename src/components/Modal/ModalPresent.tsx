@@ -46,7 +46,9 @@ function ModalPresent({open, setOpen}: OpenBole) {
                                 <Text style={{fontSize: FontSize.textLowercase, fontWeight: 700}}>
                                     Chọn giấy tờ muốn xuất trình
                                 </Text>
-                                <Feather name="x" size={24} color="black"/>
+                                <TouchableOpacity onPress={() => setOpen(false)}>
+                                     <Feather name="x" size={24} color="black"/>
+                                </TouchableOpacity>
                             </View>
                             <View style={styles.linedUser}/>
                             <View style={styles.gridContainer}>

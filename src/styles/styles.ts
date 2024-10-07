@@ -301,7 +301,7 @@ export const useStyles = () => {
             textAlign: 'center',
             fontSize: 14,
             fontFamily: lightTheme.fontSizes.fontFamilyRegular,
-            color:lightTheme.colors.text,
+            color: '#383637',
             fontWeight:"semibold"
         },
         slideLayoutHome: {

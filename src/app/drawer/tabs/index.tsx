@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   SafeAreaView,
@@ -66,7 +66,7 @@ const ScreenWithOverlap = () => {
   const [openModalDd, setOpenModalDd] = useState(false);
   const [modalType, setModalType] = useState<string>("");
   const [openId, setOpenId] = useState<number>(0)
-  const { authUser } = useAuth();
+  const { authUser, hiddenNoticifation } = useAuth();
   const globalStyle = useStyles();
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -218,7 +218,7 @@ const ScreenWithOverlap = () => {
                     source={item.picture}
                     style={globalStyle.imageOverlap}
                   />
-                  <Text style={styles.textLogin}>{item.title}</Text>
+                  <Text style={[styles.textLogin, {textAlign: 'center'}]}>{item.title}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -282,7 +282,7 @@ const ScreenWithOverlap = () => {
         style={{
           flexDirection: "row",
           alignItems: "center",
-          paddingVertical: 10,
+          paddingVertical: 5,
         }}
       >
         <Feather name="calendar" size={24} color="#9c9c9c" />
@@ -334,7 +334,7 @@ const ScreenWithOverlap = () => {
           </View>
           {renderFavoriteUtilities()}
           <View style={styles.container}>
-            <Text style={[styles.textLogin, styles.title]}>Thông tin</Text>
+            <Text style={[styles.textSectionLayoutHome, styles.title]}>Thông tin</Text>
             <View style={styles.rowContainer}>
               {renderColumn({
                 titleInfor: "Cảnh báo thủ đoạn tội phạm",
@@ -345,10 +345,9 @@ const ScreenWithOverlap = () => {
               })}
               <View
                 style={{
-                  width: 2,
+                  width: 1.5,
                   height: "100%",
                   backgroundColor: "#dddddd",
-                  marginHorizontal: 5,
                 }}
               />
               {renderColumn({
@@ -575,7 +574,7 @@ const styles = StyleSheet.create({
   textLogin: {
     fontSize: pResponsive(13),
     fontFamily: lightTheme.fontFamilies.sansSerif,
-    color: lightTheme.colors.text,
+    color: '#383637',
   },
   title: {
     fontSize: 16,
@@ -610,8 +609,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 22,
+    height: 23,
     marginRight: 5,
   },
   titleText: {

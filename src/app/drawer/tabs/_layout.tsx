@@ -51,7 +51,7 @@ export default function TabPage() {
           return (
             <AppImage
               source={tabConfig[tabName]?.icon[focused ? "active" : "inactive"]}
-              style={[ tabConfig[tabName].label === "" ? { width: 50, padding:4, height: 50, marginTop:20,backgroundColor:'#D81C24', borderRadius: 20 } : styles.image]}
+              style={[ tabConfig[tabName].label === "" ? { width: 50, height: 50, marginTop:20,backgroundColor:'#D81C24', borderRadius: 20 } : styles.image]}
               resizeMode="contain"
             />
           );
