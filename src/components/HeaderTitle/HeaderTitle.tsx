@@ -10,7 +10,7 @@ export const HeaderTitle: React.FC<{ title: string }> = ({title}) => (
             paddingHorizontal: 10,
             color: '#000000',
             fontWeight: '700',
-            fontSize: 18,
+            fontSize: 20,
             fontFamily: FontSize.fontFamilyRegular,
         }}
     >
