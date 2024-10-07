@@ -47,7 +47,7 @@ const LoginScreen = () => {
   }, []);
 
   const { isUserFound } = useFetchData(username);
-const handleLogin = useCallback(async () => {
+  const handleLogin = useCallback(async () => {
     Keyboard.dismiss();
     validateUsername(username);
     validatePassword(password);

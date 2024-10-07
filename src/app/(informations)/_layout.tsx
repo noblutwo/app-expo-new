@@ -10,7 +10,6 @@ import {ModalQrCode} from "@components/Modal/ModalQrCode";
 
 export default function AuthLayout() {
     const {isLoggedIn} = useAuth();
-    console.log("isLoggedIn", isLoggedIn)
     const [openModal, setOpenModal] = useState(false)
     const handler = () => {
         if (isLoggedIn) {
