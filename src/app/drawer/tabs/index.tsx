@@ -75,8 +75,6 @@ const ScreenWithOverlap = () => {
     setOpen(true);
   };
 
-  // useEffect(() =>hiddenNoticifation(false), [])
-
   const openModalInfor = (title: string) => {
     setType(title);
     setIsInformation(true);
