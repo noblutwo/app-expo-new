@@ -56,7 +56,6 @@ const LoginScreen = () => {
                 setLoading(true);
                 await login(username, password);
                 const userJson = await AsyncStorage.getItem("user");
-                await AsyncStorage.setItem("login", JSON.stringify(true));
                 if (userJson && isLoggedIn) {
                     handlerNoticifation(true)
                     hiddenNoticifation(true)
