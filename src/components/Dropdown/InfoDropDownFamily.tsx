@@ -2,21 +2,10 @@ import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native
 import AppImage from "@components/Images/ImgReq";
 import ItemSelectInfo from "@components/Item/ItemSelectInfo";
 import React from "react";
+import {Dropdown} from "@/interface";
 
-interface Item {
-    info: string;
-    key: string; // Added key for easy access
-}
 
-interface Dropdown {
-    data: any; // The authUser object
-    title: string;
-    open: boolean;
-    setOpen: (open: boolean) => void;
-    info: Item[]; // Array containing info objects
-}
-
-export default function InfoDropDownFamily({data, title, open, setOpen, info}: Dropdown) {
+export default function InfoDropDownFamily({data, title, open, setOpen, value}: Dropdown) {
     return (
         <ScrollView style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -27,9 +16,10 @@ export default function InfoDropDownFamily({data, title, open, setOpen, info}: D
             </View>
             {open &&
                 <View style={{marginTop: 12}}>
-                    {data?.map((item: any, index: number) => (
-                        <ItemSelectInfo key={index} index={index} info={item?.info} value={item?.key}/>
-                    ))}
+                    <ItemSelectInfo info={data?.sdd} value={value?.sdd}/>
+                    <ItemSelectInfo info={data?.date} value={value?.date}/>
+                    <ItemSelectInfo info={data?.sex} value={value?.sex}/>
+                    <ItemSelectInfo info={data?.relationship} value={value?.relationship}/>
                 </View>
             }
         </ScrollView>

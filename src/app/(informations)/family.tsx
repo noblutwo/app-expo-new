@@ -1,58 +1,39 @@
-import {InfoDropDown} from "@components/Dropdown/InfoDropDown";
 import React, {useState} from "react";
 import {ScrollView, StyleSheet, View} from "react-native";
 import InfoDropDownFamily from "@components/Dropdown/InfoDropDownFamily";
+import {useAuth} from "@/context/AuthContext";
+import {parseInfo} from "@/constants";
+import {ValueItem} from "@/interface";
 
-const dataResident = [
-    {
-        info: "Số định danh cá nhân", key: "123462950"
-    },
-    {
-        info: "Ngày sinh", key: "12-05-1973"
-    },
-    {
-        info: "Giới tính", key: "Nữ"
-    },
-    {
-        info: "Quan hệ với chủ hộ", key: "Chủ hộ"
-    },
-
-]
-const dataHuman = [
-    {
-        info: "Số định danh cá nhân", key: "123462950"
-    },
-    {
-        info: "Ngày sinh", key: "12-05-1978"
-    },
-    {
-        info: "Giới tính", key: "Nam"
-    },
-    {
-        info: "Quan hệ với chủ hộ", key: "Chồng"
-    },
-
-]
+const dataResident: ValueItem = {
+    sdd: "Số định danh cá nhân",
+    date: "Ngày sinh",
+    sex: "Giới tính",
+    relationship: "Quan hệ với chủ hộ"
+}
 
 
 function Family() {
+    const {authUser} = useAuth();
     const [openInfoSoon, setOpenInfoSoon] = useState(true);
     const [openInfoHuman, setOpenInfoHuman] = useState(true);
-    console.log("openInfoHuman", openInfoHuman)
+    const motherInfo = parseInfo(authUser.mother);
+    const fatherInfo = parseInfo(authUser.father);
+    console.log("motherInfo", motherInfo)
     return (
         <ScrollView style={styles.container}>
             <InfoDropDownFamily data={dataResident}
-                                title={"Nguyễn Thị Định"}
+                                value={motherInfo}
+                                title={motherInfo.name || "Nguyễn Mai Định"}
                                 open={openInfoHuman}
                                 setOpen={setOpenInfoHuman}
-                                info={dataResident}
             />
             <View style={styles.appLineBig}/>
-            <InfoDropDownFamily data={dataHuman}
-                                title={"Nguyễn Văn Trung"}
+            <InfoDropDownFamily data={dataResident}
+                                value={fatherInfo}
+                                title={fatherInfo?.name || "Trần Văn Trung"}
                                 open={openInfoSoon}
                                 setOpen={setOpenInfoSoon}
-                                info={dataResident}
             />
             <View style={styles.appLineBig}/>
 

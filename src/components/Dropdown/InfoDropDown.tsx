@@ -2,6 +2,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 import AppImage from "@components/Images/ImgReq";
 import ItemSelectInfo from "@components/Item/ItemSelectInfo";
+import {parseInfo} from "@/constants";
 
 interface Item {
     info: string;
@@ -17,6 +18,7 @@ interface Dropdown {
 }
 
 export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
+    const motherInfo = parseInfo(data.mother);
     return (
         <View style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -30,9 +32,9 @@ export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
                     <ItemSelectInfo info={info[0]?.info} value={data?.Address}/>
                     <ItemSelectInfo info={info[1]?.info} value={""}/>
                     <ItemSelectInfo info={info[2]?.info} value={data?.Address}/>
-                    <ItemSelectInfo info={info[3]?.info} value={data?.me}/>
-                    <ItemSelectInfo info={info[4]?.info} value={"122462960"}/>
-                    <ItemSelectInfo info={info[5]?.info} value={"Con đẻ"}/>
+                    <ItemSelectInfo info={info[3]?.info} value={motherInfo.name}/>
+                    <ItemSelectInfo info={info[4]?.info} value={motherInfo.sdd}/>
+                    <ItemSelectInfo info={info[5]?.info} value={data?.quanhe}/>
                 </View>
             ) : open && (
                 <View>
@@ -46,8 +48,6 @@ export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
                     <ItemSelectInfo info={info[7]?.info} value={data?.quequan}/>
                 </View>
             )}
-
-
         </View>
     );
 }

@@ -20,8 +20,8 @@ const dataResident = [
     {info: "Nơi thường trú", key: "Address"},
     {info: "Nơi tạm trú", key: ""},
     {info: "Nơi ở hiện tại", key: "Address"},
-    {info: "Họ và tên chủ hộ", key: "giadinh[0]?.name"},
-    {info: "Số định danh cá nhân chủ hộ", key: "giadinh[0]?.sdd"},
+    {info: "Họ và tên chủ hộ", key: ""},
+    {info: "Số định danh cá nhân chủ hộ", key: ""},
     {info: "Quan hệ với chủ hộ", key: "quanhe"},
 ];
 
