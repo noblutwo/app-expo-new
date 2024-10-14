@@ -5,8 +5,7 @@ import React from "react";
 import ItemCard from "@components/Item/ItemCard";
 
 function IdCard() {
-    // console.log("parameterName", parameterName)
-    // console.log("url", url)
+
     return (
         <View style={styles.container}>
             <View style={styles.layoutContainer}>

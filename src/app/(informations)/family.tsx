@@ -17,21 +17,20 @@ function Family() {
     const {authUser} = useAuth();
     const [openInfoSoon, setOpenInfoSoon] = useState(true);
     const [openInfoHuman, setOpenInfoHuman] = useState(true);
-    const motherInfo = parseInfo(authUser.mother);
-    const fatherInfo = parseInfo(authUser.father);
-    console.log("motherInfo", motherInfo)
+    const convertJsonMother = JSON.parse(authUser.mother)
+    const convertJsonFather = JSON.parse(authUser.father)
     return (
         <ScrollView style={styles.container}>
             <InfoDropDownFamily data={dataResident}
-                                value={motherInfo}
-                                title={motherInfo.name || "Nguyễn Mai Định"}
+                                value={convertJsonMother}
+                                title={convertJsonMother?.name || "Nguyễn Mai Định"}
                                 open={openInfoHuman}
                                 setOpen={setOpenInfoHuman}
             />
             <View style={styles.appLineBig}/>
             <InfoDropDownFamily data={dataResident}
-                                value={fatherInfo}
-                                title={fatherInfo?.name || "Trần Văn Trung"}
+                                value={convertJsonFather}
+                                title={convertJsonFather?.name || "Trần Văn Trung"}
                                 open={openInfoSoon}
                                 setOpen={setOpenInfoSoon}
             />

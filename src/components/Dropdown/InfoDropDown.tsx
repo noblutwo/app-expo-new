@@ -18,7 +18,7 @@ interface Dropdown {
 }
 
 export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
-    const motherInfo = parseInfo(data.mother);
+    const motherInfo = JSON.parse(data.mother);
     return (
         <View style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
