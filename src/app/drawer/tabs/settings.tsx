@@ -108,7 +108,7 @@ export default function LayoutSettings() {
                     </View>
                 </View>
             </BackgroundImage>
-            <ScrollView style={{paddingTop: 20,backgroundColor:'white'}} contentContainerStyle={{paddingBottom: 80}}>
+            <ScrollView style={{paddingTop: 20,backgroundColor:'white'}} contentContainerStyle={{paddingBottom: 100}}>
                 <ItemSelectSetting data={titleItem} title={"Tài khoản"}/>
                 <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem2} title={"Ứng dụng"}/>

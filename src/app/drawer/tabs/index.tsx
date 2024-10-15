@@ -66,7 +66,7 @@ const ScreenWithOverlap = () => {
   const [openModalDd, setOpenModalDd] = useState(false);
   const [modalType, setModalType] = useState<string>("");
   const [openId, setOpenId] = useState<number>(0)
-  const { authUser, hiddenNoticifation } = useAuth();
+  const { authUser } = useAuth();
   const globalStyle = useStyles();
   const scrollY = useRef(new Animated.Value(0)).current;
 

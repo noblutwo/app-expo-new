@@ -54,7 +54,6 @@ export default function ModalResidence({modalVisible, setModalVisible, openId}: 
 
             if (isEqual) {
                 const findItem = infoScreen.find((item) => item?.id === openId)
-                console.log("findItem", findItem?.key)
                 await AsyncStorage.setItem('passErr', '5');
                 router.push(`${findItem?.key}`);
                 return;

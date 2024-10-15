@@ -8,8 +8,6 @@ import InfoCardUser from "@components/Dropdown/InfoCardUser";
 
 function User() {
     const {user} = useLocalSearchParams();
-    console.log("user", user);
-
     return (
         <View style={styles.container}>
             <ScrollView>

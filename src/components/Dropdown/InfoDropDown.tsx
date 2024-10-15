@@ -13,10 +13,11 @@ interface Dropdown {
     title: string;
     open: boolean;
     setOpen: (open: boolean) => void;
-    info: Item[]; // Array containing info objects
+    info: Item[];
+    user: any
 }
 
-export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
+export function InfoDropDown({data, title, open, setOpen, info, user}: Dropdown) {
     return (
         <View style={styles.containerLayout}>
             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -27,27 +28,25 @@ export function InfoDropDown({data, title, open, setOpen, info}: Dropdown) {
             </View>
             {info[0]?.info === "Nơi thường trú" ? open && (
                 <View>
-                    <ItemSelectInfo info={info[0]?.info} value={data?.Address}/>
+                    <ItemSelectInfo info={info[0]?.info} value={user?.Address}/>
                     <ItemSelectInfo info={info[1]?.info} value={""}/>
-                    <ItemSelectInfo info={info[2]?.info} value={data?.Address}/>
-                    <ItemSelectInfo info={info[3]?.info} value={data?.me}/>
-                    <ItemSelectInfo info={info[4]?.info} value={"122462960"}/>
-                    <ItemSelectInfo info={info[5]?.info} value={"Con đẻ"}/>
+                    <ItemSelectInfo info={info[2]?.info} value={user?.Address}/>
+                    <ItemSelectInfo info={info[3]?.info} value={data?.name}/>
+                    <ItemSelectInfo info={info[4]?.info} value={data?.sdd}/>
+                    <ItemSelectInfo info={info[5]?.info} value={data?.relationship}/>
                 </View>
             ) : open && (
                 <View>
-                    <ItemSelectInfo info={info[0]?.info} value={data?.Name}/>
-                    <ItemSelectInfo info={info[1]?.info} value={data?.CCCD}/>
-                    <ItemSelectInfo info={info[2]?.info} value={data?.Sex}/>
-                    <ItemSelectInfo info={info[3]?.info} value={data?.DOB}/>
-                    <ItemSelectInfo info={info[4]?.info} value={data?.dantoc}/>
-                    <ItemSelectInfo info={info[5]?.info} value={data?.tongiao}/>
-                    <ItemSelectInfo info={info[6]?.info} value={data?.quoctich}/>
-                    <ItemSelectInfo info={info[7]?.info} value={data?.quequan}/>
+                    <ItemSelectInfo info={info[0]?.info} value={user?.Name}/>
+                    <ItemSelectInfo info={info[1]?.info} value={user?.CCCD}/>
+                    <ItemSelectInfo info={info[2]?.info} value={user?.Sex}/>
+                    <ItemSelectInfo info={info[3]?.info} value={user?.DOB}/>
+                    <ItemSelectInfo info={info[4]?.info} value={data?.nation}/>
+                    <ItemSelectInfo info={info[5]?.info} value={data?.religion}/>
+                    <ItemSelectInfo info={info[6]?.info} value={data?.nationality}/>
+                    <ItemSelectInfo info={info[7]?.info} value={data?.hometown}/>
                 </View>
             )}
-
-
         </View>
     );
 }

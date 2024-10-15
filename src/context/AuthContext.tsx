@@ -1,4 +1,3 @@
-
 import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {router} from 'expo-router';
@@ -12,7 +11,7 @@ type AuthContextType = {
     logout: () => Promise<void>;
     updateActivity: () => void;
     handlerNoticifation: (isNoticifation: boolean) => void;
-    hiddenNoticifation: (isHiddenLoggedIn:boolean) => void,
+    hiddenNoticifation: (isHiddenLoggedIn: boolean) => void,
     isHiddenLoggedIn: boolean
 };
 
@@ -67,7 +66,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
             if (data.user) {
                 setAuthUser(data.user);
                 setIsLoggedIn(success);
-            const at = await AsyncStorage.setItem('user', JSON.stringify(data.user));
+                await AsyncStorage.setItem('user', JSON.stringify(data.user));
                 updateActivity();
             }
         } catch (error) {
@@ -95,9 +94,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
         setIsNoticifation(bs)
     }
 
-     const hiddenNoticifation = (boolean:boolean) => {
+    const hiddenNoticifation = (boolean: boolean) => {
         setIsHiddenLoggedIn(boolean)
-     }
+    }
     const value = {
         isNoticifation,
         isLoggedIn,
