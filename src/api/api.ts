@@ -1,8 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {accountUrl, historyUrl, loginUrl, urlApiVn, urlInformation} from "@/constants";
-
-
+import {accountUrl, historyUrl, loginUrl, urlApiVn, urlInformation, vneIdUser} from "@/constants";
 
 
 interface MyObject {
@@ -54,9 +52,9 @@ export const useFetchData = (username: string) => {
     return {isUserFound, isLoading, error};
 };
 
-export const fetchDataHistory = async (id: string) => {
+export const fetchDataInformation = async (id: string) => {
     try {
-        const response = await axios.get(`${historyUrl}/${id}`);
+        const response = await axios.get(`${vneIdUser}/${id}`);
         return response.data;
     } catch (error) {
         throw error;
@@ -101,14 +99,6 @@ export interface City {
     Districts: District[];
 }
 
-export const fetchDataInformation = async () => {
-    try {
-        const response = await axios.get<City[]>(urlInformation);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-    }
-};
 
 export const fetchDataVn = async () => {
     try {

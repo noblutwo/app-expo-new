@@ -9,12 +9,9 @@ import {
     NativeSyntheticEvent,
     NativeScrollEvent,
 } from "react-native";
-
 import AppImage from "@/components/Images/ImgReq";
-
 import Checkbox from "expo-checkbox";
 import {router, useRouter} from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const {width, height} = Dimensions.get("window");
 

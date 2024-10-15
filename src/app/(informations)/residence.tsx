@@ -1,9 +1,10 @@
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {router, usePathname} from "expo-router";
 import {InfoDropDown} from "@components/Dropdown/InfoDropDown";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {EvilIcons} from '@expo/vector-icons';
 import {useAuth} from "@/context/AuthContext";
+import {fetchDataInformation} from "@/api/api";
 
 const dataAdministrative = [
     {info: "Họ và tên", key: "Name"},
@@ -29,20 +30,39 @@ function ResidenceScreen() {
     const {authUser} = useAuth();
     const [openInfoAdministrative, setOpenInfoAdministrative] = useState(true);
     const [openInfoResident, setOpenInfoResident] = useState(true);
-
+    const [information, setInformation] = useState<any>()
+    const [informationMother, setInformationMother] = useState<any>()
+    const [informationFather, setInformationFather] = useState<any>()
+    const fetchData = async () => {
+        try {
+            const fetchData = await fetchDataInformation(authUser?.Username)
+            const personDataMother = JSON.parse(fetchData[0].mother);
+            const personDataFather = JSON.parse(fetchData[0].father);
+            setInformation(fetchData[0])
+            setInformationMother(personDataMother)
+            setInformationFather(personDataFather)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        fetchData()
+    }, [authUser]);
     return (
         <ScrollView>
             <InfoDropDown
+                user={authUser}
                 info={dataAdministrative}
-                data={authUser}
+                data={information}
                 title={"Thông tin hành chính"}
                 open={openInfoAdministrative}
                 setOpen={setOpenInfoAdministrative}
             />
             <View style={{height: 3, backgroundColor: '#eaeaea'}}/>
             <InfoDropDown
+                user={information}
                 info={dataResident}
-                data={authUser}
+                data={informationMother}
                 title={"Thông tin cư trú"}
                 open={openInfoResident}
                 setOpen={setOpenInfoResident}

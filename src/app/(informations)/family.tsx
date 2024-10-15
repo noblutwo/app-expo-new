@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ScrollView, StyleSheet, View} from "react-native";
 import InfoDropDownFamily from "@components/Dropdown/InfoDropDownFamily";
 import {useAuth} from "@/context/AuthContext";
-import {parseInfo} from "@/constants";
 import {ValueItem} from "@/interface";
+import {fetchDataInformation} from "@/api/api";
 
 const dataResident: ValueItem = {
     sdd: "Số định danh cá nhân",
@@ -12,25 +12,42 @@ const dataResident: ValueItem = {
     relationship: "Quan hệ với chủ hộ"
 }
 
-
 function Family() {
     const {authUser} = useAuth();
     const [openInfoSoon, setOpenInfoSoon] = useState(true);
     const [openInfoHuman, setOpenInfoHuman] = useState(true);
-    const convertJsonMother = JSON.parse(authUser.mother)
-    const convertJsonFather = JSON.parse(authUser.father)
+    const [information, setInformation] = useState<any>()
+    const [informationMother, setInformationMother] = useState<any>()
+    const [informationFather, setInformationFather] = useState<any>()
+    const fetchData = async () => {
+        try {
+            const fetchData = await fetchDataInformation(authUser?.Username)
+            const personDataMother = JSON.parse(fetchData[0].mother);
+            const personDataFather = JSON.parse(fetchData[0].father);
+            setInformation(fetchData[0])
+            setInformationMother(personDataMother)
+            setInformationFather(personDataFather)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    // const convertJsonMother = JSON.parse(information?.mother)
+    // const convertJsonFather = JSON.parse(information?.father)
+    useEffect(() => {
+        fetchData()
+    }, [authUser]);
     return (
         <ScrollView style={styles.container}>
             <InfoDropDownFamily data={dataResident}
-                                value={convertJsonMother}
-                                title={convertJsonMother?.name || "Nguyễn Mai Định"}
+                                value={informationMother}
+                                title={informationMother?.name || "Nguyễn Mai Định"}
                                 open={openInfoHuman}
                                 setOpen={setOpenInfoHuman}
             />
             <View style={styles.appLineBig}/>
             <InfoDropDownFamily data={dataResident}
-                                value={convertJsonFather}
-                                title={convertJsonFather?.name || "Trần Văn Trung"}
+                                value={informationFather}
+                                title={informationFather?.name || "Trần Văn Trung"}
                                 open={openInfoSoon}
                                 setOpen={setOpenInfoSoon}
             />
