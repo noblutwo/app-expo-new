@@ -63,10 +63,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const login = async (username: string, password: string) => {
         try {
             const {data, success} = await postData(username, password);
-            if (data.user) {
-                setAuthUser(data.user);
+            console.log("data", data)
+            if (data) {
+                setAuthUser(data);
                 setIsLoggedIn(success);
-                await AsyncStorage.setItem('user', JSON.stringify(data.user));
+                await AsyncStorage.setItem('user', JSON.stringify(data));
                 updateActivity();
             }
         } catch (error) {

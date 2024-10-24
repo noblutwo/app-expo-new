@@ -6,14 +6,15 @@ import BackgroundImage from "@/components/Images/BackgroundImage";
 import {useResponsiveDimensions} from "@hooks/useResponsiveDimensions";
 import {ItemSelectSetting} from "@components/Item/ItemSelectSetting";
 import {Switch} from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {router} from "expo-router";
 
 
 const {width, height} = Dimensions.get('window')
 export default function LayoutSettings() {
     const [isEnabled, setIsEnabled] = useState(false);
+    const [loading, setLoading] = useState(false)
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-
-
     const titleItem = [
         {
             title: "Lịch sử chia sẻ",
@@ -88,6 +89,18 @@ export default function LayoutSettings() {
             icon: "setting9"
         },
     ]
+
+    const handLogOut = async () => {
+        try {
+            setLoading(true)
+            await AsyncStorage.removeItem('user');
+            router.push("/drawer/login")
+        } catch (err) {
+            console.log(err)
+        } finally {
+            setLoading(false)
+        }
+    }
     return (
         <View style={{flex: 1}}>
             <BackgroundImage source={imageSources["bg_setting"]}
@@ -108,14 +121,16 @@ export default function LayoutSettings() {
                     </View>
                 </View>
             </BackgroundImage>
-            <ScrollView style={{paddingTop: 20,backgroundColor:'white'}} contentContainerStyle={{paddingBottom: 100}}>
+            <ScrollView style={{paddingTop: 20, backgroundColor: 'white'}} contentContainerStyle={{paddingBottom: 100}}>
                 <ItemSelectSetting data={titleItem} title={"Tài khoản"}/>
                 <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem2} title={"Ứng dụng"}/>
                 <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem3} title={"Hỗ trợ"}/>
                 <View style={styles.containerLayout}>
-                    <TouchableOpacity style={{backgroundColor: '#ffb7b7', paddingVertical: 15, borderRadius: 10,marginVertical:10}}>
+                    <TouchableOpacity
+                        onPress={handLogOut}
+                        style={{backgroundColor: '#ffb7b7', paddingVertical: 15, borderRadius: 10, marginVertical: 10}}>
                         <Text style={{
                             textAlign: 'center',
                             color: '#a50000',

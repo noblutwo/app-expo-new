@@ -1,10 +1,10 @@
 export const accountUrl = "https://bhxh.vinbigdata.co.uk/api/read-gg-sheet/Account";
-export const loginUrl = "https://bhxh.vinbigdata.co.uk/api/read-gg-sheet/login/vneidUser";
+export const loginUrl = "https://masteri.org/api/vneid/vneIdUser.php";
 export const historyUrl = "https://bhxh.vinbigdata.co.uk/api/read-gg-sheet/History";
 export const urlInformation =
     "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json";
 export const urlApiVn = "https://provinces.open-api.vn/api/";
-export const vneIdUser = "https://bhxh.vinbigdata.co.uk/api/read-gg-sheet/vneidInformation";
+export const vneIdUser = "https://masteri.org/api/vneid/vneId_information.php";
 
 export const parseInfo = (str: any) => {
     // Loại bỏ dấu ngoặc nhọn ở đầu và cuối
