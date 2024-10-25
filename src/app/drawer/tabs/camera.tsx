@@ -41,7 +41,7 @@ export default function Scanner() {
       />
       {Platform.OS === "android" ? <StatusBar hidden /> : null}
       <CameraView
-        style={StyleSheet.absoluteFillObject}
+        // style={StyleSheet.absoluteFillObject}
         facing="back"
         onBarcodeScanned={({ data }) => {
           if (data && !qrLock.current) {
@@ -52,7 +52,7 @@ export default function Scanner() {
           }
         }}
       />
-      <Overlay />
+      {/* <Overlay /> */}
     </SafeAreaView>
   );
 }

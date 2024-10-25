@@ -70,6 +70,8 @@ const ScreenWithOverlap = () => {
   const globalStyle = useStyles();
   const scrollY = useRef(new Animated.Value(0)).current;
 
+  console.log(authUser,'>>>>kakakaka')
+
   const showQrCode = (title: string, setOpen: any) => {
     setModalType(title);
     setOpen(true);
@@ -175,7 +177,7 @@ const ScreenWithOverlap = () => {
           key={index}
           icon={item.icon}
           title={item.title}
-          showNew={item.icon !== "phongchongdichbenh"}
+          // showNew={item.icon !== "phongchongdichbenh"}
         />
       ))}
     </View>
