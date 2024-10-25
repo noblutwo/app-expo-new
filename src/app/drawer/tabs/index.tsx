@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import {
   View,
   SafeAreaView,
@@ -45,7 +45,7 @@ const ServiceItem = ({ icon, title, showNew }: any) => {
 
   return (
     <View style={globalStyle.serviceItemHome}>
-      {showNew && <Text style={globalStyle.serviceItemTextHome}>Mới</Text>}
+      <Text style={globalStyle.serviceItemTextHome}>Mới</Text>
       <AppImage source={icon} style={globalStyle.iconserviceItemHome} />
       <View style={globalStyle.textContainer}>
         {title.split(",").map((word: string, wordIndex: number) => (
@@ -205,7 +205,7 @@ const ScreenWithOverlap = () => {
             <AppImage source="fav_edit" style={styles.editIcon} />
           </View>
         </View>
-        <View style={styles.containerOverlap}>
+        <View style={[styles.containerOverlap]}>
           {[0, 1].map((rowIndex) => (
             <View key={rowIndex} style={[globalStyle.rowOverlap]}>
               {data.slice(rowIndex * 3, (rowIndex + 1) * 3).map((item) => (
@@ -368,12 +368,12 @@ const ScreenWithOverlap = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: -130,
+    marginTop: -170,
     overflow: "hidden",
   },
   scrollView: {
@@ -400,6 +400,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   profileImageHome: {
+    marginTop:5,
     width: 50,
     height: 50,
     borderRadius: 100,
@@ -428,7 +429,8 @@ const styles = StyleSheet.create({
   searchButtonHome: {
     width: 30,
     height: 30,
-    paddingBottom: 2,
+    paddingBottom: 3,
+    paddingLeft:3,
     borderRadius: 50,
     backgroundColor: "white",
     flexDirection: "column",
