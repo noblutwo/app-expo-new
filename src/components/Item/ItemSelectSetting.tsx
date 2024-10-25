@@ -1,13 +1,15 @@
 import {Dimensions, StyleSheet, Text, View} from "react-native";
 import AppImage from "@components/Images/ImgReq";
-import React from "react";
+import React, {useState} from "react";
 import {useStyles} from "@/styles/styles";
 import {Colors, FontSize} from "@/constants/Colors";
+import {Switch} from "react-native-paper";
 
 const {width, height} = Dimensions.get('window')
 
 export function ItemSelectSetting({data, title}: any) {
     const globalStyles = useStyles();
+
 
     return (
         <View style={styles.containerLayout}>
@@ -21,12 +23,15 @@ export function ItemSelectSetting({data, title}: any) {
                                 {item?.phone || item?.version}
                             </Text>
                         )}
+                        {item?.open}
                         {item?.icon && (
                             <AppImage
                                 source={item?.icon}
                                 style={[globalStyles.imageSliderLogin, styles.appIcon]}
                                 resizeMode="contain"
-                            />)}
+                            />
+                        )
+                        }
                     </View>
                     {/* Ẩn dòng kẻ nếu là phần tử cuối cùng */}
                     {index !== data.length - 1 && <View style={styles.appLine}/>}
@@ -59,8 +64,8 @@ const styles = StyleSheet.create({
         marginVertical: 5, // Thay vì paddingVertical
     },
     appIcon: {
-        width: width * 0.055,
-        height: height * 0.045,
+        width: width * 0.06,
+        height: height * 0.05,
     },
     appTextPhone: {
         color: '#ba4747',
