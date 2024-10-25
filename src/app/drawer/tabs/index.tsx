@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: -170,
+    marginTop: -150,
     overflow: "hidden",
   },
   scrollView: {
@@ -579,7 +579,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    // textAlign: "start",
     marginBottom: 10,
     fontWeight: "bold",
     fontFamily: "sans-serif",
