@@ -5,6 +5,7 @@ import {useStyles} from "@/styles/styles";
 import {Colors, FontSize} from "@/constants/Colors";
 
 const {width, height} = Dimensions.get('window')
+
 export function ItemSelectSetting({data, title}: any) {
     const globalStyles = useStyles();
 
@@ -26,7 +27,6 @@ export function ItemSelectSetting({data, title}: any) {
                                 style={[globalStyles.imageSliderLogin, styles.appIcon]}
                                 resizeMode="contain"
                             />)}
-
                     </View>
                     {/* Ẩn dòng kẻ nếu là phần tử cuối cùng */}
                     {index !== data.length - 1 && <View style={styles.appLine}/>}
@@ -56,11 +56,11 @@ const styles = StyleSheet.create({
     appLine: {
         height: 1, // Chiều cao của gạch ngang
         backgroundColor: '#e3e3e3', // Màu gạch ngang
-        marginVertical: 12, // Thay vì paddingVertical
+        marginVertical: 5, // Thay vì paddingVertical
     },
     appIcon: {
-        width: width * 0.06,
-        height: height * 0.06,
+        width: width * 0.055,
+        height: height * 0.045,
     },
     appTextPhone: {
         color: '#ba4747',

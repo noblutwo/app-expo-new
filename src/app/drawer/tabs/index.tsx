@@ -70,7 +70,6 @@ const ScreenWithOverlap = () => {
     const globalStyle = useStyles();
     const scrollY = useRef(new Animated.Value(0)).current;
 
-
     const showQrCode = (title: string, setOpen: any) => {
         setModalType(title);
         setOpen(true);

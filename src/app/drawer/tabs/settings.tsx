@@ -104,24 +104,23 @@ export default function LayoutSettings() {
     return (
         <View style={{flex: 1}}>
             <BackgroundImage source={imageSources["bg_setting"]}
-                             style={{height: hResponsive(200), position: 'relative'}}>
-                <View style={[styles.containerLayout, {flexDirection: 'row', flex: 1}]}>
+                             style={{height: hResponsive(147), position: 'relative'}}>
+                <View style={[styles.containerLayout,styles.jus, {flexDirection: 'row'}]}>
                     <View style={styles.wrapSetting}>
                         <Text style={{fontSize: FontSize.textLowercase, fontWeight: 600, paddingVertical: 20}}>
                             Cài đặt
                         </Text>
                         <Text>Sử dụng vân tay / khuân mặt để mở khóa ứng dụng nhanh chóng và bảo mật hơn</Text>
                     </View>
-                    <View style={styles.wrapIconSetting}>
+                    <View style={[styles.wrapIconSetting,{top:5}]}>
                         <BackgroundImage
                             source={imageSources["icon_bg_setting"]}
                             style={styles.appImage} // Thay đổi kích thước ở đây
                         />
-
                     </View>
                 </View>
             </BackgroundImage>
-            <ScrollView style={{paddingTop: 20, backgroundColor: 'white'}} contentContainerStyle={{paddingBottom: 100}}>
+            <ScrollView style={{paddingTop: 8, backgroundColor: 'white'}} contentContainerStyle={{paddingBottom: 100}}>
                 <ItemSelectSetting data={titleItem} title={"Tài khoản"}/>
                 <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem2} title={"Ứng dụng"}/>
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
     // setting
     containerLayout: {
         flex: 1,
-        paddingHorizontal: '5%',
+        paddingHorizontal: '3%',
 
     },
     wrapSetting: {
@@ -158,12 +157,12 @@ const styles = StyleSheet.create({
 
     },
     wrapIconSetting: {
-        width: "45%",
+        width: "30%",
         justifyContent: 'center',
     },
     appImage: {
-        width: width * 0.35,
-        height: height * 0.20,
+        width: width * 0.26,
+        height: height * 0.16,
     },
     appLine: {
         height: 1, // Chiều cao của gạch ngang
@@ -183,6 +182,9 @@ const styles = StyleSheet.create({
         color: '#ba4747',
         fontWeight: '700',
         fontSize: FontSize.textLowercase
+    },
+    jus: {
+        justifyContent: 'space-between'
     }
 })
 
