@@ -54,7 +54,7 @@ export const useFetchData = (username: string) => {
 
 export const fetchDataInformation = async (id: string) => {
     try {
-        const response = await axios.get(`${vneIdUser}/${id}`);
+        const response = await axios.get(`${vneIdUser}?Username=${id}`);
         return response.data;
     } catch (error) {
         throw error;
@@ -65,12 +65,13 @@ export const postData = async (username: string, password: string): Promise<{ da
     try {
         const response = await axios.post(
             loginUrl,
-            {username, password},
+            {Username: username, Password: password},
             {
                 withCredentials: true,
                 timeout: 30000,
             }
         );
+
         if (response.status === 200) {
             return {data: response.data, success: true};
         } else {

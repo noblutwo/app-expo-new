@@ -1,4 +1,4 @@
-import {ImageBackground, ScrollView, StyleSheet, Text, View} from "react-native";
+import {Image, ImageBackground, ScrollView, StyleSheet, Text, View} from "react-native";
 import {useLocalSearchParams} from 'expo-router';
 import {FontSize, hResponsive, wResponsive} from "@/constants/Colors";
 import {imageSources} from "@components/Images/ImgReq";
@@ -17,7 +17,7 @@ function User() {
                             Thẻ căn cước công dân
                         </Text>
                         <View style={styles.cccdContainer}>
-                            <ImageBackground
+                            <Image
                                 source={imageSources["cccd"]}
                                 style={[styles.cccd, styles.shadow]}
                             />
@@ -40,7 +40,7 @@ function User() {
                                 Thẻ căn cước công dân
                             </Text>
                             <View style={styles.cccdContainer}>
-                                <ImageBackground
+                                <Image
                                     source={imageSources["cccd"]}
                                     style={[styles.cccd, styles.shadow]}
                                 />

@@ -15,7 +15,7 @@ export default function AuthLayout() {
         if (isLoggedIn) {
             router.back()
         } else {
-            router.push('/')
+            router.push('/drawer/login')
         }
     }
     return (
