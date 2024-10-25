@@ -37,7 +37,8 @@ const LoginScreen = () => {
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-
+    console.log("username", username)
+    console.log("authUser?.Username", authUser?.Username)
     const [usernameError, setUsernameError] = useState(false);
     const [title, setTitle] = useState("");
 
@@ -143,6 +144,9 @@ const LoginScreen = () => {
     useEffect(() => {
         updateLogin()
     }, []);
+    useEffect(() => {
+        setUsername(authUser?.Username)
+    }, [authUser]);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <SafeAreaView style={styles.content}>
