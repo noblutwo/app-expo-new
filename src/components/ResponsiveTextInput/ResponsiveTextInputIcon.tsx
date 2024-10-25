@@ -25,7 +25,7 @@ interface ResponsiveTextInputProps extends TextInputProps {
     icon?: string;
     containerStyle?: ViewStyle;
     username?: string;
-    name?: string
+    name?: string;
 }
 
 const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
