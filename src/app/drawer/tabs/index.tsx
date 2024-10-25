@@ -372,7 +372,7 @@ const styles = StyleSheet.create({
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: - 170,
+    marginTop: -170,
     overflow: "hidden",
   },
   scrollView: {

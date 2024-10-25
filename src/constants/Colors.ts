@@ -24,7 +24,6 @@ export const FontSize = {
     colorUser: 'rgb(83,84,86)',
     lineOne: 'rgb(94,94,94)',
     lineTwo: 'rgb(210,215,221)',
-
     colorServiceTitle: 'rgb(39,94,159)',
     colorUserTitle: 'rgb(119,119,119)'
 }
@@ -35,6 +34,7 @@ export const Colors = {
     colorLogin: 'transparent',
     colorSilver: '#9BA1A6',
     colorItemSetting: '#575757',
+    colorText: "#f3192a",
     light: {
         text: '#11181C',
         background: '#fff',

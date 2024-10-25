@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, ScrollView, View, ImageBackground, TouchableOpacity, useWindowDimensions} from "react-native";
-import {FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {Colors, FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
 import {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import {SceneMap, TabView} from "react-native-tab-view";
@@ -9,15 +9,16 @@ import {LayoutNotFound} from "@components/NotFound/LayoutNotFound";
 
 const TaiKhoanRoute = () => (
     <ScrollView style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
-        <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#c52222'}}>Đánh dấu tất cả đã
+        <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: Colors.colorText}}>Đánh dấu tất
+            cả đã
             đọc</Text>
         <View>
             <Text style={{fontWeight: '700', color: '#777777', paddingVertical: 10}}>12-02-2024</Text>
-            <View style={{backgroundColor: '#f3ece6', padding: 10, borderRadius: 10}}>
+            <View style={{backgroundColor: '#fff8f0', padding: 10, borderRadius: 10}}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                     <Text style={{fontSize: FontSize.textBigLetters, fontWeight: '600', color: '#494949'}}>Mừng ngày đặc
                         biệt của bạn</Text>
-                    <Entypo name="dot-single" size={24} color="red"/>
+                    <Entypo name="dot-single" size={24} color={Colors.colorText}/>
                 </View>
                 <Text style={{paddingVertical: 10}}>Chức bạn có một ngày sinh nhật thật vui vẻ và có những phút giây
                     đáng nhớ khi chào đón ngày đặc
@@ -36,7 +37,7 @@ const HeThongRoute = () => (
     <View style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
         <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#777777'}}>Đánh dấu tất cả đã
             đọc</Text>
-        <LayoutNotFound  styleHeight={100} title={"Bạn không có thông báo nào"}/>
+        <LayoutNotFound styleHeight={100} title={"Bạn không có thông báo nào"}/>
     </View>
 );
 
@@ -44,7 +45,7 @@ const TinTucRoute = () => (
     <View style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
         <Text style={{textAlign: 'right', fontWeight: '700', paddingVertical: 20, color: '#777777'}}>Đánh dấu tất cả đã
             đọc</Text>
-        <LayoutNotFound  styleHeight={100} title={"Bạn không có thông báo nào"}/>
+        <LayoutNotFound styleHeight={100} title={"Bạn không có thông báo nào"}/>
     </View>
 );
 
@@ -70,7 +71,7 @@ export default function Notification() {
 
     return (
         <View style={styles.container}>
-            <BackgroundImage source={imageSources["bgHeader"]} style={{height: hResponsive(150)}}>
+            <BackgroundImage source={imageSources["bgHeader"]} style={{height: hResponsive(108)}}>
                 <View style={styles.headerContainer}>
                     <View style={styles.containerLayout}>
                         <Text style={styles.headerText}>Thông báo</Text>
@@ -85,12 +86,16 @@ export default function Notification() {
                                         style={[styles.tabText, index === idx ? styles.activeTabText : styles.inactiveTabText]}>
                                         {route.title}
                                     </Text>
-                                    {route.key === 'taiKhoan' && <Text style={styles.badge}>1</Text>}
+                                    {route.key === 'taiKhoan' &&
+                                        <View style={{width: wResponsive(15), height: hResponsive(15),}}>
+                                            <Text style={styles.badge}>1</Text>
+                                        </View>
+                                    }
                                 </TouchableOpacity>
                             ))}
                         </View>
                     </View>
-                    <View>
+                    <View style={{width: wResponsive(68), height: hResponsive(75)}}>
                         <ImageBackground
                             source={imageSources["logoVienThong"]}
                             style={styles.logo}
@@ -149,17 +154,17 @@ const styles = StyleSheet.create({
         color: 'gray',
     },
     badge: {
-        backgroundColor: '#bd2828',
-        width: wResponsive(15),
-        height: hResponsive(15),
+        backgroundColor: Colors.colorText,
+        width: '100%',
+        height: '100%',
         textAlign: 'center',
         color: 'white',
         marginLeft: 5,
         borderRadius: 10
     },
     logo: {
-        width: wResponsive(100),
-        height: hResponsive(110),
+        width: "100%",
+        height: "100%",
     },
     bgNotFound: {
         width: wResponsive(100),

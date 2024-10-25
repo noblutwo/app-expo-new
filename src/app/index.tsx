@@ -39,7 +39,6 @@ export default function LoginScreen() {
     useEffect(() => {
         if (pathname !== "/") return
         const checkLoginStatus = async () => {
-            console.log("vao")
             try {
                 const isLoggedIn = await AsyncStorage.getItem('loginUser');
                 if (isLoggedIn === 'true') {
