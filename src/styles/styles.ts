@@ -173,7 +173,6 @@ export const useStyles = () => {
             borderTopLeftRadius: 20,
             backgroundColor: 'black',
             width: dimensions.width,
-            // height: dimensions.height,
             position: 'absolute',
             top: 700,
             left: 0
@@ -190,7 +189,7 @@ export const useStyles = () => {
         },
         headerContainer: {
             height: dimensions.height * 0.42,
-            marginTop: 10
+            marginTop: -10
         },
         headerContainerHome: {
             flex: 1,
