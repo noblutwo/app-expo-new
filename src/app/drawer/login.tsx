@@ -28,8 +28,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons/';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get("window");
 const LoginScreen = () => {
-    const {login, handlerNoticifation, hiddenNoticifation, isLoggedIn, isNoticifation, authUser, logout} = useAuth();
-    console.log("isLoggedIn", authUser)
+    const {login, handlerNoticifation, hiddenNoticifation, isLoggedIn, isNoticifation, authUser, outUser} = useAuth();
     const scrollViewRef: any = useRef(null);
     const [scrollEnabled, setScrollEnabled] = useState(false);
     const globalStyles = useStyles();
@@ -37,11 +36,9 @@ const LoginScreen = () => {
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    console.log("username", username)
-    console.log("authUser?.Username", authUser?.Username)
     const [usernameError, setUsernameError] = useState(false);
     const [title, setTitle] = useState("");
-
+    console.log("title", title)
     const validateUsername = useCallback((text: string) => {
         setUsername(text);
         setUsernameError(text.length < 3);
@@ -59,7 +56,8 @@ const LoginScreen = () => {
         if (username && password) {
             try {
                 setLoading(true);
-                await login(username, password);
+                const res = await login(username, password);
+                console.log("res", res)
                 const userJson = await AsyncStorage.getItem("user");
                 if (userJson && isLoggedIn) {
                     handlerNoticifation(true)
@@ -100,7 +98,6 @@ const LoginScreen = () => {
             });
         }
     };
-
 
     useEffect(() => {
         if (username == "" && password == "") {
@@ -266,7 +263,7 @@ const LoginScreen = () => {
                                     {!!authUser?.CCCD &&
                                         <TouchableOpacity
                                             style={{flexDirection: 'row', alignItems: 'center'}}
-                                            onPress={() => logout()}
+                                            onPress={() => outUser()}
                                         >
                                             <Text
                                                 style={[

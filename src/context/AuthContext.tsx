@@ -9,6 +9,7 @@ type AuthContextType = {
     authUser: any;
     login: (username: string, password: string) => Promise<void>;
     logout: () => Promise<void>;
+    outUser: () => Promise<void>;
     updateActivity: () => void;
     handlerNoticifation: (isNoticifation: boolean) => void;
     hiddenNoticifation: (isHiddenLoggedIn: boolean) => void,
@@ -63,12 +64,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const login = async (username: string, password: string) => {
         try {
             const {data, success} = await postData(username, password);
-            console.log("data", data)
             if (data) {
                 setAuthUser(data);
                 setIsLoggedIn(success);
                 await AsyncStorage.setItem('user', JSON.stringify(data));
                 updateActivity();
+                return data
             }
         } catch (error) {
             console.error('Login error:', error);
@@ -82,6 +83,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
             setAuthUser(null);
             setIsLoggedIn(false);
             router.push('/');
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
+
+    const outUser = async () => {
+        try {
+            await AsyncStorage.removeItem('user');
+            setAuthUser(null);
+            setIsLoggedIn(false);
         } catch (error) {
             console.error('Logout error:', error);
         }
@@ -104,6 +115,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
         authUser,
         login,
         logout,
+        outUser,
         updateActivity,
         handlerNoticifation,
         isHiddenLoggedIn,
