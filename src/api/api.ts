@@ -53,11 +53,13 @@ export const useFetchData = (username: string) => {
 };
 
 export const fetchDataInformation = async (id: string) => {
+    console.log(id,'>>>>>id')
     try {
         const response = await axios.get(`${vneIdUser}?Username=${id}`);
+        console.log(response,'>>>res')
         return response.data;
     } catch (error) {
-        throw error;
+        // throw error;
     }
 };
 

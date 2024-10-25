@@ -63,7 +63,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const login = async (username: string, password: string) => {
         try {
             const {data, success} = await postData(username, password);
-            console.log("data", data)
             if (data) {
                 setAuthUser(data);
                 setIsLoggedIn(success);
