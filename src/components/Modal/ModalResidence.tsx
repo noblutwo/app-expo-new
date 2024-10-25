@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     codeContainer: {
         borderWidth: 2,
         borderColor: '#d1d1d1',
-        borderRadius: 15,
+        borderRadius: 150,
         justifyContent: 'center',
         alignItems: 'center',
         width: wResponsive(25),

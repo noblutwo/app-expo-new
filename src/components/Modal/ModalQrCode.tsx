@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {imageSources} from "@components/Images/ImgReq";
 import BackgroundImage from "@components/Images/BackgroundImage";
 import {Feather} from '@expo/vector-icons';
-import {hResponsive, wResponsive} from "@/constants/Colors";
+import {wResponsive} from "@/constants/Colors";
 
 interface QrCodeProps {
     open: boolean;
