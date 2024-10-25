@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Modal, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import {FontAwesome6} from '@expo/vector-icons';
-import {FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {FontSize, pResponsive, wResponsive} from "@/constants/Colors";
 import {router} from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -88,14 +88,14 @@ export default function ModalResidence({modalVisible, setModalVisible, openId}: 
             {codeLength.map((_, index) => (
                 <View key={index} style={styles.codeContainer}>
                     <View
-                        style={[styles.codeEmpty, {backgroundColor: code[index] !== undefined ? '#d8b113' : '#cfcfcf'}]}/>
+                    style={[styles.codeEmpty, {backgroundColor: code[index] !== undefined ? '#ffc70e' : '#cfcfcf'}]}/>
                 </View>
             ))}
         </View>
     );
 
     const renderNumberPad = () => (
-        <View style={{backgroundColor: '#dcdcdc', paddingVertical: 20}}>
+        <View style={{backgroundColor: '#efefef', paddingVertical: 20}}>
             {[
                 [1, 2, 3],
                 [4, 5, 6],
@@ -151,7 +151,7 @@ export default function ModalResidence({modalVisible, setModalVisible, openId}: 
                                     </View>
                                 }
 
-                                <View style={{backgroundColor: "#f6f6f6", paddingVertical: 15}}>
+                                <View style={{backgroundColor: "#fafafa", paddingVertical: 15}}>
                                     <Text style={{textAlign: 'center'}}>Quên passcode</Text>
                                 </View>
                                 {renderNumberPad()}
@@ -178,7 +178,8 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingVertical: 15,
         backgroundColor: 'white',
-        borderRadius: 10,
+        borderTopRightRadius:10,
+        borderTopLeftRadius: 10,
         elevation: 5,
     },
     titleText: {
@@ -206,12 +207,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: wResponsive(25),
-        height: hResponsive(25),
+        height: wResponsive(25),
         marginHorizontal: 5
     },
     codeEmpty: {
         width: wResponsive(15),
-        height: hResponsive(15),
+        height: wResponsive(15),
         borderRadius: 15,
     },
     numberRow: {

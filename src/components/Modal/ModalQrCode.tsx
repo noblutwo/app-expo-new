@@ -16,7 +16,6 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
     const [seconds, setSeconds] = useState(30);
 
     useEffect(() => {
-        // Reset seconds when the modal opens
         if (open) {
             setSeconds(30);
         }
@@ -30,14 +29,12 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
             }, 1000);
         }
 
-        // Cleanup function to clear the timeout
         return () => {
             if (timer) {
                 clearTimeout(timer);
             }
         };
     }, [seconds, open]);
-
     return (
         <View style={styles.container}>
             <Modal
@@ -107,17 +104,18 @@ const styles = StyleSheet.create({
     },
     fullQr: {
         width: wResponsive(160),
-        height: hResponsive(150),
+        height: wResponsive(160),
     },
     wrapImage: {
         backgroundColor: 'white',
-        paddingHorizontal: 40,
-        paddingVertical: 50,
+        flexDirection:'column',
+        alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 150,
         borderWidth: 1,
         borderColor: "#eadf7e",
-        width: '100%',
-        height: 'auto'
+        width: wResponsive(210),
+        height:wResponsive(210)
     },
     item: {
         color: 'white',

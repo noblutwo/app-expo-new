@@ -23,7 +23,6 @@ import { ModalQrCode } from "@/components/Modal/ModalQrCode";
 import { ModalInformation } from "@/components/Modal/ModalInformation";
 
 const { width, height } = Dimensions.get("window");
-
 const serviceItems = [
   { icon: "thutuchanhchinh", title: "Thủ tục, hành chính" },
   { icon: "ansinhxahoi", title: "An sinh, xã hội" },
@@ -69,8 +68,6 @@ const ScreenWithOverlap = () => {
   const { authUser } = useAuth();
   const globalStyle = useStyles();
   const scrollY = useRef(new Animated.Value(0)).current;
-
-  console.log(authUser,'>>>>kakakaka')
 
   const showQrCode = (title: string, setOpen: any) => {
     setModalType(title);
@@ -375,7 +372,7 @@ const styles = StyleSheet.create({
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: -170,
+    marginTop: - 170,
     overflow: "hidden",
   },
   scrollView: {
