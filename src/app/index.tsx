@@ -42,7 +42,6 @@ export default function LoginScreen() {
             console.log("vao")
             try {
                 const isLoggedIn = await AsyncStorage.getItem('loginUser');
-
                 if (isLoggedIn === 'true') {
                     router.push('/drawer/login');
                 }

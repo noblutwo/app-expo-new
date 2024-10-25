@@ -3,7 +3,7 @@ import {router, Slot, SplashScreen, usePathname} from "expo-router";
 import {useFonts} from "expo-font";
 import React from "react";
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {StatusBar, View} from "react-native";
+import {AppState, StatusBar, View} from "react-native";
 import * as Updates from "expo-updates";
 import {fontConfig} from "@/assets/fonts/font";
 import {useStyles} from "@/styles/styles";

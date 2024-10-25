@@ -101,7 +101,7 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
           <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
             <Icon
               name={showPassword ? "visibility" : "visibility-off"}
-              size={dimensions.width * 0.06}
+              size={dimensions.width * 0.04}
               color="#999"
             />
           </TouchableOpacity>
