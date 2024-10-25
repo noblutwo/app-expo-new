@@ -22,9 +22,9 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/icon.png",
-        "backgroundColor": "#24701A"
-      },
+    "foregroundImage": "./src/assets/images/icon.png",
+    "backgroundColor": "#24701A"
+  },
       "package": "com.noblutwo.expoapp",
       "permissions": [
         "android.permission.CAMERA",

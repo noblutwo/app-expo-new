@@ -51,7 +51,6 @@ export default function ModalResidence({modalVisible, setModalVisible, openId}: 
             const passcodeArray = user.passcode.split('').map(Number);
             const isEqual = passcodeArray.length === code.length &&
                 passcodeArray.every((value: any, index: number) => value === code[index]);
-
             if (isEqual) {
                 const findItem = infoScreen.find((item) => item?.id === openId)
                 await AsyncStorage.setItem('passErr', '5');
@@ -186,6 +185,7 @@ const styles = StyleSheet.create({
         fontSize: FontSize.textLowercase,
         fontWeight: '700',
         marginBottom: 20,
+        color:'#7b7c7a'
     },
     appLineBig: {
         height: 3,

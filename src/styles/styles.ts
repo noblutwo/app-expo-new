@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 import {useResponsiveDimensions} from '../hooks/useResponsiveDimensions';
 import {lightTheme} from './theme';
-import {blue100} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import {Colors, hResponsive, wResponsive} from '@/constants/Colors';
 
 export const useStyles = () => {
@@ -190,7 +189,8 @@ export const useStyles = () => {
             paddingVertical: 40
         },
         headerContainer: {
-            height: dimensions.height*0.42,
+            height: dimensions.height * 0.42,
+            marginTop: -10
         },
         headerContainerHome: {
             // flex: 1,
@@ -277,7 +277,7 @@ export const useStyles = () => {
         serviceItemTextHome: {
             position: "absolute",
             textAlign: "center",
-            top: -15,
+            top: -17,
             width: 45,
             fontSize: 13,
             paddingVertical: 1.5,
