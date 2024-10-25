@@ -57,14 +57,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const checkInactivity = useCallback(() => {
         const currentTime = Date.now();
         if (isLoggedIn && currentTime - lastActivity > TIMEOUT_DURATION) {
-            logout();
+            // logout();
         }
     }, [isLoggedIn, lastActivity]);
 
     const login = async (username: string, password: string) => {
         try {
             const {data, success} = await postData(username, password);
-            if (data) {
+            if (data?.CCCD) {
                 setAuthUser(data);
                 setIsLoggedIn(success);
                 await AsyncStorage.setItem('user', JSON.stringify(data));

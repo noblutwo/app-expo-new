@@ -38,7 +38,6 @@ const LoginScreen = () => {
     const [isError, setIsError] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
     const [title, setTitle] = useState("");
-    console.log("title", title)
     const validateUsername = useCallback((text: string) => {
         setUsername(text);
         setUsernameError(text.length < 3);
@@ -56,14 +55,13 @@ const LoginScreen = () => {
         if (username && password) {
             try {
                 setLoading(true);
-                const res = await login(username, password);
-                console.log("res", res)
-                const userJson = await AsyncStorage.getItem("user");
-                if (userJson && isLoggedIn) {
+                const res: any = await login(username, password);
+                if (res?.CCCD) {
                     handlerNoticifation(true)
                     hiddenNoticifation(true)
                     router.push("./tabs");
                 } else {
+                    console.log("ngu")
                     setIsError(true);
                     setLoading(false);
                 }
@@ -136,7 +134,6 @@ const LoginScreen = () => {
             'loginUser',
             'true',
         );
-
     }
     useEffect(() => {
         updateLogin()

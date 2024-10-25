@@ -57,7 +57,7 @@ export const fetchDataInformation = async (id: string) => {
         const response = await axios.get(`${vneIdUser}?Username=${id}`);
         return response.data;
     } catch (error) {
-        throw error;
+        // throw error;
     }
 };
 
