@@ -93,7 +93,7 @@ export default function LayoutSettings() {
     const handLogOut = async () => {
         try {
             setLoading(true)
-            await AsyncStorage.removeItem('user');
+            // await AsyncStorage.removeItem('user');
             router.push("/drawer/login")
         } catch (err) {
             console.log(err)

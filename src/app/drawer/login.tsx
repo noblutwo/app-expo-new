@@ -23,10 +23,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useAuth} from "@/context/AuthContext";
 import LoadingPopup from "@/components/loading/LoadingPopup ";
 import ErrorLogin from "@/components/loading/ErrorLogin";
+import ResponsiveTextInputIcon from "@components/ResponsiveTextInput/ResponsiveTextInputIcon";
+import {MaterialCommunityIcons} from '@expo/vector-icons/';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get("window");
 const LoginScreen = () => {
-    const {login, handlerNoticifation, hiddenNoticifation, isHiddenLoggedIn, isLoggedIn, isNoticifation} = useAuth();
+    const {login, handlerNoticifation, hiddenNoticifation, isLoggedIn, isNoticifation, authUser, logout} = useAuth();
+    console.log("isLoggedIn", authUser)
     const scrollViewRef: any = useRef(null);
     const [scrollEnabled, setScrollEnabled] = useState(false);
     const globalStyles = useStyles();
@@ -34,6 +37,7 @@ const LoginScreen = () => {
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+
     const [usernameError, setUsernameError] = useState(false);
     const [title, setTitle] = useState("");
 
@@ -128,11 +132,13 @@ const LoginScreen = () => {
 
         return () => backHandler.remove(); // Cleanup listener
     }, [router]);
+
     const updateLogin = async () => {
         await AsyncStorage.setItem(
             'loginUser',
             'true',
         );
+
     }
     useEffect(() => {
         updateLogin()
@@ -153,39 +159,54 @@ const LoginScreen = () => {
                             } để tiếp tục`}
                         </Text>
                         <View style={[globalStyles.contentLogin, {marginTop: 20}]}>
-                            <View
-                                style={[
-                                    globalStyles.rowTitleLogin,
-                                    {alignItems: "center", justifyContent: "space-between"},
-                                ]}
-                            >
-                                <Text style={globalStyles.textLogin}>
-                                    Số định danh cá nhân{" "}
-                                </Text>
+                            {!authUser?.CCCD &&
                                 <View
                                     style={[
                                         globalStyles.rowTitleLogin,
-                                        {alignItems: "center", justifyContent: "center"},
+                                        {alignItems: "center", justifyContent: "space-between"},
                                     ]}
                                 >
-                                    <Text style={globalStyles.textLogin}>Hướng dẫn</Text>
-                                    <AppImage
-                                        source="iconQue"
-                                        style={globalStyles.imageSliderIconLogin}
-                                        resizeMode="contain"
-                                    />
+                                    <Text style={globalStyles.textLogin}>
+                                        Số định danh cá nhân{" "}
+                                    </Text>
+                                    <View
+                                        style={[
+                                            globalStyles.rowTitleLogin,
+                                            {alignItems: "center", justifyContent: "center"},
+                                        ]}
+                                    >
+                                        <Text style={globalStyles.textLogin}>Hướng dẫn</Text>
+                                        <AppImage
+                                            source="iconQue"
+                                            style={globalStyles.imageSliderIconLogin}
+                                            resizeMode="contain"
+                                        />
+                                    </View>
                                 </View>
-                            </View>
+                            }
+
                             <View>
-                                <ResponsiveTextInput
-                                    placeholder="Nhập số định danh cá nhân"
-                                    icon="profileLogin"
-                                    value={username}
-                                    onChangeText={setUsername}
-                                    isPassword={false}
-                                    onFocus={handleFocus}
-                                    onBlur={handleBlur}
-                                />
+                                {!!authUser?.CCCD
+                                    ?
+                                    <ResponsiveTextInputIcon
+                                        username={authUser?.Username}
+                                        name={authUser?.Name.toUpperCase()}
+                                        onFocus={handleFocus}
+                                        onBlur={handleBlur}
+                                    />
+                                    :
+                                    <ResponsiveTextInput
+                                        placeholder="Nhập số định danh cá nhân"
+                                        icon="profileLogin"
+                                        value={username}
+                                        onChangeText={setUsername}
+                                        isPassword={false}
+                                        onFocus={handleFocus}
+                                        onBlur={handleBlur}
+                                    />
+                                }
+
+
                                 <Text style={globalStyles.textLogin}>{`${
                                     isNoticifation ? "Mật khẩu" : "Số điện thoại"
                                 }`}</Text>
@@ -225,42 +246,65 @@ const LoginScreen = () => {
                         </View>
                         <View style={{marginTop: 20}}>
                             {isNoticifation ? (
-                                <TouchableOpacity
-                                    onPress={() => router.push("/drawer/forgotPassword")}
-                                >
-                                    <Text
-                                        style={[
-                                            globalStyles.textLogin,
-                                            {fontWeight: "bold", color: Colors.colorTextLogin},
-                                        ]}
+                                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                                    <TouchableOpacity
+                                        onPress={() => router.push("/drawer/forgotPassword")}
                                     >
-                                        Quên mật khẩu
-                                    </Text>
-                                </TouchableOpacity>
+                                        <Text
+                                            style={[
+                                                globalStyles.textLogin,
+                                                {fontWeight: "bold", color: Colors.colorTextLogin},
+                                            ]}
+                                        >
+                                            Quên mật khẩu
+                                        </Text>
+                                    </TouchableOpacity>
+                                    {!!authUser?.CCCD &&
+                                        <TouchableOpacity
+                                            style={{flexDirection: 'row', alignItems: 'center'}}
+                                            onPress={() => logout()}
+                                        >
+                                            <Text
+                                                style={[
+                                                    globalStyles.textLogin,
+                                                    {fontWeight: "bold", paddingHorizontal: 5},
+                                                ]}
+                                            >
+                                                Đổi tài khoản
+                                            </Text>
+                                            <MaterialCommunityIcons name="reload" size={18}
+                                                                    color={Colors.colorTextLogin}/>
+                                        </TouchableOpacity>
+                                    }
+
+                                </View>
+
                             ) : (
                                 ""
                             )}
-
-                            <TouchableOpacity
-                                onPress={() => {
-                                    if (isNoticifation) {
-                                        handlerNoticifation(false);
-                                        router.push("/drawer/login");
-                                    } else {
-                                        handlerNoticifation(true);
-                                    }
-                                }}
-                            >
-                                <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>
-                                    Bạn chưa có tài khoản?{" "}
-                                    <Text
-                                        style={{color: Colors.colorTextLogin, fontWeight: "bold"}}
-                                    >
-                                        {isNoticifation ? "Đăng ký" : "Đăng nhập"}
+                            {!authUser?.CCCD &&
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        if (isNoticifation) {
+                                            handlerNoticifation(false);
+                                            router.push("/drawer/login");
+                                        } else {
+                                            handlerNoticifation(true);
+                                        }
+                                    }}
+                                >
+                                    <Text style={[globalStyles.textLogin, {marginVertical: 10}]}>
+                                        Bạn chưa có tài khoản?{" "}
+                                        <Text
+                                            style={{color: Colors.colorTextLogin, fontWeight: "bold"}}
+                                        >
+                                            {isNoticifation ? "Đăng ký" : "Đăng nhập"}
+                                        </Text>
                                     </Text>
-                                </Text>
-                            </TouchableOpacity>
-                            {isNoticifation ? (
+                                </TouchableOpacity>
+                            }
+                            {!authUser?.CCCD &&
+                            isNoticifation ? (
                                 <TouchableOpacity
                                     onPress={() => router.push("/drawer/activateAccount")}
                                 >
@@ -276,9 +320,9 @@ const LoginScreen = () => {
                                         </Text>
                                     </Text>
                                 </TouchableOpacity>
-                            ) : (
-                                ""
-                            )}
+                            ) : ("")
+                            }
+
                         </View>
 
                         <View
