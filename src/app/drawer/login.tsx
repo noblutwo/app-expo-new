@@ -128,7 +128,15 @@ const LoginScreen = () => {
 
         return () => backHandler.remove(); // Cleanup listener
     }, [router]);
-
+    const updateLogin = async () => {
+        await AsyncStorage.setItem(
+            'loginUser',
+            'true',
+        );
+    }
+    useEffect(() => {
+        updateLogin()
+    }, []);
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <SafeAreaView style={styles.content}>

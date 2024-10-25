@@ -11,7 +11,8 @@ import {
 } from "react-native";
 import AppImage from "@/components/Images/ImgReq";
 import Checkbox from "expo-checkbox";
-import {router, useRouter} from "expo-router";
+import {router, usePathname, useRouter} from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const {width, height} = Dimensions.get("window");
 
@@ -34,6 +35,23 @@ const slides: SlideItem[] = [
 ];
 
 export default function LoginScreen() {
+    const pathname = usePathname();
+    useEffect(() => {
+        if (pathname !== "/") return
+        const checkLoginStatus = async () => {
+            console.log("vao")
+            try {
+                const isLoggedIn = await AsyncStorage.getItem('loginUser');
+
+                if (isLoggedIn === 'true') {
+                    router.push('/drawer/login');
+                }
+            } catch (error) {
+                console.log('Error checking login status:', error);
+            }
+        };
+        checkLoginStatus();
+    }, []);
     const [isChecked, setChecked] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const router = useRouter()
