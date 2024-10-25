@@ -190,10 +190,10 @@ export const useStyles = () => {
         },
         headerContainer: {
             height: dimensions.height * 0.42,
-            marginTop: -10
+            marginTop: 10
         },
         headerContainerHome: {
-            // flex: 1,
+            flex: 1,
             flexDirection: 'row',
             justifyContent: "space-between",
             alignItems: "center",
