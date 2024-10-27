@@ -158,13 +158,13 @@ const styles = StyleSheet.create({
     },
     bottomTextContainer: {
         position: 'absolute',
-        bottom: 200,
+        bottom: 80,
         width: '100%',
         alignItems: 'center',
         paddingHorizontal: 20,
     },
     text: {
-        color: '#fff',
+        color: 'white',
         fontSize: 16,
         textAlign: 'center',
         backgroundColor: 'rgba(0,0,0,0.7)',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     },
     torchButton: {
         position: 'absolute',
-        bottom: 120,
+        bottom: 50,
         alignSelf: 'center',
         padding: 15,
         borderRadius: 50,
@@ -183,63 +183,3 @@ const styles = StyleSheet.create({
 });
 
 export default QRScannerScreen;
-
-
-// import { CameraView } from "expo-camera";
-// import { Stack } from "expo-router";
-// import {
-//   AppState,
-//   Linking,
-//   Platform,
-//   SafeAreaView,
-//   StatusBar,
-//   StyleSheet,
-// } from "react-native";
-// import { useEffect, useRef } from "react";
-// import { Overlay } from "@/components/ScreenWithOverlap/Overlay";
-//
-// export default function Scanner() {
-//   const qrLock = useRef(false);
-//   const appState = useRef(AppState.currentState);
-//
-//   useEffect(() => {
-//     const subscription = AppState.addEventListener("change", (nextAppState) => {
-//       if (
-//         appState.current.match(/inactive|background/) &&
-//         nextAppState === "active"
-//       ) {
-//         qrLock.current = false;
-//       }
-//       appState.current = nextAppState;
-//     });
-//
-//     return () => {
-//       subscription.remove();
-//     };
-//   }, []);
-//
-//   return (
-//     <SafeAreaView style={StyleSheet.absoluteFillObject}>
-//       <Stack.Screen
-//         options={{
-//           title: "Overview",
-//           headerShown: false,
-//         }}
-//       />
-//       {Platform.OS === "android" ? <StatusBar hidden /> : null}
-//       <CameraView
-//         // style={StyleSheet.absoluteFillObject}
-//         facing="back"
-//         onBarcodeScanned={({ data }) => {
-//           if (data && !qrLock.current) {
-//             qrLock.current = true;
-//             setTimeout(async () => {
-//               await Linking.openURL(data);
-//             }, 500);
-//           }
-//         }}
-//       />
-//       {/* <Overlay /> */}
-//     </SafeAreaView>
-//   );
-// }
