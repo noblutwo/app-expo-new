@@ -28,7 +28,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Thông tin cư trú"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
+                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')} >
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
@@ -42,10 +42,7 @@ export default function AuthLayout() {
 
                     ),
                     headerBackground: () => (
-                        <ImageBackground
-                            source={imageSources["bgHeader"]}
-                            style={styles.headerBackground}
-                        />
+                        <View style={styles.headerBackgroundStyle}></View>   // Màu nền đỏ tại đây
                     ),
                 }}
             />
@@ -55,7 +52,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Thành viên khác trong hộ gia đình"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => handler()}>
+                        <TouchableOpacity onPress={() => handler()} style={{paddingRight:25}}>
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
@@ -74,7 +71,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Giấy phép lái xe"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
+                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')} >
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
@@ -88,10 +85,7 @@ export default function AuthLayout() {
 
                     ),
                     headerBackground: () => (
-                        <ImageBackground
-                            source={imageSources["bgHeader"]}
-                            style={styles.headerBackground}
-                        />
+                        <View style={styles.headerBackgroundStyle}></View>   // Màu nền đỏ tại đây
                     ),
                 }}
             />
@@ -101,7 +95,7 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Xuất trình giấy tờ"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')}>
+                        <TouchableOpacity onPress={() => router.push('/drawer/tabs')} >
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
@@ -115,10 +109,7 @@ export default function AuthLayout() {
 
                     ),
                     headerBackground: () => (
-                        <ImageBackground
-                            source={imageSources["bgHeader"]}
-                            style={styles.headerBackground}
-                        />
+                        <View style={styles.headerBackgroundStyle}></View>   // Màu nền đỏ tại đây
                     ),
                 }}
             />
@@ -128,7 +119,8 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Xuất trình giấy tờ"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}>
+                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}
+                                          >
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
@@ -142,10 +134,7 @@ export default function AuthLayout() {
 
                     ),
                     headerBackground: () => (
-                        <ImageBackground
-                            source={imageSources["bgHeader"]}
-                            style={styles.headerBackground}
-                        />
+                        <View style={styles.headerBackgroundStyle}></View>   // Màu nền đỏ tại đây
                     ),
                 }}
             />
@@ -155,11 +144,11 @@ export default function AuthLayout() {
                     headerBackVisible: false,
                     headerTitle: () => <HeaderTitle title="Nhập thông tin tích hợp"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}>
+                        <TouchableOpacity onPress={() => router.push('/(informations)/driving')}
+                                          >
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),
-
                     headerBackground: () => (
                         <ImageBackground
                             source={imageSources["bgHeaderLayout"]}
@@ -192,5 +181,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '35%',
         resizeMode: 'cover',
+    },
+    headerBackgroundStyle: {
+        flex: 1,
+        backgroundColor: '#f6f1ed',
+        width: '100%',
+        height: '100%',
     },
 });

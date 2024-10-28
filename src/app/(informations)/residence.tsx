@@ -49,7 +49,7 @@ function ResidenceScreen() {
         fetchData()
     }, [authUser]);
     return (
-        <ScrollView>
+        <ScrollView style={{backgroundColor: 'white'}}>
             <InfoDropDown
                 user={authUser}
                 info={dataAdministrative}
@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     containerLayout: {
-        padding: '5%',
+        paddingHorizontal: '5%',
+        paddingBottom:20
     },
     appLineBig: {
         height: 3,
