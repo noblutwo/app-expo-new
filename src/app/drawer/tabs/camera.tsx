@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Camera, CameraView} from 'expo-camera';
 
-import {Ionicons} from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons/';
+
 
 interface item {
     type: string,
@@ -56,11 +57,14 @@ const QRScannerScreen = ({navigation}: any) => {
                             <View style={styles.unfocusedContainer}></View>
                         </View>
                         <View style={styles.unfocusedContainer}></View>
-                        <View style={styles.bottomTextContainer}>
-                            <Text style={styles.text}>
-                                Hãy đưa mã quét vào giữa khung này nhé
-                            </Text>
+                        <View style={styles.wrapBg}>
+                            <View style={styles.bottomTextContainer}>
+                                <Text style={styles.text}>
+                                    Hãy đưa mã quét vào giữa khung này nhé
+                                </Text>
+                            </View>
                         </View>
+
                     </View>
                 </CameraView>
             </View>
@@ -68,11 +72,14 @@ const QRScannerScreen = ({navigation}: any) => {
                 style={styles.torchButton}
                 onPress={() => setTorch(!torch)}
             >
-                <Ionicons
-                    name={torch ? "flash" : "flash-outline"}
-                    size={24}
-                    color="white"
-                />
+                <View style={{backgroundColor: 'white', borderRadius: 50}}>
+                    <Ionicons
+                        name={torch ? "flash" : "flash-off"}
+                        size={26}
+                        color="black"
+                    />
+                </View>
+
             </TouchableOpacity>
         </SafeAreaView>
     );
@@ -83,13 +90,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'black',
     },
-    header: {
-        height: 60,
-        backgroundColor: 'black',
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: 15,
-    },
     backButton: {
         position: 'absolute',
         left: 15,
@@ -98,11 +98,20 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 16,
     },
+    header: {
+        position: 'absolute',
+        top: 100, // Điều chỉnh khoảng cách từ trên xuống
+        width: '100%',
+        alignItems: 'center',
+        zIndex: 1, // Đảm bảo hiển thị trên camera
+    },
     title: {
         color: 'white',
-        fontSize: 18,
-        flex: 1,
+        fontSize: 16,
         textAlign: 'center',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 8,
     },
     cameraContainer: {
         flex: 1,
@@ -157,17 +166,20 @@ const styles = StyleSheet.create({
         borderTopWidth: 0,
     },
     bottomTextContainer: {
+        backgroundColor: 'rgba(209,45,45,0.7)',
+    },
+    wrapBg: {
+        backgroundColor: 'rgba(255,79,79,0.5)', // Màu đỏ với độ trong suốt 0.5
+        // Các thuộc tính khác của View
         position: 'absolute',
         bottom: 200,
         width: '100%',
-        alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingVertical:10
     },
     text: {
         color: '#fff',
         fontSize: 16,
         textAlign: 'center',
-        backgroundColor: 'rgba(0,0,0,0.7)',
         paddingHorizontal: 20,
         paddingVertical: 10,
         borderRadius: 8,
@@ -176,9 +188,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 120,
         alignSelf: 'center',
-        padding: 15,
+        padding: 10,
         borderRadius: 50,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(246,243,243,0.5)',
     },
 });
 
