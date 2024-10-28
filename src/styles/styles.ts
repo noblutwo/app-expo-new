@@ -189,7 +189,7 @@ export const useStyles = () => {
         },
         headerContainer: {
             height: dimensions.height * 0.42,
-            marginTop: -10
+            // marginTop: -5
         },
         headerContainerHome: {
             flex: 1,

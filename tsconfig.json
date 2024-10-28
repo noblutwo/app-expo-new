@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "jsx": "react-native", // Đảm bảo rằng bạn sử dụng "react-native"
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
