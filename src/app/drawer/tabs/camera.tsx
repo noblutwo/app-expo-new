@@ -4,8 +4,13 @@ import {Camera, CameraView} from 'expo-camera';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import {Ionicons} from '@expo/vector-icons';
 
-const QRScannerScreen = ({navigation}) => {
-    const [hasPermission, setHasPermission] = useState(null);
+interface item {
+    type: string,
+    data: string
+}
+
+const QRScannerScreen = ({navigation}: any) => {
+    const [hasPermission, setHasPermission] = useState<any>("");
     const [torch, setTorch] = useState(false);
 
     useEffect(() => {
@@ -15,7 +20,7 @@ const QRScannerScreen = ({navigation}) => {
         })();
     }, []);
 
-    const handleBarCodeScanned = ({type, data}) => {
+    const handleBarCodeScanned = ({type, data}: item) => {
         // Xử lý khi quét được mã QR
         console.log(`Bar code with type ${type} and data ${data} has been scanned!`);
         // Có thể thêm logic navigate hoặc xử lý data ở đây
