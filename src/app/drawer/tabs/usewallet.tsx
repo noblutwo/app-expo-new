@@ -4,7 +4,7 @@ import {useStyles} from "@/styles/styles";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import {FontAwesome6} from '@expo/vector-icons';
-import {hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
 
 // Định nghĩa kiểu dữ liệu cho data
 interface DataItem {
@@ -32,15 +32,16 @@ export default function LayoutService() {
                 <View style={[styles.containerLayout, styles.headerContainer]}>
                     <Text style={styles.headerText}>Ví giấy tờ</Text>
                 </View>
-                <View style={styles.cccdContainer}>
+                <View style={[styles.cccdContainer, styles.shadow]}>
                     <ImageBackground
                         source={imageSources["cccd"]}
-                        style={[styles.cccd, styles.shadow]}
+                        style={styles.cccd}
+                        resizeMode="contain" // Sử dụng "contain" để đảm bảo ảnh nằm gọn trong View
                     />
                 </View>
                 <View style={styles.detailsContainer}>
                     <View style={styles.detailsWrapper}>
-                        <FontAwesome6 name="contact-card" size={24} color="#4c4c4c"/>
+                        <FontAwesome6 name="contact-card" size={16} color="#4c4c4c"/>
                         <Text style={styles.detailsText}>Xem thông tin chi tiết</Text>
                     </View>
                 </View>
@@ -101,11 +102,11 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: '100%',
-        height: hResponsive(330),
+        height: hResponsive(282),
     },
     headerContainer: {
         paddingVertical: 10,
-        marginTop: 20,
+        marginTop: 30,
     },
     icon: {
         width: wResponsive(15),
@@ -113,14 +114,14 @@ const styles = StyleSheet.create({
     },
     appLineBig: {
         height: 3,
-        backgroundColor: "#f1f1f1",
+        backgroundColor: "#f8f8f8",
         marginVertical: 15,
     },
     containerOverlap: {
         justifyContent: "center",
     },
     wrapItem: {
-        backgroundColor: "#e6e6e6",
+        backgroundColor: "#f2f2f2",
         width: "48%",
         paddingVertical: 20,
         alignItems: "center",
@@ -128,16 +129,13 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     cccdContainer: {
-        width: '100%',
-        backgroundColor: 'transparent',
-        alignItems: 'center',
+        width: 'auto',
+        height: hResponsive(190),
+
     },
     cccd: {
-        width: wResponsive(325),
-        height: hResponsive(220),
-        alignItems: 'center',
-        textAlign: 'center',
-        overflow: 'visible',
+        width: '100%',
+        height: '100%',
     },
     shadow: {
         shadowColor: '#000',
@@ -150,18 +148,17 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     headerText: {
-        fontSize: pResponsive(18),
+        fontSize: pResponsive(14),
         fontWeight: "600",
     },
     detailsContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 10,
     },
     detailsWrapper: {
         backgroundColor: '#fff',
         flexDirection: 'row',
-        paddingVertical: 10,
+        paddingVertical: 5,
         paddingHorizontal: 20,
         borderRadius: 20,
         alignItems: 'center',
@@ -169,13 +166,15 @@ const styles = StyleSheet.create({
     detailsText: {
         paddingLeft: 6,
         color: '#4c4c4c',
+        fontSize: pResponsive(11)
     },
     accountContainer: {
         flexDirection: "row",
-        paddingVertical: 20,
+        paddingVertical: 12,
     },
     accountText: {
         color: "#a62c2c",
+        fontWeight: '700'
     },
     sectionTitle: {
         fontWeight: "600",
