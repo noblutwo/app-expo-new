@@ -1,16 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
-import {Camera, CameraView} from 'expo-camera';
-
+import {Camera} from 'expo-camera';
+import {BarCodeScanner} from 'expo-barcode-scanner';
 import {Ionicons} from '@expo/vector-icons';
 
-interface item {
-    type: string,
-    data: string
-}
-
-const QRScannerScreen = ({navigation}: any) => {
-    const [hasPermission, setHasPermission] = useState<any>("");
+const QRScannerScreen = ({navigation}) => {
+    const [hasPermission, setHasPermission] = useState(null);
     const [torch, setTorch] = useState(false);
 
     useEffect(() => {
@@ -20,7 +15,7 @@ const QRScannerScreen = ({navigation}: any) => {
         })();
     }, []);
 
-    const handleBarCodeScanned = ({type, data}: item) => {
+    const handleBarCodeScanned = ({type, data}) => {
         // Xử lý khi quét được mã QR
         console.log(`Bar code with type ${type} and data ${data} has been scanned!`);
         // Có thể thêm logic navigate hoặc xử lý data ở đây
@@ -38,9 +33,14 @@ const QRScannerScreen = ({navigation}: any) => {
             <View style={styles.header}>
                 <Text style={styles.title}>Quét mã QR</Text>
             </View>
+
             <View style={styles.cameraContainer}>
-                <CameraView
+                <BarCodeScanner
                     style={styles.camera}
+                    type={BarCodeScanner.Constants.Type.back}
+                    barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+                    onBarCodeScanned={handleBarCodeScanned}
+                    torchMode={torch ? 'on' : 'off'}
                 >
                     <View style={styles.overlay}>
                         <View style={styles.unfocusedContainer}></View>
@@ -62,7 +62,7 @@ const QRScannerScreen = ({navigation}: any) => {
                             </Text>
                         </View>
                     </View>
-                </CameraView>
+                </BarCodeScanner>
             </View>
             <TouchableOpacity
                 style={styles.torchButton}
@@ -158,13 +158,13 @@ const styles = StyleSheet.create({
     },
     bottomTextContainer: {
         position: 'absolute',
-        bottom: 200,
+        bottom: 80,
         width: '100%',
         alignItems: 'center',
         paddingHorizontal: 20,
     },
     text: {
-        color: '#fff',
+        color: 'white',
         fontSize: 16,
         textAlign: 'center',
         backgroundColor: 'rgba(0,0,0,0.7)',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     },
     torchButton: {
         position: 'absolute',
-        bottom: 120,
+        bottom: 50,
         alignSelf: 'center',
         padding: 15,
         borderRadius: 50,
