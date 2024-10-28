@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
-import {Camera} from 'expo-camera';
+import {Camera, CameraView} from 'expo-camera';
 import {BarCodeScanner} from 'expo-barcode-scanner';
 import {Ionicons} from '@expo/vector-icons';
 
@@ -33,14 +33,9 @@ const QRScannerScreen = ({navigation}) => {
             <View style={styles.header}>
                 <Text style={styles.title}>Quét mã QR</Text>
             </View>
-
             <View style={styles.cameraContainer}>
-                <BarCodeScanner
+                <CameraView
                     style={styles.camera}
-                    type={BarCodeScanner.Constants.Type.back}
-                    barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-                    onBarCodeScanned={handleBarCodeScanned}
-                    torchMode={torch ? 'on' : 'off'}
                 >
                     <View style={styles.overlay}>
                         <View style={styles.unfocusedContainer}></View>
@@ -62,7 +57,7 @@ const QRScannerScreen = ({navigation}) => {
                             </Text>
                         </View>
                     </View>
-                </BarCodeScanner>
+                </CameraView>
             </View>
             <TouchableOpacity
                 style={styles.torchButton}
