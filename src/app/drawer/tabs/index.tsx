@@ -103,7 +103,7 @@ const ScreenWithOverlap = () => {
   const renderHeader = () => {
     const modelName = Device.modelName;
     return (
-     <View style={[styles.headerContainer, modelName === 'Pixel 7' ? {marginTop:0} : {marginTop:5}, {  paddingVertical: 28 }]}>
+     <View style={[styles.headerContainer, modelName === 'Pixel 7' ? {marginTop:-10} : {marginTop:5}, {  paddingVertical: 28 }]}>
       <BackgroundImage
         source={imageSources["bg_head"]}
         style={styles.headerImage}
