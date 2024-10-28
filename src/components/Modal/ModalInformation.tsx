@@ -54,7 +54,7 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                     source={imageSources["home_header"]}
                     style={styles.background}
                 >
-                    <View style={[{paddingVertical: 20}, styles.containerLayout]}>
+                    <View style={[styles.containerLayout]}>
                         <View
                             style={{
                                 flexDirection: "row",
@@ -64,14 +64,16 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                         >
                             <TouchableOpacity
                                 onPress={() => setOpen(false)} // push ridiculous
-                                style={{paddingHorizontal: 20}}
+                                style={{paddingHorizontal: 20, flexDirection:'row', justifyContent:'center', alignItems:'center'}}
                             >
                                 <AppImage
                                     source="header_back"
                                     style={{width: 35, height: 30}}
                                     resizeMode="cover"
                                 />
+                                <Text style={{fontSize: 16, fontWeight:'bold'}}>Thông tin cá nhân</Text>
                             </TouchableOpacity>
+                            
                             <TouchableOpacity onPress={() => setOpenModal(true)}>
                                 {/* <TouchableOpacity onPress={() => setOpenModal(true)}> */}
                                 <AppImage source="qrCodeHeader" style={styles.item}/>
@@ -85,7 +87,7 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                                 alignItems: "center",
                                 height: "100%",
                                 width: "100%",
-                                top: -40,
+                                top: -60,
                             }}
                         >
                             <View
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
     },
     background: {
         width: "100%",
-        height: 300,
+        height: 280,
     },
     fullQr: {
         width: wResponsive(220),

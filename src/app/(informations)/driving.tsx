@@ -1,4 +1,4 @@
-import {ImageBackground, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, useWindowDimensions, View} from "react-native";
 import {LayoutNotFound} from "@components/NotFound/LayoutNotFound";
 import {SceneMap, TabView} from "react-native-tab-view";
 import React, {useState} from "react";

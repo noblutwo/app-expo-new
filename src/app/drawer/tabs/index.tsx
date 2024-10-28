@@ -1,4 +1,5 @@
 import React, { useState, useRef} from "react";
+import * as Device from 'expo-device';
 import {
   View,
   SafeAreaView,
@@ -98,9 +99,11 @@ const ScreenWithOverlap = () => {
       />
     </TouchableOpacity>
   );
-
-  const renderHeader = () => (
-    <View style={[globalStyle.headerContainer, { paddingVertical: 28 }]}>
+ 
+  const renderHeader = () => {
+    const modelName = Device.modelName;
+    return (
+     <View style={[styles.headerContainer, modelName === 'Pixel 7' ? {marginTop:-10} : {marginTop:5}, {  paddingVertical: 28 }]}>
       <BackgroundImage
         source={imageSources["bg_head"]}
         style={styles.headerImage}
@@ -164,8 +167,10 @@ const ScreenWithOverlap = () => {
           {renderProfileImage("qr_dddt", openModalDd, setOpenModalDd, "qrScan")}
         </View>
       </BackgroundImage>
-    </View>
-  );
+    </View> 
+    )
+  }
+
 
   const renderServiceItems = () => (
     <View style={styles.serviceGroupContainerHome}>
@@ -297,7 +302,7 @@ const ScreenWithOverlap = () => {
     outputRange: [20, 0],
     extrapolate: "clamp",
   });
-
+  const modelName = Device.modelName;
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
@@ -310,7 +315,7 @@ const ScreenWithOverlap = () => {
       )}
       <Animated.View
         style={[
-          styles.bottomSectionLayoutHome,
+          styles.bottomSectionLayoutHome, modelName === 'Pixel 7' ? {marginTop: -140} : {marginTop: -100} ,
           {
             borderTopLeftRadius: bottomSheetRadius,
             borderTopRightRadius: bottomSheetRadius,
@@ -369,10 +374,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+//   headerContainer: {
+//     height: height * 0.42
+// },
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: -150,
+    marginTop: -140,
     overflow: "hidden",
   },
   scrollView: {

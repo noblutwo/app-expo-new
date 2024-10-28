@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Camera, CameraView} from 'expo-camera';
+
 import {Ionicons} from '@expo/vector-icons/';
+
 
 interface item {
     type: string,
@@ -193,63 +195,3 @@ const styles = StyleSheet.create({
 });
 
 export default QRScannerScreen;
-
-
-// import { CameraView } from "expo-camera";
-// import { Stack } from "expo-router";
-// import {
-//   AppState,
-//   Linking,
-//   Platform,
-//   SafeAreaView,
-//   StatusBar,
-//   StyleSheet,
-// } from "react-native";
-// import { useEffect, useRef } from "react";
-// import { Overlay } from "@/components/ScreenWithOverlap/Overlay";
-//
-// export default function Scanner() {
-//   const qrLock = useRef(false);
-//   const appState = useRef(AppState.currentState);
-//
-//   useEffect(() => {
-//     const subscription = AppState.addEventListener("change", (nextAppState) => {
-//       if (
-//         appState.current.match(/inactive|background/) &&
-//         nextAppState === "active"
-//       ) {
-//         qrLock.current = false;
-//       }
-//       appState.current = nextAppState;
-//     });
-//
-//     return () => {
-//       subscription.remove();
-//     };
-//   }, []);
-//
-//   return (
-//     <SafeAreaView style={StyleSheet.absoluteFillObject}>
-//       <Stack.Screen
-//         options={{
-//           title: "Overview",
-//           headerShown: false,
-//         }}
-//       />
-//       {Platform.OS === "android" ? <StatusBar hidden /> : null}
-//       <CameraView
-//         // style={StyleSheet.absoluteFillObject}
-//         facing="back"
-//         onBarcodeScanned={({ data }) => {
-//           if (data && !qrLock.current) {
-//             qrLock.current = true;
-//             setTimeout(async () => {
-//               await Linking.openURL(data);
-//             }, 500);
-//           }
-//         }}
-//       />
-//       {/* <Overlay /> */}
-//     </SafeAreaView>
-//   );
-// }
