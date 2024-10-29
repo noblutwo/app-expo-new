@@ -1,5 +1,6 @@
 import React, { useState, useRef} from "react";
 import * as Device from 'expo-device';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import {
   View,
   SafeAreaView,
@@ -103,7 +104,7 @@ const ScreenWithOverlap = () => {
   const renderHeader = () => {
     const modelName = Device.modelName;
     return (
-     <View style={[styles.headerContainer, modelName === 'Pixel 7' ? {marginTop:-10} : {marginTop:5}, {  paddingVertical: 28 }]}>
+     <View style={[styles.headerContainer, modelName === 'Pixel 7' ? {marginTop: verticalScale(-10)} : {marginTop:verticalScale(5)}, {  paddingVertical: verticalScale(20) }]}>
       <BackgroundImage
         source={imageSources["bg_head"]}
         style={styles.headerImage}
@@ -380,7 +381,7 @@ const styles = StyleSheet.create({
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: -140,
+    marginTop: verticalScale(-140),
     overflow: "hidden",
   },
   scrollView: {
@@ -389,10 +390,10 @@ const styles = StyleSheet.create({
   },
   favoriteUtilitiesContainer: {
     flexDirection: "column",
-    paddingHorizontal: 15,
+    paddingHorizontal: scale(15),
   },
   favoriteUtilitiesHeader: {
-    marginTop: 20,
+    marginTop: verticalScale(20),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -402,43 +403,43 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   editIcon: {
-    width: 20,
-    height: 20,
-    marginLeft: 10,
+    width: scale(20),
+    height: scale(20),
+    marginLeft: scale(10),
   },
   profileImageHome: {
-    marginTop:5,
-    width: 50,
-    height: 50,
-    borderRadius: 100,
-    borderWidth: 2,
+    marginTop:verticalScale(5),
+    width: scale(50),
+    height: scale(50),
+    borderRadius: scale(100),
+    borderWidth: scale(2),
     borderColor: "#EEDC76",
   },
   nameContainerHome: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    gap: 10,
+    gap: scale(10),
   },
   nameTagHome: {
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "white",
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    gap: 10,
+    borderRadius: scale(20),
+    paddingHorizontal: scale(10),
+    paddingVertical: verticalScale(5),
+    gap: scale(10),
   },
   identityIconHome: {
-    width: 18,
-    height: 18,
+    width: scale(18),
+    height: scale(18),
   },
   searchButtonHome: {
-    width: 30,
-    height: 30,
-    paddingBottom: 3,
-    paddingLeft:3,
-    borderRadius: 50,
+    width: scale(30),
+    height: scale(30),
+    paddingBottom: scale(4),
+    paddingLeft:scale(3),
+    borderRadius: scale(50),
     backgroundColor: "white",
     flexDirection: "column",
     alignItems: "center",
@@ -446,11 +447,11 @@ const styles = StyleSheet.create({
   },
   profileImageHomeBottom: {
     width: "100%",
-    height: 60,
-    borderRadius: 10,
+    height: scale(60),
+    borderRadius: scale(10),
   },
   textSectionLayoutHome: {
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: "bold",
     fontFamily: lightTheme.fontSizes.fontFamilyRegular,
     color:"#3A3736"
@@ -464,45 +465,45 @@ const styles = StyleSheet.create({
   serviceItemTextHome: {
     position: "absolute",
     textAlign: "center",
-    top: -15,
-    width: 40,
-    paddingVertical: 1,
-    borderRadius: 50,
+    top: scale(-15),
+    width: scale(40),
+    paddingVertical: verticalScale(1),
+    borderRadius: scale(50),
     backgroundColor: Colors.colorButtonLogin,
     color: "white",
-    left: 50,
+    left: scale(50),
   },
   iconserviceItemHome: {
-    width: 40,
-    height: 40,
+    width: scale(40),
+    height: scale(40),
   },
   serviceItemTitleHome: {},
   textContainer: {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 5,
+    marginTop: verticalScale(5),
   },
   serviceText: {
     textAlign: "center",
-    fontSize: 13,
+    fontSize: moderateScale(13),
     fontFamily: lightTheme.fontSizes.fontFamilyRegular,
     color: lightTheme.colors.text
   },
   titleLayoutHome: {
-    fontSize: 15,
+    fontSize: moderateScale(15),
     textAlign: "center",
-    marginTop: 40,
+    marginTop: verticalScale(40),
     fontWeight: "700",
     fontFamily: "sans-serif",
-    paddingHorizontal: 10,
-    width: 280,
+    paddingHorizontal: scale(10),
+    width: scale(280),
   },
 
   rowOverlap: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 20,
+    marginBottom: verticalScale(20),
   },
   imageOverlap: {
     width: 50,
