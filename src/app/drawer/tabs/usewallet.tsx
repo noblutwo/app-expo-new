@@ -28,7 +28,7 @@ export default function LayoutService() {
 
     return (
         <View style={styles.container}>
-            <BackgroundImage source={imageSources["bgHeaderWallet"]} style={styles.backgroundImage}>
+            <ImageBackground source={imageSources["bgHeaderWallet"]} style={styles.backgroundImage}>
                 <View style={[styles.containerLayout, styles.headerContainer]}>
                     <Text style={styles.headerText}>Ví giấy tờ</Text>
                 </View>
@@ -45,7 +45,7 @@ export default function LayoutService() {
                         <Text style={styles.detailsText}>Xem thông tin chi tiết</Text>
                     </View>
                 </View>
-            </BackgroundImage>
+            </ImageBackground>
 
             <ScrollView style={global.homeContainer} contentContainerStyle={{paddingBottom: 80}}>
                 <View style={styles.containerLayout}>
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: '100%',
-        height: hResponsive(282),
+        paddingBottom:10
+        // height: hResponsive(282),
     },
     headerContainer: {
         paddingVertical: 10,
@@ -131,8 +132,7 @@ const styles = StyleSheet.create({
     },
     cccdContainer: {
         width: 'auto',
-        height: hResponsive(190),
-
+        height: hResponsive(250),
     },
     cccd: {
         width: '100%',

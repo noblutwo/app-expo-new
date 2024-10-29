@@ -20,7 +20,7 @@ export function ItemSelectSetting({data, title}: any) {
                         <Text>{item?.title}</Text>
                         {item?.phone && (
                             <Text style={styles.appTextPhone}>
-                                {item?.phone || item?.version}
+                                {item?.phone}
                             </Text>
                         )}
                         <Text> {item?.version}</Text>
