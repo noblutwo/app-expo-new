@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     fullQr: {
-        width: wResponsive(160),
-        height: wResponsive(160),
+        width: wResponsive(200),
+        height: wResponsive(200),
     },
     wrapImage: {
         backgroundColor: 'white',
@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
         borderRadius: 150,
         borderWidth: 1,
         borderColor: '#eadf7e',
-        width: wResponsive(210),
-        height: wResponsive(210),
+        width: wResponsive(260),
+        height: wResponsive(260),
     },
     item: {
         color: 'white',
