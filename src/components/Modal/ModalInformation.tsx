@@ -64,16 +64,21 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                         >
                             <TouchableOpacity
                                 onPress={() => setOpen(false)} // push ridiculous
-                                style={{paddingHorizontal: 20, flexDirection:'row', justifyContent:'center', alignItems:'center'}}
+                                style={{
+                                    paddingHorizontal: 20,
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}
                             >
                                 <AppImage
                                     source="header_back"
                                     style={{width: 35, height: 30}}
                                     resizeMode="cover"
                                 />
-                                <Text style={{fontSize: 16, fontWeight:'bold'}}>Thông tin cá nhân</Text>
+                                <Text style={{fontSize: 16, fontWeight: 'bold'}}>Thông tin cá nhân</Text>
                             </TouchableOpacity>
-                            
+
                             <TouchableOpacity onPress={() => setOpenModal(true)}>
                                 {/* <TouchableOpacity onPress={() => setOpenModal(true)}> */}
                                 <AppImage source="qrCodeHeader" style={styles.item}/>
@@ -88,6 +93,7 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                                 height: "100%",
                                 width: "100%",
                                 top: -60,
+                                paddingTop: 20
                             }}
                         >
                             <View
@@ -97,14 +103,17 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                                     justifyContent: "center",
                                 }}
                             >
-                                <AppImage
-                                    source={authUser?.Image!}
-                                    style={styles.profileImageHome}
-                                />
+                                <View style={{width: wResponsive(80), height: hResponsive(85)}}>
+                                    <AppImage
+                                        source={authUser?.Image!}
+                                        style={styles.profileImageHome}
+                                    />
+                                </View>
+
                                 <Text
                                     style={[
                                         styles.textLogin,
-                                        {fontWeight: "bold", color: "#423A37", fontSize: 22},
+                                        {fontWeight: "bold", color: "#423A37", fontSize: 20},
                                     ]}
                                 >
                                     {authUser?.Name!}
@@ -113,7 +122,7 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                                     <Text
                                         style={[
                                             styles.textLogin,
-                                            {fontWeight: "bold", paddingHorizontal: 2},
+                                            {fontWeight: "bold", paddingHorizontal: 6},
                                         ]}
                                     >
                                         {authUser?.designationLevel!}
@@ -130,19 +139,19 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
                 <View style={{flex: 1, backgroundColor: "#fff"}}>
                     <View style={{paddingHorizontal: 20}}>
                         {/* <View style={styles.lined}/> */}
-                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 25}]}>
+                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 18}]}>
                             <Text style={[styles.nameBH, {color: '#8e8e8e'}]}>Số định danh cá nhân</Text>
                             <Text style={[styles.nameBH, {color: '#5d5a5b'}]}>{authUser?.CCCD}</Text>
                         </View>
                         <View style={styles.linedUser}/>
-                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 20}]}>
+                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 18}]}>
                             <Text style={[styles.nameBH, {color: '#8e8e8e'}]}>Giới tính</Text>
                             <Text style={[styles.nameBH, {color: '#5d5a5b'}]}>{authUser?.Sex}</Text>
                         </View>
 
                         <View style={styles.linedUser}/>
 
-                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 20}]}>
+                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 18}]}>
                             <Text style={[styles.nameBH, {color: '#8e8e8e'}]}>Ngày sinh</Text>
                             <Text style={[styles.nameBH, {color: '#5d5a5b'}]}>
                                 {authUser?.DOB}
@@ -151,14 +160,14 @@ export function ModalInformation({open, setOpen, title, image}: QrCodeProps) {
 
                         <View style={styles.linedUser}/>
 
-                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 20}]}>
+                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 18}]}>
                             <Text style={[styles.nameBH, {color: '#8e8e8e'}]}>Số điện thoại</Text>
                             <Text style={[styles.nameBH, {color: '#5d5a5b'}]}>{authUser?.Tel}</Text>
                         </View>
 
                         <View style={styles.linedUser}/>
 
-                        <View style={[styles.forgotPassword, styles.jSpaceBetween]}>
+                        <View style={[styles.forgotPassword, styles.jSpaceBetween, {marginVertical: 5}]}>
                             <Text style={[styles.nameBH, {color: '#8e8e8e'}]}>
                                 Nơi thường trú
                             </Text>
@@ -195,7 +204,7 @@ const styles = StyleSheet.create({
     },
     background: {
         width: "100%",
-        height: 280,
+        height: hResponsive(195),
     },
     fullQr: {
         width: wResponsive(220),
@@ -208,16 +217,16 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     profileImageHome: {
-        width: 120,
-        height: 120,
+        width: '100%',
+        height: '100%',
         borderRadius: 100,
         borderWidth: 4,
         borderColor: "#FFF",
     },
     textLogin: {
-        fontSize: pResponsive(14),
+        fontSize: pResponsive(12),
         fontFamily: lightTheme.fontFamilies.sansSerif,
-        marginVertical: 10,
+        marginVertical: 5,
     },
     nameTagHome: {
         flexDirection: "row",
@@ -225,7 +234,7 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         alignItems: "center",
         borderRadius: 20,
-        paddingHorizontal: 10,
+        paddingHorizontal: 8,
         // paddingVertical: 5,
         gap: 10,
     },
@@ -270,7 +279,7 @@ const styles = StyleSheet.create({
     },
     linedUser: {
         borderBottomWidth: 1,
-        borderBottomColor: "#8e8e8e",
+        borderBottomColor: "#dcdcdc",
         flex: 1,
     },
     imageBackground: {
