@@ -9,6 +9,7 @@ import {
   Dimensions,
   Animated,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import BackgroundImage from "@/components/Images/BackgroundImage";
@@ -41,7 +42,7 @@ const data = [
   { id: 6, picture: "ic_nguoiphuthuoc", title: "Người phụ thuộc" },
 ];
 
-const ServiceItem = ({ icon, title, showNew }: any) => {
+const ServiceItem = ({ icon, title }: any) => {
   const globalStyle = useStyles();
 
   return (
@@ -102,73 +103,42 @@ const ScreenWithOverlap = () => {
   );
  
   const renderHeader = () => {
-    const modelName = Device.modelName;
     return (
-     <View style={[styles.headerContainer, modelName === 'Pixel 7' ? {marginTop: verticalScale(-10)} : {marginTop:verticalScale(5)}, {  paddingVertical: verticalScale(20) }]}>
-      <BackgroundImage
-        source={imageSources["bg_head"]}
-        style={styles.headerImage}
-      >
-        <View style={[styles.headerContainerHome, { paddingHorizontal: 20 }]}>
-          <View
-            style={[
-              styles.profileContainerHome,
-              { justifyContent: "space-between" },
-            ]}
-          >
-            <TouchableOpacity onPress={() => openModalInfor("information")}>
-              <AppImage
-                source={authUser?.Image!}
-                style={styles.profileImageHome}
-              />
-              <ModalInformation
-                open={isInformation}
-                setOpen={setIsInformation}
-                title={type}
-                image={""}
-              />
+      <View style={styles.headerContainer}>
+        <BackgroundImage source={imageSources["bg_head"]} style={styles.headerImage}>
+          <View style={[styles.headerContainerHome, { paddingHorizontal: 20 }]}>
+            <View style={[styles.profileContainerHome, { justifyContent: "space-between" }]}>
+              <TouchableOpacity onPress={() => openModalInfor("information")}>
+                <AppImage source={authUser?.Image!} style={styles.profileImageHome} />
+                <ModalInformation
+                  open={isInformation}
+                  setOpen={setIsInformation}
+                  title={"Information"}
+                  image=""
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.nameContainerHome}>
+              <View style={styles.nameTagHome}>
+                <Text style={[styles.textLogin, { fontWeight: "bold", paddingHorizontal: 2, color: '#3A3736' }]}>
+                  {authUser?.designationLevel!}
+                </Text>
+                <AppImage source="dinh_danh" style={styles.identityIconHome} />
+              </View>
+              <Text style={[styles.textLogin, { fontWeight: "bold", color: "white", fontSize: 22 }]}>
+                {authUser?.Name!}
+              </Text>
+            </View>
+            <TouchableOpacity style={styles.searchButtonHome}>
+              <EvilIcons name="search" size={24} color="black" />
             </TouchableOpacity>
           </View>
-          <View style={styles.nameContainerHome}>
-            <View style={styles.nameTagHome}>
-              <Text
-                style={[
-                  styles.textLogin,
-                  { fontWeight: "bold", paddingHorizontal: 2, color:'#3A3736' },
-                ]}
-              >
-                {authUser?.designationLevel!}
-              </Text>
-              <AppImage source="dinh_danh" style={styles.identityIconHome} />
-            </View>
-            <Text
-              style={[
-                styles.textLogin,
-                { fontWeight: "bold", color: "white", fontSize: 22 },
-              ]}
-            >
-              {authUser?.Name!}
-            </Text>
+          <View style={[styles.profileContainerHome, { justifyContent: "space-between", marginVertical: 10, paddingHorizontal: 15 }]}>
+            {renderProfileImage("qr_cccd", openModal, setOpenModal, "qrCccd")}
+            {renderProfileImage("qr_dddt", openModalDd, setOpenModalDd, "qrScan")}
           </View>
-          <View style={styles.searchButtonHome}>
-            <EvilIcons name="search" size={24} color="black" />
-          </View>
-        </View>
-        <View
-          style={[
-            styles.profileContainerHome,
-            {
-              justifyContent: "space-between",
-              marginVertical: 10,
-              paddingHorizontal: 15,
-            },
-          ]}
-        >
-          {renderProfileImage("qr_cccd", openModal, setOpenModal, "qrCccd")}
-          {renderProfileImage("qr_dddt", openModalDd, setOpenModalDd, "qrScan")}
-        </View>
-      </BackgroundImage>
-    </View> 
+        </BackgroundImage>
+      </View>
     )
   }
 
@@ -316,7 +286,7 @@ const ScreenWithOverlap = () => {
       )}
       <Animated.View
         style={[
-          styles.bottomSectionLayoutHome, modelName === 'Pixel 7' ? {marginTop: -140} : {marginTop: -100} ,
+          styles.bottomSectionLayoutHome ,
           {
             borderTopLeftRadius: bottomSheetRadius,
             borderTopRightRadius: bottomSheetRadius,
@@ -364,7 +334,7 @@ const ScreenWithOverlap = () => {
               })}
             </View>
           </View>
-          <View style={{ marginBottom: 60 }} />
+          <View style={{ marginBottom: 70 }} />
         </Animated.ScrollView>
       </Animated.View>
     </SafeAreaView>
@@ -375,13 +345,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-//   headerContainer: {
-//     height: height * 0.42
-// },
+
   bottomSectionLayoutHome: {
     flex: 1,
     backgroundColor: "#fff",
-    marginTop: verticalScale(-140),
+    marginTop: verticalScale(-90),
     overflow: "hidden",
   },
   scrollView: {
@@ -408,7 +376,7 @@ const styles = StyleSheet.create({
     marginLeft: scale(10),
   },
   profileImageHome: {
-    marginTop:verticalScale(5),
+    marginTop:verticalScale(4),
     width: scale(50),
     height: scale(50),
     borderRadius: scale(100),
@@ -540,15 +508,17 @@ const styles = StyleSheet.create({
     height: 200,
   },
   headerImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
     width: "100%",
-    height: "100%",
     resizeMode: "cover",
     paddingVertical: 20,
-    marginTop: 5,
   },
   headerContainer: {
-    height: 300,
-  },
+    position:'relative',
+    height: scale(250)
+},
   headerContainerHome: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -642,6 +612,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+
 });
 
 export default ScreenWithOverlap;
