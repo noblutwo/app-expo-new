@@ -64,14 +64,6 @@ export default function LoginScreen() {
         scrollViewRef.current?.scrollTo({x: index * width, animated: true});
     };
 
-    // useEffect(() => {
-    //   const timer = setInterval(() => {
-    //     scrollToIndex((activeIndex + 1) % slides.length);
-    //   }, 5000);
-    //   return () => clearInterval(timer);
-    // }, [activeIndex]);
-
-
     return (
         <View style={styles.container}>
             <View style={styles.topSection}>
