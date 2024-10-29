@@ -18,13 +18,9 @@ export function ItemSelectSetting({data, title}: any) {
                 <View key={index}>
                     <View style={styles.row}>
                         <Text>{item?.title}</Text>
-                        {item?.phone && (
-                            <Text style={styles.appTextPhone}>
-                                {item?.phone}
-                            </Text>
-                        )}
-                        <Text> {item?.version}</Text>
-                        {item?.open}
+                        {item?.phone && <Text style={styles.appTextPhone}>{item?.phone}</Text>}
+                        {item?.version && <Text> {item?.version}</Text>}
+                        {item?.open && <Text>{item?.open}</Text>}
                         {item?.icon && (
                             <AppImage
                                 source={item?.icon}
