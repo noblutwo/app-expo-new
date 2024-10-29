@@ -7,6 +7,7 @@ import {useAuth} from "@/context/AuthContext";
 import AppImage, {imageSources} from "@components/Images/ImgReq";
 import {hResponsive, wResponsive} from "@/constants/Colors";
 import {ModalQrCode} from "@components/Modal/ModalQrCode";
+import {HeaderTitleFamily} from "@components/HeaderTitle/HeaderTitleFamily";
 
 export default function AuthLayout() {
     const {isLoggedIn} = useAuth();
@@ -50,9 +51,9 @@ export default function AuthLayout() {
                 name="family"
                 options={{
                     headerBackVisible: false,
-                    headerTitle: () => <HeaderTitle title="Thành viên khác trong hộ gia đình"/>,
+                    headerTitle: () => <HeaderTitleFamily title="Thành viên khác trong hộ gia đình"/>,
                     headerLeft: () => (
-                        <TouchableOpacity onPress={() => handler()} style={{paddingRight:25}}>
+                        <TouchableOpacity onPress={() => handler()} >
                             <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
                         </TouchableOpacity>
                     ),

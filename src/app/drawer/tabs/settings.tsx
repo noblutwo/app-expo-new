@@ -70,8 +70,7 @@ export default function LayoutSettings() {
         },
         {
             title: "Phiên bản sử dụng ",
-            icon: "",
-            version: '2.1.9'
+            version: "2.1.9"
         },
     ]
     const titleItem3 = [
@@ -105,14 +104,14 @@ export default function LayoutSettings() {
         <View style={{flex: 1}}>
             <BackgroundImage source={imageSources["bg_setting"]}
                              style={{height: hResponsive(147), position: 'relative'}}>
-                <View style={[styles.containerLayout,styles.jus, {flexDirection: 'row'}]}>
+                <View style={[styles.containerLayout, styles.jus, {flexDirection: 'row'}]}>
                     <View style={styles.wrapSetting}>
                         <Text style={{fontSize: FontSize.textLowercase, fontWeight: 600, paddingVertical: 20}}>
                             Cài đặt
                         </Text>
-                        <Text>Sử dụng vân tay / khuân mặt để mở khóa ứng dụng nhanh chóng và bảo mật hơn</Text>
+                        {/*<Text>Sử dụng vân tay / khuân mặt để mở khóa ứng dụng nhanh chóng và bảo mật hơn</Text>*/}
                     </View>
-                    <View style={[styles.wrapIconSetting,{top:5}]}>
+                    <View style={[styles.wrapIconSetting, {top: 5}]}>
                         <BackgroundImage
                             source={imageSources["icon_bg_setting"]}
                             style={styles.appImage} // Thay đổi kích thước ở đây
@@ -152,13 +151,15 @@ const styles = StyleSheet.create({
 
     },
     wrapSetting: {
-        width: "55%",
-        justifyContent: 'center',
-
+        width: "50%",
+        // justifyContent: 'center',
+        paddingTop: 30
     },
     wrapIconSetting: {
-        width: "30%",
+        width: "50%",
         justifyContent: 'center',
+        alignItems: 'flex-end',
+        paddingRight: "6%"
     },
     appImage: {
         width: width * 0.26,

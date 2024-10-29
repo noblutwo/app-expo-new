@@ -46,15 +46,16 @@ export default function LayoutService() {
                     </View>
                 </View>
             </BackgroundImage>
-            <View style={styles.containerLayout}>
-                <View style={styles.accountContainer}>
-                    <Text style={styles.accountText}>Tài khoản mức 2 </Text>
-                    <ImageBackground source={imageSources["iconVn"]} style={[styles.icon, {marginLeft: 5}]}/>
-                </View>
-                <Text>Tài khoản của bạn đã được định danh ở mức 3</Text>
-            </View>
-            <View style={styles.appLineBig}/>
+
             <ScrollView style={global.homeContainer} contentContainerStyle={{paddingBottom: 80}}>
+                <View style={styles.containerLayout}>
+                    <View style={styles.accountContainer}>
+                        <Text style={styles.accountText}>Tài khoản mức 2 </Text>
+                        <ImageBackground source={imageSources["iconVn"]} style={[styles.icon, {marginLeft: 5}]}/>
+                    </View>
+                    <Text>Tài khoản của bạn đã được định danh ở mức 3</Text>
+                </View>
+                <View style={styles.appLineBig}/>
                 <View style={styles.containerLayout}>
                     <Text style={styles.sectionTitle}>Tích hợp và xuất trình</Text>
                     <View style={styles.rowContainer}>

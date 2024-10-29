@@ -23,6 +23,7 @@ export function ItemSelectSetting({data, title}: any) {
                                 {item?.phone || item?.version}
                             </Text>
                         )}
+                        <Text> {item?.version}</Text>
                         {item?.open}
                         {item?.icon && (
                             <AppImage
@@ -32,6 +33,7 @@ export function ItemSelectSetting({data, title}: any) {
                             />
                         )
                         }
+
                     </View>
                     {/* Ẩn dòng kẻ nếu là phần tử cuối cùng */}
                     {index !== data.length - 1 && <View style={styles.appLine}/>}

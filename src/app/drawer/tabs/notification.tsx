@@ -20,7 +20,8 @@ const TaiKhoanRoute = () => (
                         biệt của bạn</Text>
                     <Entypo name="dot-single" size={24} color={Colors.colorText}/>
                 </View>
-                <Text style={{paddingVertical: 10}}>Chức bạn có một ngày sinh nhật thật vui vẻ và có những phút giây đáng nhớ khi chào đón ngày đặc biệt này cùng bạn bè và người thân</Text>
+                <Text style={{paddingVertical: 10}}>Chức bạn có một ngày sinh nhật thật vui vẻ và có những phút giây
+                    đáng nhớ khi chào đón ngày đặc biệt này cùng bạn bè và người thân</Text>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <AntDesign name="clockcircleo" size={18} color="#989898"/>
                     <Text style={{color: "#989898", paddingHorizontal: 5, fontSize: FontSize.textSmall}}>07:01</Text>
@@ -93,7 +94,7 @@ export default function Notification() {
                             ))}
                         </View>
                     </View>
-                    <View style={{width: wResponsive(68), height: hResponsive(75)}}>
+                    <View style={{width: wResponsive(75), height: hResponsive(75)}}>
                         <ImageBackground
                             source={imageSources["logoVienThong"]}
                             style={styles.logo}
