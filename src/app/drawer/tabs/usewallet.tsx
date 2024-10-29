@@ -47,7 +47,7 @@ export default function LayoutService() {
                 </View>
             </ImageBackground>
 
-            <ScrollView style={global.homeContainer} contentContainerStyle={{paddingBottom: 80}}>
+            <ScrollView style={global.homeContainer} contentContainerStyle={{paddingBottom: 100}}>
                 <View style={styles.containerLayout}>
                     <View style={styles.accountContainer}>
                         <Text style={styles.accountText}>Tài khoản mức 2 </Text>
