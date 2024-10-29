@@ -15,7 +15,7 @@ export default function homeScreen() {
     const backAction = () => {
       hiddenNoticifation(false)
       router.back();
-      return true; // Ngăn chặn hành động mặc định
+      return true;
     };
 
     const backHandler = BackHandler.addEventListener(
@@ -23,7 +23,7 @@ export default function homeScreen() {
       backAction
     );
     
-    return () => backHandler.remove(); // Cleanup
+    return () => backHandler.remove(); 
   }, [isHiddenLoggedIn]);
 
   return (
