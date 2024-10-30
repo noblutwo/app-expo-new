@@ -30,7 +30,7 @@ export default function AuthLayout() {
                     headerTitle: () => <HeaderTitle title="Thông tin cư trú"/>,
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.push('/drawer/tabs')} >
-                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={styles.marginBottom}/>
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
@@ -54,7 +54,7 @@ export default function AuthLayout() {
                     headerTitle: () => <HeaderTitleFamily title="Thành viên khác trong hộ gia đình"/>,
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => handler()} >
-                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={styles.marginBottom}/>
                         </TouchableOpacity>
                     ),
                     headerBackground: () => (
@@ -73,7 +73,7 @@ export default function AuthLayout() {
                     headerTitle: () => <HeaderTitle title="Giấy phép lái xe"/>,
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.push('/drawer/tabs')} >
-                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={styles.marginBottom}/>
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
@@ -97,7 +97,7 @@ export default function AuthLayout() {
                     headerTitle: () => <HeaderTitle title="Xuất trình giấy tờ"/>,
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.push('/drawer/tabs')} >
-                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={styles.marginBottom} />
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
@@ -122,7 +122,7 @@ export default function AuthLayout() {
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.push('/(informations)/driving')}
                                           >
-                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={styles.marginBottom}/>
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
@@ -147,7 +147,7 @@ export default function AuthLayout() {
                     headerLeft: () => (
                         <TouchableOpacity onPress={() => router.push('/(informations)/driving')}
                                           >
-                            <Ionicons name="arrow-back" size={20} color="#424242" style={{color: '#424242'}}/>
+                            <Ionicons name="arrow-back" size={20} color="#424242" style={styles.marginBottom}/>
                         </TouchableOpacity>
                     ),
                     headerBackground: () => (
@@ -166,10 +166,10 @@ const styles = StyleSheet.create({
         paddingRight: 10,
     },
     item: {
-        marginTop: 5,
+        // marginTop: 5,
         width: wResponsive(20),
         height: hResponsive(20),
-        marginBottom: 10,
+        marginBottom: 30,
     },
     headerBackground: {
         flex: 1,
@@ -189,4 +189,5 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    marginBottom: {color: '#424242', marginBottom:30}
 });

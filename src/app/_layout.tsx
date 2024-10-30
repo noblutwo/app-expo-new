@@ -51,7 +51,7 @@ export default function RootLayout() {
     return (
         <AuthProvider>
       <SafeAreaProvider>
-        <SafeAreaView style={styles.containerLyout} edges={['top', 'left', 'right']}>
+        <SafeAreaView style={styles.containerLyout} edges={['top','left','right']}>
           <StatusBar backgroundColor="#757575" barStyle="light-content" />
           <View style={styles.contentLayout}>
             <Slot />
@@ -64,7 +64,7 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
     containerLyout: {
       flex: 1,
-      backgroundColor: '#757575', // Áp dụng màu nền theo StatusBar
+      // backgroundColor: 'transparent', 
     },
     contentLayout: {
       flex: 1,

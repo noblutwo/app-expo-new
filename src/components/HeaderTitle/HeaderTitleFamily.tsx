@@ -12,7 +12,6 @@ export const HeaderTitleFamily: React.FC<{ title: string }> = ({title}) => (
             fontWeight: '700',
             fontSize: 20,
             fontFamily: FontSize.fontFamilyRegular,
-
         }}
     >
         {title}

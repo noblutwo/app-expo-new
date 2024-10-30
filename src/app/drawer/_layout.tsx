@@ -6,7 +6,6 @@ import {useAuth} from "@/context/AuthContext";
 import {Ionicons} from "@expo/vector-icons";
 
 export default function AuthLayout() {
-    // const rou = useRouter();
     const pathname = usePathname();
     const { isNoticifation,isHiddenLoggedIn,isLoggedIn} = useAuth();
     const handlePress = () => {
@@ -37,10 +36,9 @@ export default function AuthLayout() {
         {
             name: "login", options: {
                 headerRight: () => {
-
                     return (
                         <TouchableOpacity>
-                        {isNoticifation ?  <Ionicons name="notifications" size={24} color="black"/> : ''}
+                        {isNoticifation ?  <Ionicons name="notifications" size={24} style={{marginBottom:30}} color="black"/> : ''}
                         </TouchableOpacity>
                     );
                 },
@@ -81,6 +79,7 @@ const styles = StyleSheet.create({
     item: {
         width: 40,
         height: 30,
+        marginBottom: 30,
     },
     headerBackground: {
         flex: 1,
