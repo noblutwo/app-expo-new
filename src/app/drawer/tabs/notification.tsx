@@ -94,7 +94,7 @@ export default function Notification() {
                             ))}
                         </View>
                     </View>
-                    <View style={{width: wResponsive(75), height: hResponsive(75)}}>
+                    <View style={{width: wResponsive(80), height: hResponsive(75)}}>
                         <ImageBackground
                             source={imageSources["logoVienThong"]}
                             style={styles.logo}

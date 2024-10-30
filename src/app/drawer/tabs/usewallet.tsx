@@ -32,7 +32,7 @@ export default function LayoutService() {
                 <View style={[styles.containerLayout, styles.headerContainer]}>
                     <Text style={styles.headerText}>Ví giấy tờ</Text>
                 </View>
-                <View style={[styles.cccdContainer, styles.shadow]}>
+                <View style={[styles.cccdContainer]}>
                     <ImageBackground
                         source={imageSources["cccd"]}
                         style={styles.cccd}
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
         // height: hResponsive(282),
     },
     headerContainer: {
-        paddingVertical: 10,
-        marginTop: 30,
+        // paddingVertical: 10,
+        marginTop: 20,
     },
     icon: {
         width: wResponsive(15),
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     cccdContainer: {
         width: 'auto',
-        height: hResponsive(250),
+        height: hResponsive(200),
     },
     cccd: {
         width: '100%',

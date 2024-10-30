@@ -147,13 +147,11 @@ const styles = StyleSheet.create({
     // setting
     containerLayout: {
         flex: 1,
-        paddingHorizontal: '3%',
-
+        paddingHorizontal: '3%'
     },
     wrapSetting: {
         width: "50%",
-        // justifyContent: 'center',
-        paddingTop: 30
+        paddingTop: 15
     },
     wrapIconSetting: {
         width: "50%",
@@ -162,8 +160,8 @@ const styles = StyleSheet.create({
         paddingRight: "6%"
     },
     appImage: {
-        width: width * 0.26,
-        height: height * 0.16,
+        width: '90%',
+        height:'90%',
     },
     appLine: {
         height: 1, // Chiều cao của gạch ngang
