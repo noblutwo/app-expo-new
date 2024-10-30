@@ -129,8 +129,10 @@ const ScreenWithOverlap = () => {
                 {authUser?.Name!}
               </Text>
             </View>
-            <TouchableOpacity style={styles.searchButtonHome}>
-              <EvilIcons name="search" size={24} color="black" />
+            <TouchableOpacity 
+            // style={styles.searchButtonHome}
+            >
+              <AppImage source="icon_search" style={styles.iconSearch} />
             </TouchableOpacity>
           </View>
           <View style={[styles.profileContainerHome, { justifyContent: "space-between", marginVertical: 10, paddingHorizontal: 15 }]}>
@@ -374,6 +376,13 @@ const styles = StyleSheet.create({
     width: scale(20),
     height: scale(20),
     marginLeft: scale(10),
+  },
+  iconSearch: {
+    width: 35,
+    height: 35,
+    objectFit: "cover",
+    backgroundColor:'#fff',
+    borderRadius: 100
   },
   profileImageHome: {
     marginTop:verticalScale(4),

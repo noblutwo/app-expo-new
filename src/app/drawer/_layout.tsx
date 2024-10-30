@@ -4,9 +4,6 @@ import {StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useAuth} from "@/context/AuthContext";
 import {Ionicons} from "@expo/vector-icons";
-import { useRouter } from 'expo-router';
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 export default function AuthLayout() {
     // const rou = useRouter();

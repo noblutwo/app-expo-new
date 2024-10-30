@@ -54,6 +54,7 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
       width: dimensions.width * 0.05,
     },
     input: {
+      paddingLeft:30,
       flex: 1,
       fontSize: dimensions.width * 0.04,
       color: "#333",

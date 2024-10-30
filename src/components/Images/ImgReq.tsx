@@ -65,7 +65,7 @@ export interface AppImageProps {
     | "home_banner3"
     | "warning"
     | "home_header"
-    | "home_ctdbll"
+    | "home_ctdbll" | "icon_search"
 
     // cuong
     | "setting1"
@@ -164,9 +164,9 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   home_banner3: require("../../assets/images/src_assets_images_home_banner3.jpg"),
   home_cbld: require("../../assets/images/cbld.jpg"),
   home_header: require("../../assets/images/src_assets_images_vnp_header_vector_wave.png"),
-  home_ctdbll: require("../../assets/images/ctdbll.png"),
-  home_cthtdbll: require("../../assets/images/cthtdbll.png"),
-  home_vneid_add: require("../../assets/images/vneid_add.png"),
+  home_ctdbll: require("../../assets/images/ctdbll.jpg"),
+  home_cthtdbll: require("../../assets/images/cthtdbll.jpg"),
+  home_vneid_add: require("../../assets/images/ctkcs.jpg"),
   home_tbt_cuba: require("../../assets/images/tbt-cuba.jpg"),
   warning: require("../../assets/images/icon-warning.png"),
 
@@ -201,6 +201,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   bgHeaderLayout: require("../../assets/images/src_assets_images_vnp_header_home_bg_2.png"),
   bgHeaderFamily: require("../../assets/images/src_assets_images_bg_bg_og_gradient.png"),
   iconAppInput: require("../../assets/images/src_assets_images_vnp_ico_icon_madinhdanh.png"),
+  icon_search: require("../../assets/images/icon_search.png"),
 };
 
 const AppImage: React.FC<AppImageProps> = ({
