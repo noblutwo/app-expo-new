@@ -61,7 +61,7 @@ export default function LayoutService() {
                     <View style={styles.rowContainer}>
                         <View style={styles.wrapItem}>
                             <AppImage source={"tichHoptt"} style={global.imageOverlap}/>
-                            <Text>Tích hợp giấy tờ</Text>
+                            <Text style={styles.sectionTitle}>Tích hợp giấy tờ</Text>
                         </View>
                         <View style={styles.wrapItem}>
                             <AppImage source={"xuatTrinh"} style={global.imageOverlap}/>
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
         // height: hResponsive(282),
     },
     headerContainer: {
-        // paddingVertical: 10,
-        marginTop: 20,
+        paddingVertical: 10,
+        marginTop: 30,
     },
     icon: {
         width: wResponsive(15),

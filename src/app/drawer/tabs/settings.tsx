@@ -151,17 +151,17 @@ const styles = StyleSheet.create({
     },
     wrapSetting: {
         width: "50%",
-        paddingTop: 15
+        paddingTop: 30
     },
     wrapIconSetting: {
         width: "50%",
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        paddingRight: "6%"
+        // paddingRight: "6%"
     },
     appImage: {
-        width: '90%',
-        height:'90%',
+        width: '85%',
+        height:'85%',
     },
     appLine: {
         height: 1, // Chiều cao của gạch ngang
