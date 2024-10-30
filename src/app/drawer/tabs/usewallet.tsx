@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         paddingVertical: 10,
-        marginTop: 30,
+        marginTop: 10,
     },
     icon: {
         width: wResponsive(15),

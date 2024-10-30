@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     },
     wrapSetting: {
         width: "50%",
-        paddingTop: 30
+        paddingTop: 20
     },
     wrapIconSetting: {
         width: "50%",
