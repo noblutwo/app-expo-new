@@ -32,7 +32,7 @@ export default function LayoutService() {
                 <View style={[styles.containerLayout, styles.headerContainer]}>
                     <Text style={styles.headerText}>Ví giấy tờ</Text>
                 </View>
-                <View style={[styles.cccdContainer, styles.shadow]}>
+                <View style={[styles.cccdContainer]}>
                     <ImageBackground
                         source={imageSources["cccd"]}
                         style={styles.cccd}
@@ -61,7 +61,7 @@ export default function LayoutService() {
                     <View style={styles.rowContainer}>
                         <View style={styles.wrapItem}>
                             <AppImage source={"tichHoptt"} style={global.imageOverlap}/>
-                            <Text>Tích hợp giấy tờ</Text>
+                            <Text style={styles.sectionTitle}>Tích hợp giấy tờ</Text>
                         </View>
                         <View style={styles.wrapItem}>
                             <AppImage source={"xuatTrinh"} style={global.imageOverlap}/>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     cccdContainer: {
         width: 'auto',
-        height: hResponsive(250),
+        height: hResponsive(200),
     },
     cccd: {
         width: '100%',

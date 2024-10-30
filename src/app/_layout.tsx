@@ -14,7 +14,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function RootLayout() {
     const [loaded] = useFonts(fontConfig);
-    // const styles = useStyles();
 
 
     async function checkForUpdates() {

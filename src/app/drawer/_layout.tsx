@@ -12,12 +12,12 @@ export default function AuthLayout() {
         const authPaths = ["/drawer/login", "/drawer/register", "/drawer/forgotPassword", "/drawer/activateAccount"];
         if (authPaths.includes(pathname)) {
             if(!isNoticifation) {
-                router.push("/home");  
+                router.push("/home");
             } else {
-              router.back();  
+              router.back();
             }
         } else {
-              router.push("/home");  
+              router.push("/home");
         }
       };
     const commonHeaderOptions = isHiddenLoggedIn ? {headerShown: false} : {
