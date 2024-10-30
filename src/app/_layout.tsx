@@ -1,21 +1,17 @@
 import {useEffect} from "react";
-import {router, Slot, SplashScreen, usePathname} from "expo-router";
+import {Slot, SplashScreen} from "expo-router";
 import {useFonts} from "expo-font";
 import React from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import {AppState, StatusBar, View, StyleSheet} from "react-native";
+import { StatusBar, View, StyleSheet} from "react-native";
 import * as Updates from "expo-updates";
 import {fontConfig} from "@/assets/fonts/font";
-import {useStyles} from "@/styles/styles";
 import {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import {AuthProvider} from "@/context/AuthContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function RootLayout() {
     const [loaded] = useFonts(fontConfig);
-
-
     async function checkForUpdates() {
         if (!__DEV__) {
             try {
