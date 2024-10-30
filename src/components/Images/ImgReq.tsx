@@ -164,7 +164,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   home_banner3: require("../../assets/images/src_assets_images_home_banner3.jpg"),
   home_cbld: require("../../assets/images/cbld.jpg"),
   home_header: require("../../assets/images/src_assets_images_vnp_header_vector_wave.png"),
-  home_ctdbll: require("../../assets/images/ctkc.jpg"),
+  home_ctdbll: require("../../assets/images/ctdbll.jpg"),
   home_cthtdbll: require("../../assets/images/cthtdbll.jpg"),
   home_vneid_add: require("../../assets/images/ctkcs.jpg"),
   home_tbt_cuba: require("../../assets/images/tbt-cuba.jpg"),

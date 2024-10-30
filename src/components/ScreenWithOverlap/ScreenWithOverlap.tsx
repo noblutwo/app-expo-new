@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {View, StyleSheet, Dimensions, FlatList, NativeSyntheticEvent, NativeScrollEvent} from "react-native";
 import AppImage from "@/components/Images/ImgReq";
 import {useStyles} from "@/styles/styles";
+import FastImage from "react-native-fast-image";
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -33,6 +34,11 @@ const SliderLayOutHome: React.FC = () => {
     const renderItem = ({item}: { item: SlideItem }) => (
         <View style={styles.slide}>
             <AppImage source={item?.source} style={styles.image} resizeMode="contain"/>
+            {/* <FastImage 
+            source={`${item.source}`} 
+            style={styles.image} 
+            resizeMode={FastImage.resizeMode.contain} 
+        /> */}
         </View>
     );
 
@@ -87,10 +93,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     image: {
+        width: '100%',
+        height: 300,
         // width: '100%',
-        height: 250,
-        width: screenWidth,
-        aspectRatio: 16 / 6,
+        // height: 250,
+        // width: screenWidth,
+        // aspectRatio: 16 / 6,
         // borderRadius: 20,
     },
 });
