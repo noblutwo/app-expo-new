@@ -408,7 +408,7 @@ const LoginScreen = () => {
                                         flexDirection: "column",
                                         justifyContent: "center",
                                         alignItems: "center",
-                                        marginBottom: 60,
+                                        marginBottom: 110,
                                     }}
                                 >
                                     <TouchableOpacity

@@ -32,7 +32,7 @@ const SliderLayOutHome: React.FC = () => {
 
     const renderItem = ({item}: { item: SlideItem }) => (
         <View style={styles.slide}>
-            <AppImage source={item?.source} style={styles.image} resizeMode="cover"/>
+            <AppImage source={item?.source} style={styles.image} resizeMode="contain"/>
         </View>
     );
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     image: {
         // width: '100%',
-        height: '100%',
+        height: 250,
         width: screenWidth,
         aspectRatio: 16 / 6,
         // borderRadius: 20,
