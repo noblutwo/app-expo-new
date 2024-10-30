@@ -23,6 +23,7 @@ interface ResponsiveTextInputProps extends TextInputProps {
     icon: string;
     containerStyle?: ViewStyle;
     isPassword?: boolean;
+    value: any
 }
 
 const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
@@ -74,10 +75,10 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
         },
     });
 
-    const PlaceholderComponent: React.FC = ({value}: any) => (
+    const PlaceholderComponent: React.FC = ({data}: any) => (
         <View style={styles.placeholder}>
             <AppImage source={icon} style={styles.icon} resizeMode="contain"/>
-            {!value && <Text style={styles.placeholderText}>{placeholder}</Text>}
+            {!data && <Text style={styles.placeholderText}>{placeholder}</Text>}
         </View>
     );
 
@@ -98,7 +99,7 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
                     placeholderTextColor="transparent"
                     {...props}
                 />
-                <PlaceholderComponent value={value}/>
+                <PlaceholderComponent data={value}/>
                 {isPassword && (
                     <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
                         <Icon
