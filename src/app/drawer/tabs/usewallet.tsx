@@ -1,10 +1,10 @@
-import {StyleSheet, ScrollView, View, Text, ImageBackground, TouchableOpacity} from "react-native";
+import {StyleSheet, ScrollView, View, Text, ImageBackground, TouchableOpacity, BackHandler} from "react-native";
 import React from "react";
 import {useStyles} from "@/styles/styles";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
-import BackgroundImage from "@/components/Images/BackgroundImage";
 import {FontAwesome6} from '@expo/vector-icons';
-import {FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import {hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+
 
 // Định nghĩa kiểu dữ liệu cho data
 interface DataItem {
@@ -25,7 +25,6 @@ const data: DataItem[] = [
 
 export default function LayoutService() {
     const global = useStyles();
-
     return (
         <View style={styles.container}>
             <ImageBackground source={imageSources["bgHeaderWallet"]} style={styles.backgroundImage}>

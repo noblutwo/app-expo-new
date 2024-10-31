@@ -1,5 +1,4 @@
 import React, { useState, useRef} from "react";
-import * as Device from 'expo-device';
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import {
   View,
@@ -9,9 +8,7 @@ import {
   Dimensions,
   Animated,
   TouchableOpacity,
-  StatusBar,
 } from "react-native";
-import { EvilIcons } from "@expo/vector-icons";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import AppImage, { imageSources } from "@/components/Images/ImgReq";
 import { useStyles } from "@/styles/styles";
@@ -130,7 +127,7 @@ const ScreenWithOverlap = () => {
               </Text>
             </View>
             <TouchableOpacity 
-            // style={styles.searchButtonHome}
+            style={styles.searchButtonHome}
             >
               <AppImage source="icon_search" style={styles.iconSearch} />
             </TouchableOpacity>
@@ -152,7 +149,6 @@ const ScreenWithOverlap = () => {
           key={index}
           icon={item.icon}
           title={item.title}
-          // showNew={item.icon !== "phongchongdichbenh"}
         />
       ))}
     </View>
@@ -275,7 +271,7 @@ const ScreenWithOverlap = () => {
     outputRange: [20, 0],
     extrapolate: "clamp",
   });
-  const modelName = Device.modelName;
+
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
@@ -378,8 +374,8 @@ const styles = StyleSheet.create({
     marginLeft: scale(10),
   },
   iconSearch: {
-    width: 35,
-    height: 35,
+    width: 18,
+    height: 18,
     objectFit: "cover",
     backgroundColor:'#fff',
     borderRadius: 100
@@ -414,8 +410,7 @@ const styles = StyleSheet.create({
   searchButtonHome: {
     width: scale(30),
     height: scale(30),
-    paddingBottom: scale(4),
-    paddingLeft:scale(3),
+    padding:1,
     borderRadius: scale(50),
     backgroundColor: "white",
     flexDirection: "column",

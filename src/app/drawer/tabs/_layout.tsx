@@ -1,7 +1,8 @@
-import { Tabs } from "expo-router";
-import React from "react";
+import { Tabs, usePathname, useRouter } from "expo-router";
+import React, { useEffect, useRef } from "react";
 import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
 import {
+  BackHandler,
   StyleSheet,
   Text,
   View
@@ -42,6 +43,33 @@ const tabConfig: TabConfig = {
 };
 
 export default function TabPage() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const tabHistory = useRef<string[]>([]);
+
+  useEffect(() => {
+    if (pathname.startsWith('/')) {
+      tabHistory.current.push(pathname);
+    }
+
+    const handleBackPress = () => {
+      if (tabHistory.current.length > 1) {
+        tabHistory.current.pop();
+        const previousTab = tabHistory.current[tabHistory.current.length - 1];
+        router.replace(previousTab);
+        return true;
+      } else {
+        BackHandler.exitApp()
+      }
+      return false;
+    };
+
+    BackHandler.addEventListener('hardwareBackPress', handleBackPress);
+
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
+    };
+  }, [pathname]);
   return (
     <Tabs
       screenOptions={({ route }) => ({

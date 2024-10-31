@@ -1,11 +1,13 @@
-import React, {useState} from "react";
-import {StyleSheet, Text, ScrollView, View, ImageBackground, TouchableOpacity, useWindowDimensions} from "react-native";
+import React, {useEffect, useState} from "react";
+import {StyleSheet, Text, ScrollView, View, ImageBackground, TouchableOpacity, useWindowDimensions, BackHandler} from "react-native";
 import {Colors, FontSize, hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
 import {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
 import {SceneMap, TabView} from "react-native-tab-view";
 import {Entypo, AntDesign} from '@expo/vector-icons/';
 import {LayoutNotFound} from "@components/NotFound/LayoutNotFound";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "expo-router";
 
 const TaiKhoanRoute = () => (
     <ScrollView style={[{flex: 1, backgroundColor: '#fff'}, styles.containerLayout]}>
@@ -56,7 +58,7 @@ const renderScene = SceneMap({
 
 export default function Notification() {
     const layout = useWindowDimensions();
-
+    const router = useRouter()
     const [index, setIndex] = useState(0);
     const [routes] = useState([
         {key: 'taiKhoan', title: 'Tài khoản'},
@@ -67,6 +69,7 @@ export default function Notification() {
     const handleTabPress = (tabIndex: number) => {
         setIndex(tabIndex);
     };
+
 
     return (
         <View style={styles.container}>

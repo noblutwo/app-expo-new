@@ -64,15 +64,18 @@ const SliderLayOutHome: React.FC = () => {
     return (
         <View style={styles.sliderContainer}>
             <FlatList
-                ref={flatListRef}
-                data={slides}
-                renderItem={renderItem}
-                keyExtractor={(_, index) => index.toString()}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                onScroll={handleScroll}
-                scrollEventThrottle={16}
+               ref={flatListRef}
+               data={slides}
+               renderItem={renderItem}
+               keyExtractor={(_, index) => index.toString()}
+               horizontal
+               pagingEnabled
+               showsHorizontalScrollIndicator={false}
+               onScroll={handleScroll}
+               scrollEventThrottle={16}
+               snapToInterval={screenWidth} // Snap theo chiều rộng của màn hình
+               decelerationRate="fast" // Đảm bảo cuộn mượt mà
+               snapToAlignment="center" // Căn giữa ảnh
             />
         </View>
     );

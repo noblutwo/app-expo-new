@@ -4,7 +4,6 @@ import {Camera, CameraView} from 'expo-camera';
 
 import {Ionicons} from '@expo/vector-icons/';
 
-
 interface item {
     type: string,
     data: string
@@ -13,7 +12,6 @@ interface item {
 const QRScannerScreen = ({navigation}: any) => {
     const [hasPermission, setHasPermission] = useState<any>("");
     const [torch, setTorch] = useState(false);
-
     useEffect(() => {
         (async () => {
             const {status} = await Camera.requestCameraPermissionsAsync();

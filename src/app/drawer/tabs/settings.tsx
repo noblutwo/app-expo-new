@@ -1,5 +1,5 @@
-import {StyleSheet, ScrollView, Text, View, Dimensions, TouchableOpacity} from "react-native";
-import React, {useState} from "react";
+import {StyleSheet, ScrollView, Text, View, Dimensions, TouchableOpacity, BackHandler} from "react-native";
+import React, {useEffect, useState} from "react";
 import {FontSize, hResponsive} from "@/constants/Colors";
 import {imageSources} from "@/components/Images/ImgReq";
 import BackgroundImage from "@/components/Images/BackgroundImage";
@@ -8,6 +8,7 @@ import {ItemSelectSetting} from "@components/Item/ItemSelectSetting";
 import {Switch} from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
+import { useAuth } from "@/context/AuthContext";
 
 
 const {width, height} = Dimensions.get('window')
@@ -15,6 +16,7 @@ export default function LayoutSettings() {
     const [isEnabled, setIsEnabled] = useState(false);
     const [loading, setLoading] = useState(false)
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    // const { handlerNoticifation, hiddenNoticifation} = useAuth();
     const titleItem = [
         {
             title: "Lịch sử chia sẻ",
@@ -92,14 +94,14 @@ export default function LayoutSettings() {
     const handLogOut = async () => {
         try {
             setLoading(true)
-            // await AsyncStorage.removeItem('user');
-            router.push("/drawer/login")
+            router.back()
         } catch (err) {
             console.log(err)
         } finally {
             setLoading(false)
         }
     }
+
     return (
         <View style={{flex: 1}}>
             <BackgroundImage source={imageSources["bg_setting"]}
