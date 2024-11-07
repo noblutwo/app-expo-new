@@ -32,9 +32,6 @@ export default function RootLayout() {
             checkForUpdates();
         }
     }, [loaded]);
-
-
-
     if (!loaded) {
         return (
             <View style={[styles.containerLyout]}>

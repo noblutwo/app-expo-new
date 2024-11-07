@@ -64,11 +64,18 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
       fontSize: dimensions.width * 0.04,
       color: "#999",
       position: "absolute",
-      left: dimensions.width * 0.095,
+      left: dimensions.width * 0.097,
     },
     eyeIcon: {
       padding: dimensions.width * 0.02,
+      flexDirection: "row",
+      alignItems: "center",
     },
+    iconTitle:{
+      padding: dimensions.width * 0.03,
+      marginRight: dimensions.width * 0.03,
+      width: dimensions.width * 0.02,
+    }
   });
 
   const toggleShowPassword = () => {
@@ -93,6 +100,8 @@ const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
         {!value && <Text style={styles.placeholderText}>{placeholder}</Text>}
         {isPassword && (
           <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
+            {value && <AppImage source="close_icon" style={styles.iconTitle} resizeMode="contain" />}
+            
             <Icon
               name={showPassword ? "visibility" : "visibility-off"}
               size={dimensions.width * 0.06}

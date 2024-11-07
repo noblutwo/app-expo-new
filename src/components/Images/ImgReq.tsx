@@ -65,7 +65,7 @@ export interface AppImageProps {
     | "home_banner3"
     | "warning"
     | "home_header"
-    | "home_ctdbll" | "icon_search"
+    | "home_ctdbll" | "icon_search" | "close_icon"
 
     // cuong
     | "setting1"
@@ -169,6 +169,7 @@ export const imageSources: { [key: string]: ImageSourcePropType } = {
   home_vneid_add: require("../../assets/images/ctkcs.jpg"),
   home_tbt_cuba: require("../../assets/images/tbt-cuba.jpg"),
   warning: require("../../assets/images/icon-warning.png"),
+  close_icon: require("../../assets/images/close-icon.png"),
 
   // cuong
   setting1: require("../../assets/images/src_assets_images_ico_ic_share_history.png"),
