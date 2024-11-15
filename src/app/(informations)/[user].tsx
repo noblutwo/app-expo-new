@@ -5,6 +5,7 @@ import {imageSources} from "@components/Images/ImgReq";
 import ItemCard from "@components/Item/ItemCard";
 import React from "react";
 import InfoCardUser from "@components/Dropdown/InfoCardUser";
+import ItemRenderCccd from "@components/Item/ItemRenderCccd";
 
 function User() {
     const {user} = useLocalSearchParams();
@@ -16,12 +17,7 @@ function User() {
                         <Text style={{fontWeight: '700', fontSize: FontSize.textLowercase, paddingVertical: 15}}>
                             Thẻ căn cước công dân
                         </Text>
-                        <View style={styles.cccdContainer}>
-                            <Image
-                                source={imageSources["cccd"]}
-                                style={[styles.cccd, styles.shadow]}
-                            />
-                        </View>
+                        <ItemRenderCccd/>
                         <ItemCard title={"Đặc điểm nhận dạng"} value={"Vết sẹo phía sau mày phải"}/>
                         <ItemCard title={"Ngày cấp"} value={"16/09/2022"}/>
                     </View>
@@ -56,7 +52,7 @@ function User() {
                 )}
             </ScrollView>
 
-            <View style={{backgroundColor: 'white'}}>
+            <View style={{backgroundColor: 'white', paddingVertical: 20}}>
                 <View style={{backgroundColor: '#cf0000', margin: 10, borderRadius: 5}}>
                     <Text style={{color: 'white', fontWeight: '700', textAlign: 'center', paddingVertical: 10}}>Xuất
                         trình
@@ -70,7 +66,7 @@ function User() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f3f3f3',
+        backgroundColor: '#ffffff',
         height: '100%',
         justifyContent: 'space-between'
 
@@ -80,16 +76,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     cccdContainer: {
-        width: '100%',
-        backgroundColor: 'transparent',
-        alignItems: 'center',
+        width: 'auto',
+        height: hResponsive(200),
     },
     cccd: {
-        width: wResponsive(350),
-        height: hResponsive(230),
-        alignItems: 'center',
-        textAlign: 'center',
-        overflow: 'visible',
+        width: '100%',
+        height: '100%',
     },
     shadow: {
         shadowColor: '#000',

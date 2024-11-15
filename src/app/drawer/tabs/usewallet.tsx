@@ -4,6 +4,7 @@ import {useStyles} from "@/styles/styles";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {FontAwesome6} from '@expo/vector-icons';
 import {hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
+import ItemRenderCccd from "@components/Item/ItemRenderCccd";
 
 
 // Định nghĩa kiểu dữ liệu cho data
@@ -31,13 +32,7 @@ export default function LayoutService() {
                 <View style={[styles.containerLayout, styles.headerContainer]}>
                     <Text style={styles.headerText}>Ví giấy tờ</Text>
                 </View>
-                <View style={[styles.cccdContainer]}>
-                    <ImageBackground
-                        source={imageSources["cccd"]}
-                        style={styles.cccd}
-                        resizeMode="contain" // Sử dụng "contain" để đảm bảo ảnh nằm gọn trong View
-                    />
-                </View>
+                <ItemRenderCccd/>
                 <View style={styles.detailsContainer}>
                     <View style={styles.detailsWrapper}>
                         <FontAwesome6 name="contact-card" size={16} color="#4c4c4c"/>
@@ -101,7 +96,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: '100%',
-        paddingVertical:30
+        paddingVertical: 30
         // height: hResponsive(282),
     },
     headerContainer: {

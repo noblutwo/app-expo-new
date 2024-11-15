@@ -1,15 +1,35 @@
-import {Modal, Pressable, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from "react-native";
+import {Modal, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from "react-native";
 import {Feather} from '@expo/vector-icons/';
 import {FontSize} from "@/constants/Colors";
-import {Button, Checkbox} from "react-native-paper";
 import React, {useState} from "react";
 import {router} from "expo-router";
-
 
 interface OpenBole {
     open: boolean;
     setOpen: (value: boolean) => void;
 }
+
+const CustomCheckbox = ({checked, onPress} : any) => {
+    return (
+        <TouchableOpacity
+            onPress={onPress}
+            style={styles.checkboxContainer}
+        >
+            <View style={[
+                styles.checkbox,
+                checked && styles.checkboxChecked
+            ]}>
+                {checked && (
+                    <Feather
+                        name="check"
+                        size={14}
+                        color="white"
+                    />
+                )}
+            </View>
+        </TouchableOpacity>
+    );
+};
 
 function ModalPresent({open, setOpen}: OpenBole) {
     const [checked, setChecked] = useState<boolean>(false);
@@ -19,14 +39,18 @@ function ModalPresent({open, setOpen}: OpenBole) {
         if (!checked && !checked2) return
         if (checked) {
             router.push("/(informations)/cccd")
+            setOpen(false)
         }
         if (checked2) {
             router.push("/(informations)/info")
+            setOpen(false)
         }
         if (checked2 && checked) {
             router.push("/(informations)/true")
+            setOpen(false)
         }
     }
+
     return (
         <Modal
             animationType="slide"
@@ -38,12 +62,8 @@ function ModalPresent({open, setOpen}: OpenBole) {
                 <View style={styles.modalBackground}>
                     <TouchableWithoutFeedback>
                         <View style={styles.modalContainer}>
-                            <View style={[{
-                                flexDirection: 'row',
-                                justifyContent: 'space-between',
-                                paddingVertical: 15
-                            }, styles.gridContainer]}>
-                                <Text style={{fontSize: FontSize.textLowercase, fontWeight: 700}}>
+                            <View style={[styles.headerContainer, styles.gridContainer]}>
+                                <Text style={styles.headerText}>
                                     Chọn giấy tờ muốn xuất trình
                                 </Text>
                                 <TouchableOpacity onPress={() => setOpen(false)}>
@@ -51,54 +71,37 @@ function ModalPresent({open, setOpen}: OpenBole) {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.linedUser}/>
+
                             <View style={styles.gridContainer}>
-                                <View style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    paddingVertical: 15
-                                }}>
-                                    <Text>
+                                <View style={styles.optionRow}>
+                                    <Text style={styles.optionText}>
                                         Thẻ căn cước/CCCD
                                     </Text>
-                                    <Checkbox
-                                        color={"#f1ca00"}
-                                        status={checked ? 'checked' : 'unchecked'}
-                                        onPress={() => {
-                                            setChecked(!checked);
-                                        }}
+                                    <CustomCheckbox
+                                        checked={checked}
+                                        onPress={() => setChecked(!checked)}
                                     />
                                 </View>
                                 <View style={styles.linedUser}/>
                             </View>
+
                             <View style={styles.gridContainer}>
-                                <View style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    paddingVertical: 15
-                                }}>
-                                    <Text>
+                                <View style={styles.optionRow}>
+                                    <Text style={styles.optionText}>
                                         Thông tin cư trú
                                     </Text>
-                                    <Checkbox
-                                        color={"#f1ca00"}
-                                        status={checked2 ? 'checked' : 'unchecked'}
-                                        onPress={() =>
-                                            setChecked2(!checked2)
-                                        }
+                                    <CustomCheckbox
+                                        checked={checked2}
+                                        onPress={() => setChecked2(!checked2)}
                                     />
                                 </View>
                                 <View style={styles.linedUser}/>
                             </View>
+
                             <TouchableOpacity
                                 onPress={handlerTick}
-                                style={[{marginVertical: 30, backgroundColor: '#dd0000', marginHorizontal: '3%'}]}>
-                                <Text style={{
-                                    fontSize: FontSize.textLowercase,
-                                    color: 'white',
-                                    textAlign: 'center',
-                                    paddingVertical: 10,
-                                    fontWeight: 700
-                                }}>Xác nhận</Text>
+                                style={styles.confirmButton}>
+                                <Text style={styles.confirmButtonText}>Xác nhận</Text>
                             </TouchableOpacity>
                         </View>
                     </TouchableWithoutFeedback>
@@ -120,37 +123,65 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         width: "100%",
-
         backgroundColor: 'white',
         elevation: 5,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
-    titleText: {
-        textAlign: 'center',
-        fontSize: 16,
-        fontWeight: '700',
-        marginBottom: 20,
-    },
-    optionsContainer: {
+    headerContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginBottom: 20,
-    },
-    cancelButton: {
-        backgroundColor: '#efefef',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         paddingVertical: 15,
-        borderRadius: 20,
     },
-    cancelButtonText: {
-        textAlign: 'center',
+    headerText: {
+        fontSize: FontSize.textLowercase,
+        fontWeight: '700',
+    },
+    optionRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingVertical: 15,
+    },
+    optionText: {
         fontSize: 16,
     },
-    option: {
-        alignItems: 'center',
+    confirmButton: {
+        marginVertical: 30,
+        backgroundColor: '#dd0000',
+        marginHorizontal: '3%',
+        borderRadius: 5,
+    },
+    confirmButtonText: {
+        fontSize: FontSize.textLowercase,
+        color: 'white',
+        textAlign: 'center',
+        paddingVertical: 10,
+        fontWeight: '700',
     },
     linedUser: {
         borderBottomWidth: 1,
         borderBottomColor: "#f1f1f1",
         flex: 1,
+    },
+    // Custom Checkbox styles
+    checkboxContainer: {
+        padding: 5, // Tăng vùng touch
+
+    },
+    checkbox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: '#cccccc',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    checkboxChecked: {
+        backgroundColor: '#f1ca00',
+        borderColor: '#f1ca00',
     },
 });
 

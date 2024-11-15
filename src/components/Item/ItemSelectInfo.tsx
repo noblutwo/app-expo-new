@@ -17,7 +17,7 @@ export default function ItemSelectInfo({info, value, index}: any) {
                     {value}
                 </Text>
             </View>
-            {info !== "Quan hệ với chủ hộ" && info !== "Quê quán" && <View style={styles.appLine} />}
+            {info !== "Quan hệ với chủ hộ" && info !== "Quê quán" && <View style={styles.appLine}/>}
 
         </View>
     )

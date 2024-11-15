@@ -9,8 +9,7 @@ function IdCard() {
     return (
         <View style={styles.container}>
             <View style={styles.layoutContainer}>
-                <Text style={{fontWeight: 700, fontSize: FontSize.textLowercase, paddingVertical: 15}}>Thẻ căn cước công
-                    dân</Text>
+                <Text style={{fontWeight: 700, fontSize: FontSize.textLowercase, paddingVertical: 15}}>Thẻ căn cước công dân</Text>
                 <View style={styles.cccdContainer}>
                     <ImageBackground
                         source={imageSources["cccd"]}

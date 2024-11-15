@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,79,79,0.5)', // Màu đỏ với độ trong suốt 0.5
         // Các thuộc tính khác của View
         position: 'absolute',
-        bottom: 200,
+        bottom: 180,
         width: '100%',
         paddingVertical: 10
     },
