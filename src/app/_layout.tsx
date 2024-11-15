@@ -3,7 +3,7 @@ import {Slot, SplashScreen} from "expo-router";
 import {useFonts} from "expo-font";
 import React from "react";
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import { StatusBar, View, StyleSheet} from "react-native";
+import {StatusBar, View, StyleSheet} from "react-native";
 import * as Updates from "expo-updates";
 import {fontConfig} from "@/assets/fonts/font";
 import {imageSources} from "@/components/Images/ImgReq";
@@ -12,6 +12,7 @@ import {AuthProvider} from "@/context/AuthContext";
 
 export default function RootLayout() {
     const [loaded] = useFonts(fontConfig);
+
     async function checkForUpdates() {
         if (!__DEV__) {
             try {
@@ -42,24 +43,22 @@ export default function RootLayout() {
 
     return (
         <AuthProvider>
-      <SafeAreaProvider>
-        <SafeAreaView style={styles.containerLyout} edges={['top','left','right']}>
-          <StatusBar backgroundColor="#757575" barStyle="light-content" />
-          <View style={styles.contentLayout}>
-            <Slot />
-          </View>
-        </SafeAreaView>
-      </SafeAreaProvider>
-    </AuthProvider>
+            <SafeAreaProvider>
+                <StatusBar backgroundColor="#757575" barStyle="light-content"/>
+                <View style={styles.contentLayout}>
+                    <Slot/>
+                </View>
+            </SafeAreaProvider>
+        </AuthProvider>
     );
 }
 const styles = StyleSheet.create({
     containerLyout: {
-      flex: 1,
-      // backgroundColor: 'transparent', 
+        flex: 1,
+        // backgroundColor: 'transparent',
     },
     contentLayout: {
-      flex: 1,
-      backgroundColor: '#FFFFFF', // Màu nền của nội dung bên trong
+        flex: 1,
+        backgroundColor: '#FFFFFF', // Màu nền của nội dung bên trong
     },
-  });
+});

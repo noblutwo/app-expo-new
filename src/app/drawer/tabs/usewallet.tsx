@@ -45,8 +45,7 @@ export default function LayoutService() {
                     </View>
                 </View>
             </ImageBackground>
-
-            <ScrollView style={global.homeContainer} contentContainerStyle={{paddingBottom: 100}}>
+            <ScrollView style={global.homeContainer}>
                 <View style={styles.containerLayout}>
                     <View style={styles.accountContainer}>
                         <Text style={styles.accountText}>Tài khoản mức 2 </Text>
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: '100%',
-        paddingBottom:10
+        paddingVertical:30
         // height: hResponsive(282),
     },
     headerContainer: {

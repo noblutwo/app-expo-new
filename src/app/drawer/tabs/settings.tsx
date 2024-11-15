@@ -8,7 +8,7 @@ import {ItemSelectSetting} from "@components/Item/ItemSelectSetting";
 import {Switch} from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {router} from "expo-router";
-import { useAuth } from "@/context/AuthContext";
+import {useAuth} from "@/context/AuthContext";
 
 
 const {width, height} = Dimensions.get('window')
@@ -94,7 +94,7 @@ export default function LayoutSettings() {
     const handLogOut = async () => {
         try {
             setLoading(true)
-            router.back()
+            router.push("/")
         } catch (err) {
             console.log(err)
         } finally {
@@ -108,7 +108,7 @@ export default function LayoutSettings() {
                              style={{height: hResponsive(147), position: 'relative'}}>
                 <View style={[styles.containerLayout, styles.jus, {flexDirection: 'row'}]}>
                     <View style={styles.wrapSetting}>
-                        <Text style={{fontSize: FontSize.textLowercase, fontWeight: 600, paddingVertical: 20}}>
+                        <Text style={{fontSize: FontSize.textLowercase, fontWeight: 600, paddingVertical: 40}}>
                             Cài đặt
                         </Text>
                         {/*<Text>Sử dụng vân tay / khuân mặt để mở khóa ứng dụng nhanh chóng và bảo mật hơn</Text>*/}
@@ -121,7 +121,7 @@ export default function LayoutSettings() {
                     </View>
                 </View>
             </BackgroundImage>
-            <ScrollView style={{paddingTop: 8, backgroundColor: 'white'}} contentContainerStyle={{paddingBottom: 100}}>
+            <ScrollView style={{paddingTop: 8, backgroundColor: 'white'}}>
                 <ItemSelectSetting data={titleItem} title={"Tài khoản"}/>
                 <View style={styles.appLineBig}/>
                 <ItemSelectSetting data={titleItem2} title={"Ứng dụng"}/>
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     },
     appImage: {
         width: '85%',
-        height:'85%',
+        height: '85%',
     },
     appLine: {
         height: 1, // Chiều cao của gạch ngang

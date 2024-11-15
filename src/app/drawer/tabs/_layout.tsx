@@ -74,16 +74,16 @@ export default function TabPage() {
         <Tabs
             screenOptions={({route}) => ({
                 headerShown: false,
-                tabBarStyle: {height: Platform.OS === 'ios' ? scale(140) : scale(70), position: "absolute"},
+                tabBarStyle: {height: scale(80)},
                 tabBarIcon: ({focused}) => {
                     const tabName = route.name as TabName;
                     return (
                         <AppImage
                             source={tabConfig[tabName]?.icon[focused ? "active" : "inactive"]}
                             style={[tabConfig[tabName]?.label === "" ? {
-                                width: scale(50),
-                                height: scale(50),
-                                marginTop: verticalScale(15),
+                                top:15,
+                                width: scale(45),
+                                height: scale(45),
                                 backgroundColor: '#D81C24',
                                 borderRadius: 20
                             } : styles.image]}
@@ -130,13 +130,14 @@ const styles = StyleSheet.create({
         height: scale(25),
     },
     tabLabel: {
-        fontSize: moderateScale(14),
+        fontSize: moderateScale(11),
         fontFamily: FontSize.fontFamilyRegular,
-        marginBottom: verticalScale(10),
+        paddingVertical: 10
+        // marginBottom: verticalScale(10),
     },
     tabLabelTitle: {
         color: "#8c8c8c",
-        fontSize: 12,
+        fontSize: 11,
         fontFamily: FontSize.fontFamilyRegular,
     },
 

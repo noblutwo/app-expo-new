@@ -1,117 +1,119 @@
-import { useResponsiveDimensions } from "@/hooks/useResponsiveDimensions";
-import React, { useState, useRef } from "react";
+import {useResponsiveDimensions} from "@/hooks/useResponsiveDimensions";
+import React, {useState, useRef} from "react";
 import {
-  View,
-  TextInput as RNTextInput,
-  StyleSheet,
-  Text,
-  TextInputProps,
-  ViewStyle,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
+    View,
+    TextInput as RNTextInput,
+    StyleSheet,
+    Text,
+    TextInputProps,
+    ViewStyle,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import AppImage from "../Images/ImgReq";
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 interface ResponsiveDimensions {
-  width: number;
-  height: number;
+    width: number;
+    height: number;
 }
 
 interface ResponsiveTextInputProps extends TextInputProps {
-  placeholder: string;
-  icon: string;
-  containerStyle?: ViewStyle;
-  isPassword?: boolean;
+    placeholder: string;
+    icon: string;
+    containerStyle?: ViewStyle;
+    isPassword?: boolean;
+    onChangeText: (text: string) => void;
 }
 
 const ResponsiveTextInput: React.FC<ResponsiveTextInputProps> = ({
-  placeholder,
-  icon,
-  value,
-  onChangeText,
-  secureTextEntry,
-  containerStyle,
-  isPassword = false,
-  ...props
-}) => {
-  const dimensions: ResponsiveDimensions = useResponsiveDimensions();
-  const [showPassword, setShowPassword] = useState(false);
-  const inputRef = useRef<RNTextInput>(null); // Thêm ref cho TextInput
+                                                                     placeholder,
+                                                                     icon,
+                                                                     value,
+                                                                     onChangeText,
+                                                                     secureTextEntry,
+                                                                     containerStyle,
+                                                                     isPassword = false,
+                                                                     ...props
+                                                                 }) => {
+    const dimensions: ResponsiveDimensions = useResponsiveDimensions();
+    const [showPassword, setShowPassword] = useState(false);
+    const inputRef = useRef<RNTextInput>(null); // Thêm ref cho TextInput
 
-  const styles = StyleSheet.create({
-    container: {
-      flexDirection: "row",
-      alignItems: "center",
-      borderWidth: 1,
-      borderColor: "#ccc",
-      borderRadius: dimensions.width * 0.02,
-      paddingHorizontal: dimensions.width * 0.03,
-      marginVertical: dimensions.height * 0.01,
-      height: dimensions.height * 0.06,
-    },
-    icon: {
-      marginRight: dimensions.width * 0.02,
-      width: dimensions.width * 0.05,
-    },
-    input: {
-      paddingLeft: 0,
-      flex: 1,
-      fontSize: dimensions.width * 0.04,
-      color: "#333",
-    },
-    placeholderText: {
-      fontSize: dimensions.width * 0.04,
-      color: "#999",
-      position: "absolute",
-      left: dimensions.width * 0.097,
-    },
-    eyeIcon: {
-      padding: dimensions.width * 0.02,
-      flexDirection: "row",
-      alignItems: "center",
-    },
-    iconTitle:{
-      padding: dimensions.width * 0.03,
-      marginRight: dimensions.width * 0.03,
-      width: dimensions.width * 0.02,
-    }
-  });
+    const styles = StyleSheet.create({
+        container: {
+            flexDirection: "row",
+            alignItems: "center",
+            borderWidth: 1,
+            borderColor: "#ccc",
+            borderRadius: dimensions.width * 0.02,
+            paddingHorizontal: dimensions.width * 0.03,
+            marginVertical: dimensions.height * 0.01,
+            height: dimensions.height * 0.06,
+        },
+        icon: {
+            marginRight: dimensions.width * 0.02,
+            width: dimensions.width * 0.05,
+        },
+        input: {
+            paddingLeft: 0,
+            flex: 1,
+            fontSize: dimensions.width * 0.04,
+            color: "#333",
+        },
+        placeholderText: {
+            fontSize: dimensions.width * 0.04,
+            color: "#999",
+            position: "absolute",
+            left: dimensions.width * 0.097,
+        },
+        eyeIcon: {
+            padding: dimensions.width * 0.02,
+            flexDirection: "row",
+            alignItems: "center",
+        },
+        iconTitle: {
+            padding: dimensions.width * 0.03,
+            marginRight: dimensions.width * 0.03,
+            width: dimensions.width * 0.02,
+        }
+    });
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
 
-  return (
-    <TouchableWithoutFeedback onPress={() => inputRef.current?.focus()}>
-      <View style={[styles.container, containerStyle]}>
-        <AppImage source={icon} style={styles.icon} resizeMode="contain" />
-        <RNTextInput
-          ref={inputRef} 
-          style={styles.input}
-          value={value}
-          onChangeText={onChangeText}
-          secureTextEntry={isPassword && !showPassword}
-          placeholder=""
-          placeholderTextColor="transparent"
-          selectionColor="#444848"
-          {...props}
-        />
-        {!value && <Text style={styles.placeholderText}>{placeholder}</Text>}
-        {isPassword && (
-          <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
-            {value && <AppImage source="close_icon" style={styles.iconTitle} resizeMode="contain" />}
-            
-            <Icon
-              name={showPassword ? "visibility" : "visibility-off"}
-              size={dimensions.width * 0.06}
-              color="#999"
-            />
-          </TouchableOpacity>
-        )}
-      </View>
-    </TouchableWithoutFeedback>
-  );
+    return (
+        <TouchableWithoutFeedback onPress={() => inputRef.current?.focus()}>
+            <View style={[styles.container, containerStyle]}>
+                <AppImage source={icon} style={[styles.icon]} resizeMode="contain"/>
+                <RNTextInput
+                    ref={inputRef}
+                    style={styles.input}
+                    value={value}
+                    onChangeText={onChangeText}
+                    secureTextEntry={isPassword && !showPassword}
+                    placeholder=""
+                    placeholderTextColor="transparent"
+                    selectionColor="#444848"
+                    {...props}
+                />
+                {!value && <Text style={styles.placeholderText}>{placeholder}</Text>}
+                {value && <AntDesign onPress={() => onChangeText("")} name="closecircle" size={13} color="#7c7c7c"
+                                     style={{paddingRight: 18, paddingLeft: 15}}/>}
+                {isPassword && (
+                    <TouchableOpacity onPress={toggleShowPassword} style={styles.eyeIcon}>
+                        <Icon
+                            name={showPassword ? "visibility" : "visibility-off"}
+                            size={dimensions.width * 0.045}
+                            color="#999"
+                        />
+                    </TouchableOpacity>
+                )}
+            </View>
+        </TouchableWithoutFeedback>
+    );
 };
 
 export default ResponsiveTextInput;

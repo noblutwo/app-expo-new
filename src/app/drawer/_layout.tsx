@@ -7,25 +7,25 @@ import {Ionicons} from "@expo/vector-icons";
 
 export default function AuthLayout() {
     const pathname = usePathname();
-    const { isNoticifation,isHiddenLoggedIn,isLoggedIn} = useAuth();
+    const {isNoticifation, isHiddenLoggedIn, isLoggedIn} = useAuth();
     const handlePress = () => {
         const authPaths = ["/drawer/login", "/drawer/register", "/drawer/forgotPassword", "/drawer/activateAccount"];
         if (authPaths.includes(pathname)) {
-            if(!isNoticifation) {
+            if (!isNoticifation) {
                 router.push("/home");
             } else {
-              router.back();
+                router.back();
             }
         } else {
-              router.push("/home");
+            router.push("/home");
         }
-      };
+    };
     const commonHeaderOptions = isHiddenLoggedIn ? {headerShown: false} : {
         headerTitleAlign: "center" as const,
         headerTitle: () => null,
         headerLeft: () => (
             <TouchableOpacity
-            onPress={() => handlePress()}
+                onPress={() => handlePress()}
             >
                 <AppImage source="header_back" style={styles.item} resizeMode="cover"/>
             </TouchableOpacity>
@@ -35,10 +35,12 @@ export default function AuthLayout() {
     const screens = [
         {
             name: "login", options: {
+                headerTitle: "",
                 headerRight: () => {
                     return (
                         <TouchableOpacity>
-                        {isNoticifation ?  <Ionicons name="notifications" size={24} style={{marginBottom:30}} color="black"/> : ''}
+                            {isNoticifation ? <Ionicons name="notifications" size={24} style={{marginBottom: 30}}
+                                                        color="black"/> : ''}
                         </TouchableOpacity>
                     );
                 },
