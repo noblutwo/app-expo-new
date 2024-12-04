@@ -1,13 +1,18 @@
-import React, {useEffect} from "react";
-import {router, Stack, usePathname} from "expo-router";
+import React from "react";
+import {useRouter, useSegments, useRootNavigationState} from "expo-router";
+import { Stack } from "expo-router/Stack";
 import {StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 import AppImage, {imageSources} from "@/components/Images/ImgReq";
 import {useAuth} from "@/context/AuthContext";
 import {Ionicons} from "@expo/vector-icons";
 
 export default function AuthLayout() {
-    const pathname = usePathname();
-    const {isNoticifation, isHiddenLoggedIn, isLoggedIn} = useAuth();
+    const router = useRouter();
+    const segments = useSegments();
+//   const navigationState = useRootNavigationState();
+    // const pathname = usePathname();
+    const pathname = segments[0]
+    const {isNoticifation, isHiddenLoggedIn} = useAuth();
     const handlePress = () => {
         const authPaths = ["/drawer/login", "/drawer/register", "/drawer/forgotPassword", "/drawer/activateAccount"];
         if (authPaths.includes(pathname)) {

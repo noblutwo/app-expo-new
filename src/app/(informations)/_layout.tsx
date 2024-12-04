@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {router, Stack} from "expo-router";
+import {useRouter} from "expo-router";
+import {Stack} from "expo-router/Stack";
 import {StyleSheet, TouchableOpacity, ImageBackground, View} from "react-native";
 import {Ionicons} from '@expo/vector-icons';
 import {HeaderTitle} from "@/components/HeaderTitle/HeaderTitle";
@@ -10,6 +11,7 @@ import {ModalQrCode} from "@components/Modal/ModalQrCode";
 import {HeaderTitleFamily} from "@components/HeaderTitle/HeaderTitleFamily";
 
 export default function AuthLayout() {
+    const router = useRouter();
     const {isLoggedIn} = useAuth();
     const [openModal, setOpenModal] = useState(false)
     const handler = () => {

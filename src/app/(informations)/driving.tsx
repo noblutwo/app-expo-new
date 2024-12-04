@@ -7,10 +7,11 @@ import {hResponsive} from "@/constants/Colors";
 import BackgroundImage from "@components/Images/BackgroundImage";
 import {Button} from "react-native-paper";
 import ModalPresent from "@components/Modal/ModalPresent";
-import {router} from "expo-router";
+import { useRouter } from 'expo-router';
 
 const Daxacthuc = () => {
     const [open, setOpen] = useState(false)
+    const router = useRouter();
     return (
         <View style={{flex: 1}}>
             <View style={[{

@@ -1,4 +1,5 @@
-import {Tabs, usePathname, useRouter} from "expo-router";
+import {useSegments, useRouter} from "expo-router";
+import {Tabs} from "expo-router/Tabs";
 import React, {useEffect, useRef} from "react";
 import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 import {
@@ -43,8 +44,10 @@ const tabConfig: TabConfig = {
 };
 
 export default function TabPage() {
+    const segments = useSegments();
+    const pathname = segments[0]
     const router = useRouter();
-    const pathname = usePathname();
+    // const pathname = usePathname();
     const tabHistory = useRef<string[]>([]);
 
     useEffect(() => {

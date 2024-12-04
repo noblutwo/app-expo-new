@@ -17,7 +17,7 @@ import {Button} from "react-native-paper";
 import {Colors} from "@/constants/Colors";
 import AppImage from "@/components/Images/ImgReq";
 import {useStyles} from "@/styles/styles";
-import {router} from "expo-router";
+import { useRouter } from 'expo-router';
 import {useFetchData} from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useAuth} from "@/context/AuthContext";
@@ -28,6 +28,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons/';
 
 const {height: SCREEN_HEIGHT} = Dimensions.get("window");
 const LoginScreen = () => {
+    const router = useRouter();
     const {login, handlerNoticifation, hiddenNoticifation, isLoggedIn, isNoticifation, authUser, outUser} = useAuth();
     const scrollViewRef: any = useRef(null);
     const [scrollEnabled, setScrollEnabled] = useState(false);

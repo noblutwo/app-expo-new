@@ -2,7 +2,7 @@ import {Modal, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, Vie
 import {Feather} from '@expo/vector-icons/';
 import {FontSize} from "@/constants/Colors";
 import React, {useState} from "react";
-import {router} from "expo-router";
+import { useRouter } from 'expo-router';
 
 interface OpenBole {
     open: boolean;
@@ -10,6 +10,7 @@ interface OpenBole {
 }
 
 const CustomCheckbox = ({checked, onPress} : any) => {
+    
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -34,6 +35,7 @@ const CustomCheckbox = ({checked, onPress} : any) => {
 function ModalPresent({open, setOpen}: OpenBole) {
     const [checked, setChecked] = useState<boolean>(false);
     const [checked2, setChecked2] = useState<boolean>(false);
+    const router = useRouter();
 
     const handlerTick = () => {
         if (!checked && !checked2) return

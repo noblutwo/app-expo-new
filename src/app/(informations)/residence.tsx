@@ -1,5 +1,5 @@
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {router, usePathname} from "expo-router";
+import {useRouter} from "expo-router";
 import {InfoDropDown} from "@components/Dropdown/InfoDropDown";
 import React, {useEffect, useState} from "react";
 import {EvilIcons} from '@expo/vector-icons';
@@ -28,6 +28,7 @@ const dataResident = [
 
 function ResidenceScreen() {
     const {authUser} = useAuth();
+    const router = useRouter();
     const [openInfoAdministrative, setOpenInfoAdministrative] = useState(true);
     const [openInfoResident, setOpenInfoResident] = useState(true);
     const [information, setInformation] = useState<any>()

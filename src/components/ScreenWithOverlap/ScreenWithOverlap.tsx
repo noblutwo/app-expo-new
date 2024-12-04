@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import {View, StyleSheet, Dimensions, FlatList, NativeSyntheticEvent, NativeScrollEvent} from "react-native";
 import AppImage from "@/components/Images/ImgReq";
 import {useStyles} from "@/styles/styles";
-import FastImage from "react-native-fast-image";
 
 const {width: screenWidth} = Dimensions.get('window');
 

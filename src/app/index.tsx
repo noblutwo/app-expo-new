@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import AppImage from "@/components/Images/ImgReq";
 import Checkbox from "expo-checkbox";
-import {usePathname, useRouter} from "expo-router";
+import {useSegments, useRouter} from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const {width, height} = Dimensions.get("window");
@@ -35,7 +35,10 @@ const slides: SlideItem[] = [
 ];
 
 export default function LoginScreen() {
-    const pathname = usePathname();
+    const segments = useSegments();
+    const pathname = segments[0]
+    console.log(pathname,'>>>>>pathnamepathname')
+    // const pathname = usePathname();
     useEffect(() => {
         if (pathname !== "/") return
         const checkLoginStatus = async () => {
@@ -103,7 +106,7 @@ export default function LoginScreen() {
                                     width: index === activeIndex ? 15 : 5,
                                     height: 5,
                                     backgroundColor:
-                                        index === activeIndex ? "#d6000a" : "#E5D9D9",
+                                    index === activeIndex ? "#d6000a" : "#E5D9D9",
                                 },
                             ]}
                         />

@@ -22,7 +22,7 @@ export function ModalQrCode({open, setOpen, title, image}: QrCodeProps) {
     }, [open]);
 
     useEffect(() => {
-        let timer: NodeJS.Timeout | null = null;
+        let timer: ReturnType<typeof setTimeout> | null = null;
         if (open) {
             timer = setTimeout(() => {
                 setSeconds((prevSeconds) => prevSeconds - 1);

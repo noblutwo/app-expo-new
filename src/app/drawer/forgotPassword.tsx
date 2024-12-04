@@ -4,14 +4,13 @@ import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveText
 import { Button } from "react-native-paper";
 import { Colors } from "@/constants/Colors";
 import { useStyles } from "@/styles/styles";
-import { router } from "expo-router";
-import { useAuth } from "@/context/AuthContext";
+import { useRouter } from 'expo-router';
 
 const ActivateScreen = () => {
+  const router = useRouter();
   const globalStyles = useStyles();
   const [username, setUsername] = useState<string>("");
   const [numberPhone, setNumberPhone] = useState<string>("");
-  const { login, handlerNoticifation, isLoggedIn, isNoticifation } = useAuth();
   return (
     <View style={globalStyles.containerLogin}>
       <Text style={globalStyles.titleLogin}>Quên mật khẩu</Text>

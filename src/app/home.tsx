@@ -4,13 +4,13 @@ import { imageSources } from "@/components/Images/ImgReq";
 import { Colors, FontSize } from "@/constants/Colors";
 import { useAuth } from "@/context/AuthContext";
 import { lightTheme } from "@/styles/theme";
-import { router } from "expo-router";
+import { useRouter } from 'expo-router';
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity,BackHandler, Alert  } from "react-native";
 
 export default function homeScreen() {
   const { handlerNoticifation,hiddenNoticifation, isHiddenLoggedIn} = useAuth();
-
+  const router = useRouter();
   useEffect(() => {
     const backAction = () => {
       hiddenNoticifation(false)

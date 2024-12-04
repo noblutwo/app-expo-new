@@ -11,7 +11,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import AppImage, {imageSources} from "@components/Images/ImgReq";
 import BackgroundImage from "@components/Images/BackgroundImage";
 import {hResponsive, pResponsive, wResponsive} from "@/constants/Colors";
-import {router} from "expo-router";
 import {useAuth} from "@/context/AuthContext";
 import {lightTheme} from "@/styles/theme";
 import {fetchDataInformation} from "@/api/api";

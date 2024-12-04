@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {router} from 'expo-router';
+import { useRouter } from 'expo-router';
 import {postData} from '@/api/api';
 
 type AuthContextType = {
@@ -32,6 +32,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [authUser, setAuthUser] = useState<any>(null);
     const [lastActivity, setLastActivity] = useState(Date.now());
     const [isHiddenLoggedIn, setIsHiddenLoggedIn] = useState(false);
+    const router = useRouter();
 
     const TIMEOUT_DURATION = 4 * 60 * 1000;
 

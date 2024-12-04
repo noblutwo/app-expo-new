@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Modal, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import {FontAwesome6} from '@expo/vector-icons';
 import {FontSize, pResponsive, wResponsive} from "@/constants/Colors";
-import {router} from "expo-router";
+import { useRouter } from 'expo-router';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ModelProps {
@@ -25,6 +25,7 @@ export default function ModalResidence({modalVisible, setModalVisible, openId}: 
     const codeLength = Array(6).fill(0);
     const [open, setOpen] = useState(false)
     const [wrongPass, setWrongPass] = useState(5)
+    const router = useRouter();
     const textErr = [
         {textWrong: `Passcode không chính xác, Nhập sai quá 5 lần sẽ bị khóa passcode sang ngày hôm sau. Còn ${wrongPass} lần thử`},
         {textWrong: 'Vui lòng thử lại vào ngày mai'}

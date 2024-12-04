@@ -1,12 +1,13 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
-import { useRouter, usePathname } from 'expo-router';
+import { useRouter, useSegments } from 'expo-router';
 import AppImage from '../Images/ImgReq';
 
 export default function HeaderLeft() {
   const router = useRouter();
-  const pathname = usePathname();
-
+  // const pathname = usePathname();
+  const segments = useSegments();
+  const pathname = segments[0]
   const handlePress = () => {
     if (pathname === "/drawer/login") {
       router.back();

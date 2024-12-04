@@ -7,38 +7,33 @@ import {
     TouchableWithoutFeedback,
     View,
     ScrollView,
-    Dimensions,
-    ActivityIndicator,
+    Dimensions
 } from "react-native";
 import React, {useCallback, useRef, useState} from "react";
 import ResponsiveTextInput from "@/components/ResponsiveTextInput/ResponsiveTextInput";
-import {Button} from "react-native-paper";
 import {Colors} from "@/constants/Colors";
 import AppImage from "@/components/Images/ImgReq";
 import {useStyles} from "@/styles/styles";
-import {router} from "expo-router";
+import { useRouter } from 'expo-router';
 import {useAuth} from "@/context/AuthContext";
 import {useFetchData} from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {isLoaded} from "expo-font";
+import { Button } from "@/components/Button/Button";
+
 
 const {height: SCREEN_HEIGHT} = Dimensions.get("window");
 const RegisterScreen = () => {
-
+    const router = useRouter();
     const {login} = useAuth();
     const globalStyles = useStyles();
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isRegister, setIsRegister] = useState<boolean>(true);
-    const [loading, setLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [usernameError, setUsernameError] = useState(false);
 
 // keyboar
     const scrollViewRef: any = useRef(null);
     const [scrollEnabled, setScrollEnabled] = useState(false);
     const handleFocus = (event: { nativeEvent: { target: any; text: any } }) => {
-        const {target, text} = event.nativeEvent;
         if (scrollViewRef.current) {
             scrollViewRef.current.scrollTo({
                 y: 0,
@@ -61,7 +56,7 @@ const RegisterScreen = () => {
 
     const validateUsername = useCallback((text: string) => {
         setUsername(text);
-        setUsernameError(text.length < 3);
+        // setUsernameError(text.length < 3);
     }, []);
 
     const validatePassword = useCallback((text: React.SetStateAction<string>) => {
@@ -75,23 +70,22 @@ const RegisterScreen = () => {
         validatePassword(password);
         if (username && password) {
             try {
-                setLoading(true);
                 await login(username, password);
                 const userJson = await AsyncStorage.getItem("user");
                 if (userJson) {
                     router.push("./tabs");
                 } else {
-                    setIsError(true);
-                    setLoading(false);
+                    // setIsError(true);
+                    // setLoading(false);
                 }
             } catch (error) {
-                setIsError(true);
-                setLoading(false);
+                // setIsError(true);
+                // setLoading(false);
             } finally {
-                setLoading(false);
+                // setLoading(false);
             }
         } else {
-            setIsError(true);
+            // setIsError(true);
         }
     }, [username, password]);
 
@@ -216,7 +210,9 @@ const RegisterScreen = () => {
                                 <View
                                     style={[
                                         globalStyles.rowIconTitleLogin,
-                                        {justifyContent: 'space-evenly', gap: 6},
+                                        {justifyContent: 'space-evenly',
+                                            //  gap: 6
+                                            },
                                     ]}
                                 >
                                     <View style={globalStyles.columnIconTitleLogin}>

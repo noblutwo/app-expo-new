@@ -200,7 +200,7 @@ export const useStyles = () => {
         },
         profileContainerHome: {
             flexDirection: "row",
-            gap: 10,
+            // gap: 10,
             alignItems: 'center',
         },
         profileImageHome: {
@@ -212,7 +212,7 @@ export const useStyles = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: 10,
+            // gap: 10,
         },
         nameTagHome: {
             flexDirection: "row",
@@ -221,7 +221,7 @@ export const useStyles = () => {
             borderRadius: 20,
             paddingHorizontal: 10,
             paddingVertical: 5,
-            gap: 10,
+            // gap: 10,
         },
         identityIconHome: {
             width: 20,
@@ -301,7 +301,7 @@ export const useStyles = () => {
             fontSize: 14,
             fontFamily: lightTheme.fontSizes.fontFamilyRegular,
             color: '#383637',
-            fontWeight:"semibold"
+            // fontWeight:"semibold"
         },
         slideLayoutHome: {
             width: dimensions.width,

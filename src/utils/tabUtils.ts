@@ -1,4 +1,4 @@
-import {Router} from 'expo-router'; // Giả sử bạn đang sử dụng Next.js
+import { useRouter } from 'expo-router';// Giả sử bạn đang sử dụng Next.js
 
 const tabPaths = {
     index: ['', 'index', 'healthInsuranceCard', 'participationProcess', 'informationBenefit', 'examinationBook', 'accountChild'],
@@ -16,7 +16,8 @@ export const isTabActive = (tabName: string, pathname: string) => {
         : normalizedPath.startsWith(tabName);
 };
 
-export const createHandleTabPress = (router: Router, isAuthenticated: boolean) => {
+export const createHandleTabPress = ( isAuthenticated: boolean) => {
+    const router = useRouter();
     return (tabName: string) => {
         if (!isAuthenticated && (tabName === 'index' || tabName === 'service')) {
             router.push('/');

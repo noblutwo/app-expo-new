@@ -2,7 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
-    "jsx": "react-native", // Đảm bảo rằng bạn sử dụng "react-native"
+    "jsx": "react-native",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
@@ -11,12 +11,30 @@
       "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"],
       "@assets/*": ["src/assets/*"]
-    }
+    },
+    "types": ["react-native"],  
+    "allowJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "lib": ["es2019", "dom"],
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true
   },
   "include": [
     "src/**/*",
-    "App.tsx"
-, "src/app/_layout.tsx"  ],
+    "App.tsx",
+    "src/app/_layout.tsx",
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "app/**/*", 
+    "@types/**/*"
+  ],
   "exclude": [
     "node_modules",
     "babel.config.js",
